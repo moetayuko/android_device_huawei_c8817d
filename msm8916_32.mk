@@ -5,16 +5,17 @@ PRODUCT_DEVICE := msm8916_32
 
 PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance
 
+TARGET_USES_QCOM_BSP := true
+
+ifeq ($(TARGET_USES_QCOM_BSP), true)
+# Add QC Video Enhancements flag
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+endif #TARGET_USES_QCOM_BSP
+
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
-
-# audio UCM files
-PRODUCT_COPY_FILES += device/qcom/msm8916_32/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
-                      device/qcom/msm8916_32/snd_soc_msm/snd_soc_msm_Taiko_CDP:system/etc/snd_soc_msm/snd_soc_msm_Taiko_CDP \
-                      device/qcom/msm8916_32/snd_soc_msm/snd_soc_msm_Taiko_Fluid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_Fluid \
-                      device/qcom/msm8916_32/snd_soc_msm/snd_soc_msm_Taiko_liquid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_liquid \
-
+    device/qcom/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 # Feature definition files for msm8916
 PRODUCT_COPY_FILES += \
