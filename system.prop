@@ -84,3 +84,6 @@ ro.kernel.qemu=1
 
 #Temporary bring-up settings
 ro.sf.lcd_density=240
+
+#Set composition for USB
+persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
