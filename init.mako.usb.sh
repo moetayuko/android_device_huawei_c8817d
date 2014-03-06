@@ -1,4 +1,6 @@
-# Copyright (c) 2013, The Linux Foundation. All rights reserved.
+#!/system/bin/sh
+# Copyright (c) 2012, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2012, LG Electronics Inc. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -9,9 +11,9 @@
 #       copyright notice, this list of conditions and the following
 #       disclaimer in the documentation and/or other materials provided
 #       with the distribution.
-#     * Neither the name of The Linux Foundation nor the names of its
+#     * Neither the name of Code Aurora Forum, Inc. nor the names of its
 #       contributors may be used to endorse or promote products derived
-#       from this software without specific prior written permission.
+#      from this software without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -24,8 +26,17 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
 
-dev_mount sdcard /storage/sdcard1 auto /devices/msm_sdcc.2/mmc_host
+#
+# Allow unique persistent serial numbers for devices connected via usb
+# User needs to set unique usb serial number to persist.usb.serialno and
+# if persistent serial number is not set then Update USB serial number if
+# passed from command line
+#
 
-# MTP
-#dev_mount sdcard2 /mnt/sdcard/external_sd auto /devices/platform/msm_sdcc.3/mmc_host
+chown root.system /sys/devices/platform/msm_hsusb/gadget/wakeup
+chmod 220 /sys/devices/platform/msm_hsusb/gadget/wakeup
+
+echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
+echo 1  > /sys/class/android_usb/f_cdrom_storage/lun/nofua
