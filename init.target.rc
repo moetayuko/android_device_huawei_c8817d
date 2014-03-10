@@ -32,10 +32,6 @@ on early-init
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
 
-# import cne init file
-on post-fs
-    export LD_PRELOAD /vendor/lib/libNimsWrap.so
-
 on fs
     mount_all fstab.qcom
 
