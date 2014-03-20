@@ -1,4 +1,4 @@
-# Copyright (c) 2013, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -32,6 +32,10 @@ on early-init
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
 
+# import cne init file
+on post-fs
+    export LD_PRELOAD /vendor/lib/libNimsWrap.so
+
 on fs
     mount_all fstab.qcom
 
@@ -39,14 +43,14 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
+    wait /dev/block/bootdevice/by-name/cache
+    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/persist
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
 
-    #wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    #mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+    wait /dev/block/bootdevice/by-name/modem
+    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
     #write /sys/kernel/boot_adsp/boot 1
 
 on post-fs-data
@@ -55,6 +59,12 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics
 
 # Allow usb charging to be disabled peristently
 on property:persist.usb.chgdisabled=1
@@ -68,6 +78,21 @@ service qrngd /system/bin/qrngd -f
    user root
    group root
 
+service qrngp /system/bin/qrngp -f
+   class main
+   user root
+   group root
+   oneshot
+   disabled
+
+on property:sys.boot_completed=1
+   start qrngp
+
+service qseecomd /system/bin/qseecomd
+   class core
+   user root
+   group root
+
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
    user root
    disabled
@@ -76,10 +101,6 @@ service thermal-engine /system/bin/thermal-engine
    class main
    user root
    group root
-   disabled
-
-on property:qcom.thermal=thermal-engine
-    start thermal-engine
 
 service time_daemon /system/bin/time_daemon
    class late_start
@@ -94,3 +115,8 @@ service audiod /system/bin/audiod
 on boot
     insmod /system/lib/modules/adsprpc.ko
 
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi
+    oneshot
