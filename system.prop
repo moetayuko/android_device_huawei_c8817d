@@ -109,3 +109,8 @@ persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
 
 # set lcd density
 ro.sf.lcd_density=480
+
+#property to enable user to access Google WFD settings
+persist.debug.wfd.enable=1
+#propery to enable VDS WFD solution
+persist.hwc.enable_vds=1
