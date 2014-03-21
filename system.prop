@@ -2,9 +2,9 @@
 # system.prop for msm8916
 #
 
-rild.libpath=/system/lib/libreference-ril.so
-#rild.libpath=/system/lib/libril-qc-qmi-1.so
-#rild.libargs=-d /dev/smd0
+#rild.libpath=/system/lib/libreference-ril.so
+rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=
@@ -19,12 +19,11 @@ DEVICE_PROVISIONED=1
 # Start in cdma mode
 ro.telephony.default_network=5
 
-debug.sf.hw=0
-debug.egl.hw=0
-debug.gralloc.map_fb_memory=1
-#debug.composition.type=c2d
-#persist.hwc.mdpcomp.enable=true
-#debug.mdpcomp.logs=0
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=c2d
+persist.hwc.mdpcomp.enable=true
+debug.mdpcomp.logs=0
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -39,7 +38,7 @@ persist.demo.hdmirotationlock=false
 #
 # system props for the cne module
 #
-#persist.cne.feature=1
+persist.cne.feature=1
 
 #system props for the MM modules
 media.stagefright.enable-player=true
@@ -50,6 +49,7 @@ media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
+mm.enable.qcom_parser=262143
 
 #
 # system props for the data modules
@@ -63,8 +63,8 @@ persist.timed.enable=true
 #
 # system prop for opengles version
 #
-# 131072 is decimal for 0x30000 to report version 3
-ro.opengles.version=196608
+# 131072 is decimal for 0x20000 to report version 2
+ro.opengles.version=131072
 
 # System property for cabl
 ro.qualcomm.cabl=0
@@ -78,12 +78,33 @@ telephony.lteOnCdmaDevice=1
 #
 persist.fuse_sdcard=true
 
+#
+#snapdragon value add features
+#
+ro.qc.sdk.audio.ssr=false
+##fluencetype can be "fluence" or "fluencepro" or "none"
+ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
 #Set for msm8916
+tunnel.audio.encode = false
 ro.config.low_ram=true
-ro.kernel.qemu=1
-
-#Temporary bring-up settings
-ro.sf.lcd_density=240
+#Buffer size in kbytes for compress offload playback
+audio.offload.buffer.size.kb=32
+#Enable offload audio video playback by default
+av.offload.enable=true
+#enable voice path for PCM VoIP by default
+use.voice.path.for.pcm.voip=true
+#
+#System property for FM transmitter
+#
+ro.fm.transmitter=false
+#enable dsp gapless mode by default
+audio.offload.gapless.enabled=true
 
 #Set composition for USB
 persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
+
+# set lcd density
+ro.sf.lcd_density=480

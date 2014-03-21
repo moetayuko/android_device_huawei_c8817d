@@ -24,7 +24,7 @@ endif
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := true
 
--include $(QCPATH)/common/msm8916/BoardConfigVendor.mk
+-include $(QCPATH)/common/msm8916_32/BoardConfigVendor.mk
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 #TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
 # to get rid of compilation error.
