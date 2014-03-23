@@ -12,8 +12,8 @@ endif #TARGET_USES_QCOM_BSP
 
 # media_profiles and media_codecs xmls for 8916
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8916/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8916/media/media_codecs_8916.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/msm8916_32/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+                      device/qcom/msm8916_32/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 endif
 
 $(call inherit-product, device/qcom/common/common.mk)
@@ -74,6 +74,10 @@ PRODUCT_COPY_FILES += \
 
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
+
+PRODUCT_PACKAGES += \
+    libqcomvisualizer \
+    libqcompostprocbundle
 
 #OEM Services library
 PRODUCT_PACKAGES += oem-services
