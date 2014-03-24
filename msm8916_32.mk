@@ -94,4 +94,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
     p2p_supplicant_overlay.conf
-
+#ANT+ stack
+PRODUCT_PACKAGES += \
+AntHalService \
+libantradio \
+antradio_app
