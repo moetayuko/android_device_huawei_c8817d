@@ -115,6 +115,12 @@ service audiod /system/bin/audiod
 on boot
     insmod /system/lib/modules/adsprpc.ko
 
+service ppd /system/bin/mm-pp-daemon
+    class late_start
+    user system
+    socket pps stream 0660 system system
+    group system graphics
+
 service wcnss-service /system/bin/wcnss_service
     class late_start
     user system
