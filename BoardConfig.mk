@@ -107,3 +107,5 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 #Add support for firmare upgrade on 8916
 HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE := true
+
+PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
