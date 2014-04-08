@@ -41,4 +41,6 @@
    <bool name="config_ascii_7bit_support_for_long_message">true</bool>
    <!-- Should the device show AM/PM in unlock screen -->
    <bool name="config_show_ampm_in_unlock_screen">true</bool>
+    <!-- Make things go fast by disabling Fading Marquee for Textview -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
 </resources>
