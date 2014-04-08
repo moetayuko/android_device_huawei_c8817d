@@ -119,3 +119,4 @@ ro.sf.lcd_density=480
 persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
 persist.hwc.enable_vds=1
+ro.min_freq=800000
