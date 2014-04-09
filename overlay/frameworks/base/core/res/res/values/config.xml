@@ -34,4 +34,6 @@
     <bool name="config_button_light_enabled">true</bool>
     <!-- Whether camera shutter sound is forced or not  (country specific). -->
     <bool name="config_camera_sound_forced">true</bool>
+   <!-- Whether cpu boost is enabled for horizontal scroll. -->
+   <bool name="config_enableCpuBoostForScroller">true</bool>
 </resources>
