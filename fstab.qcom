@@ -9,6 +9,6 @@
 /dev/block/bootdevice/by-name/system         /system      ext4    ro,barrier=1,discard                                wait
 /dev/block/bootdevice/by-name/userdata       /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard      wait,check,encryptable=footer
 /devices/soc.0/7864900.sdhci/mmc_host        /storage/sdcard1   vfat    nosuid,nodev         wait,voldmanaged=sdcard1:auto
-/devices/msm_smsc_hub/msm_hsic_host          /storage/uicc0     vfat    nosuid,nodev         wait,voldmanaged=uicc0:auto
-/devices/msm_smsc_hub/msm_hsic_host          /storage/uicc1     vfat    nosuid,nodev         wait,voldmanaged=uicc1:auto
+/devices/soc.0/78b7000.spi/spi_master/spi0/spi0.0          /storage/uicc0     vfat    nosuid,nodev         wait,voldmanaged=uicc0:auto
+/devices/soc.0/78b7000.spi/spi_master/spi0/spi0.0          /storage/uicc1     vfat    nosuid,nodev         wait,voldmanaged=uicc1:auto
 /devices/platform/msm_hsusb                  /storage/usbotg    vfat    nosuid,nodev         wait,voldmanaged=usbotg:auto
