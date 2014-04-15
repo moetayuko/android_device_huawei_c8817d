@@ -21,8 +21,6 @@ $(call inherit-product, device/qcom/common/common.mk)
 PRODUCT_NAME := msm8916_32
 PRODUCT_DEVICE := msm8916_32
 
-PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance
-
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
@@ -60,7 +58,12 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
         frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
         frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
+# Enable NFC Forum testing by temporarily changing the PRODUCT_BOOT_JARS
+# line has to be in sync with build/target/product/core_base.mk
+PRODUCT_BOOT_JARS := core:conscrypt:okhttp:core-junit:bouncycastle:ext:com.android.nfc.helper:framework:framework2:telephony-common:voip-common:mms-common:android.policy:services:apache-xml:webviewchromium:telephony-msim
 endif # TARGET_USES_QCA_NFC
+
+PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance
 
 # Feature definition files for msm8916
 PRODUCT_COPY_FILES += \
