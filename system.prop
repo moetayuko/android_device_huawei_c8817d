@@ -68,7 +68,7 @@ persist.timed.enable=true
 ro.opengles.version=196608
 
 # System property for cabl
-ro.qualcomm.cabl=0
+ro.qualcomm.cabl=1
 
 #
 # System props for telephony
