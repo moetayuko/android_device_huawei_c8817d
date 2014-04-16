@@ -122,7 +122,7 @@ service ppd /system/bin/mm-pp-daemon
     group system graphics
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
     group system wifi
     oneshot
