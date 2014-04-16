@@ -111,6 +111,11 @@ ro.fm.transmitter=false
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
 
+#Audio voice concurrency related flags
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=true
+voice.voip.conc.disabled=true
+
 #Set composition for USB
 persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
 
