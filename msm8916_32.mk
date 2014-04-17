@@ -39,7 +39,11 @@ ifeq ($(NFC_D), true)
         NfcDNci \
         Tag \
         com.android.nfc_extras \
-        com.android.nfc.helper
+        com.android.nfc.helper \
+        SmartcardService \
+        org.simalliance.openmobileapi \
+        org.simalliance.openmobileapi.xml \
+        libassd
 else
     PRODUCT_PACKAGES += \
     libnfc-nci \
