@@ -83,6 +83,10 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
 
+#Set default profile to FUT
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.logkit.ctrlcode=1
+
 #OEM Services library
 PRODUCT_PACKAGES += oem-services
 PRODUCT_PACKAGES += libsubsystem_control
