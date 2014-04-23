@@ -9,6 +9,7 @@ endif #TARGET_USES_QCOM_BSP
 
 
 
+DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_32/overlay
 
 # media_profiles and media_codecs xmls for 8916
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
