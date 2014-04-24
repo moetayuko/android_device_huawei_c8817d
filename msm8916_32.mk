@@ -18,6 +18,8 @@ PRODUCT_COPY_FILES += device/qcom/msm8916_32/media/media_profiles_8916.xml:syste
                       device/qcom/msm8916_32/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 endif
 
+PRODUCT_PROPERTY_OVERRIDES += \
+       dalvik.vm.heapgrowthlimit=128m
 $(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8916_32
