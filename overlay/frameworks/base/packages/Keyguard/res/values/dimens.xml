@@ -27,12 +27,8 @@
     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 -->
-
 <resources>
-   <!-- Whether cpu boost is enabled for overscroller fling. -->
-   <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
-   <!-- Whether cpu boost is enabled for horizontal scroll. -->
-   <bool name="config_enableCpuBoostForScroller">true</bool>
-   <!-- Should the device show AM/PM in unlock screen -->
-   <bool name="config_show_ampm_in_unlock_screen">true</bool>
+
+    <dimen name="widget_big_font_size">68dp</dimen>
+
 </resources>
