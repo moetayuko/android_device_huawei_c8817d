@@ -74,6 +74,9 @@ PRODUCT_BOOT_JARS := core:conscrypt:okhttp:core-junit:bouncycastle:ext:com.andro
 endif # TARGET_USES_QCA_NFC
 
 PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
+# Listen configuration file
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8916_32/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # Feature definition files for msm8916
 PRODUCT_COPY_FILES += \
