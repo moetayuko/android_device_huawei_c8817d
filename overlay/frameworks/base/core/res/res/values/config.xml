@@ -36,4 +36,7 @@
     <bool name="config_camera_sound_forced">true</bool>
    <!-- Whether cpu boost is enabled for horizontal scroll. -->
    <bool name="config_enableCpuBoostForScroller">true</bool>
+   <!-- Configuartion to support 7bit Ascii encoding and decoding
+       for long messages. -->
+   <bool name="config_ascii_7bit_support_for_long_message">true</bool>
 </resources>
