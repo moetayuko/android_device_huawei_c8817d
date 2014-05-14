@@ -26,7 +26,7 @@
 <!--- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN    -->
 <!--- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
 <listen_platform_info>
-    <device name="DEVICE_HANDSET_APE_ACDB_ID" acdb_id="127" />
+    <device name="DEVICE_HANDSET_APE_ACDB_ID" acdb_id="130" />
     <ctrl name="max_ape_sessions" value="5" />
     <ctrl name="max_ape_keywords" value="5" />
     <ctrl name="max_ape_kw_user_pairs" value="5" />
