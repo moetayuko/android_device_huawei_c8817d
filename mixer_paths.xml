@@ -265,6 +265,14 @@
     <path name="audio-record">
         <ctl name="MultiMedia1 Mixer TERT_MI2S_TX" value="1" />
     </path>
+    <!-- listen -->
+    <ctl name="LSM1 MUX" value="None" />
+    <ctl name="LSM2 MUX" value="None" />
+    <ctl name="LSM3 MUX" value="None" />
+    <ctl name="LSM4 MUX" value="None" />
+    <ctl name="LSM5 MUX" value="None" />
+    <ctl name="TERT_MI2S_TX LSM Function" value="None" />
+    <!-- listen end-->
 
     <path name="audio-record bt-sco">
         <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
@@ -453,6 +461,27 @@
     <path name="compress-voip-call bt-sco-wb">
         <ctl name="Internal BTSCO SampleRate" value="16000" />
         <path name="compress-voip-call bt-sco" />
+    </path>
+
+    <path name="listen-voice-wakeup-1">
+        <ctl name="LSM1 MUX" value="TERT_MI2S_TX" />
+        <ctl name="TERT_MI2S_TX LSM Function" value="SWAUDIO" />
+    </path>
+    <path name="listen-voice-wakeup-2">
+        <ctl name="LSM2 MUX" value="TERT_MI2S_TX" />
+        <ctl name="TERT_MI2S_TX LSM Function" value="SWAUDIO" />
+    </path>
+    <path name="listen-voice-wakeup-3">
+        <ctl name="LSM3 MUX" value="TERT_MI2S_TX" />
+        <ctl name="TERT_MI2S_TX LSM Function" value="SWAUDIO" />
+    </path>
+    <path name="listen-voice-wakeup-4">
+        <ctl name="LSM4 MUX" value="TERT_MI2S_TX" />
+        <ctl name="TERT_MI2S_TX LSM Function" value="SWAUDIO" />
+    </path>
+    <path name="listen-voice-wakeup-5">
+        <ctl name="LSM5 MUX" value="TERT_MI2S_TX" />
+        <ctl name="TERT_MI2S_TX LSM Function" value="SWAUDIO" />
     </path>
 
     <path name="qchat-call">
@@ -678,6 +707,10 @@
     </path>
 
     <path name="voice-tty-vco-handset-mic">
+        <path name="adc1" />
+    </path>
+
+    <path name="listen-handset-mic">
         <path name="adc1" />
     </path>
 
