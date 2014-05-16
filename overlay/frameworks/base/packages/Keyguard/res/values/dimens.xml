@@ -27,18 +27,8 @@
     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 -->
-
 <resources>
-    <!-- Whether cpu boost is enabled for overscroller fling. -->
-    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
-    <bool name="config_button_light_enabled">true</bool>
-    <!-- Whether camera shutter sound is forced or not  (country specific). -->
-    <bool name="config_camera_sound_forced">true</bool>
-   <!-- Whether cpu boost is enabled for horizontal scroll. -->
-   <bool name="config_enableCpuBoostForScroller">true</bool>
-   <!-- Configuartion to support 7bit Ascii encoding and decoding
-       for long messages. -->
-   <bool name="config_ascii_7bit_support_for_long_message">true</bool>
-   <!-- Should the device show AM/PM in unlock screen -->
-   <bool name="config_show_ampm_in_unlock_screen">true</bool>
+
+    <dimen name="widget_big_font_size">68dp</dimen>
+
 </resources>
