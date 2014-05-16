@@ -48,8 +48,8 @@
     <ctl name="RX1 MIX1 INP2" value="ZERO" />
     <ctl name="RX1 MIX1 INP1" value="ZERO" />
     <ctl name="EAR_S Switch" value="0" />
-    <ctl name="HPHL Switch" value="0" />
-    <ctl name="HPHR Switch" value="0" />
+    <ctl name="HPHL" value="ZERO" />
+    <ctl name="HPHR" value="ZERO" />
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="Speaker Boost" value="DISABLE" />
     <ctl name="MICBIAS CAPLESS Switch" value="0" />
@@ -513,8 +513,8 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RDAC2 MUX" value="RX2" />
-        <ctl name="HPHL Switch" value="1" />
-        <ctl name="HPHR Switch" value="1" />
+        <ctl name="HPHL" value="Switch" />
+        <ctl name="HPHR" value="Switch" />
     </path>
 
     <path name="headset-mic">
@@ -653,7 +653,7 @@
 
     <path name="tty-headphones">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="HPHL Switch" value="1" />
+        <ctl name="HPHL" value="Switch" />
     </path>
 
     <path name="voice-tty-full-headphones">
