@@ -130,6 +130,9 @@ service ppd /system/bin/mm-pp-daemon
     socket pps stream 0660 system system
     group system graphics
 
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
 service wcnss-service /system/bin/wcnss_service
     class main
     user system
