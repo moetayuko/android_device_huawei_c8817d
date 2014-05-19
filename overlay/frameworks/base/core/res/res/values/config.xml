@@ -37,4 +37,5 @@
    <bool name="config_show_ampm_in_unlock_screen">true</bool>
     <!-- Make things go fast by disabling Fading Marquee for Textview -->
     <bool name="config_ui_enableFadingMarquee">false</bool>
+   <bool name="config_button_light_enabled">true</bool>
 </resources>
