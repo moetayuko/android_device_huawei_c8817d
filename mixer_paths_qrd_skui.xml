@@ -582,7 +582,6 @@
     </path>
 
     <path name="voice-headphones">
-        <path name="sidetone-headphone" />
         <path name="headphones" />
     </path>
 
