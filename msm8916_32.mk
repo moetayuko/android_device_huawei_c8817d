@@ -141,3 +141,6 @@ PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/globalization/multi-language/res-o
 
 # Set this device to DSDS as default.
 ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
+
+rp_pppoe := pppoe
+PRODUCT_PACKAGES += $(rp_pppoe)
