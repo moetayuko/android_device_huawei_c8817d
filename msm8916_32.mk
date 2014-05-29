@@ -76,6 +76,8 @@ PRODUCT_BOOT_JARS := core:conscrypt:okhttp:core-junit:bouncycastle:ext:com.andro
 
 ifeq ($(NFC_D), true)
 PRODUCT_BOOT_JARS += org.simalliance.openmobileapi:com.android.qcom.nfc_extras:com.gsma.services.nfc
+# SmartcardService, SIM1,SIM2,eSE1 not including eSE2,SD1 as default
+ADDITIONAL_BUILD_PROPERTIES += persist.nfc.smartcard.config=SIM1,SIM2,eSE1
 endif
 
 endif # TARGET_USES_QCA_NFC
