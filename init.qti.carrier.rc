@@ -28,8 +28,15 @@
 #
 
 #################### RECOVERY DATA PARTITION FOR CARRIER ###################
-on early-boot
-    exec /system/bin/sh /system/vendor/speccfg/switch_spec.sh
+service carrier_switcher /system/bin/sh /system/vendor/speccfg/switch_spec.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on post-fs-data
+    start carrier_switcher
+    wait /data/switch_spec
 
 ################################ CMCC APP ##################################
 # backupAppData
