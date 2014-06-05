@@ -592,8 +592,8 @@
     </path>
 
     <path name="speaker-and-headphones">
-        <path name="speaker" />
         <path name="headphones" />
+        <path name="speaker" />
     </path>
 
     <path name="usb-headphones">
