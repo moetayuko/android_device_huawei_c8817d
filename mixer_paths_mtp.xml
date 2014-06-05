@@ -536,6 +536,7 @@
 
     <path name="handset-mic">
         <path name="adc3" />
+        <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
     <path name="headphones">
