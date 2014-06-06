@@ -164,3 +164,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
+
+on boot
+   write /sys/devices/soc.0/78b9000.i2c/i2c-5/5-0020/input/input0/fw_name PR1469074-s3408bt_0029010D.img
+   write /sys/devices/soc.0/78b9000.i2c/i2c-5/5-0020/input/input0/force_update_fw 1
