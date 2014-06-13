@@ -46,7 +46,28 @@
       <value>3.9</value> <!-- ~2mA -->
       <value>2.8</value> <!-- ~1mA -->
   </array>
-  <!-- Current when CPU is idle -->
+ <!-- Different CPU speeds as reported in
+       /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state -->
+  <array name="cpu.speeds">
+      <value>200000</value> <!-- 200 MHz CPU speed -->
+      <value>400000</value> <!-- 400 MHz CPU speed -->
+      <value>533333</value> <!-- 533 MHz CPU speed -->
+      <value>800000</value> <!-- 800 MHz CPU speed -->
+      <value>998000</value> <!-- 998 MHz CPU speed -->
+      <value>1094400</value> <!-- 1094 MHz CPU speed -->
+      <value>1190400</value> <!-- 1190 MHz CPU speed -->
+  </array>
+  <!-- Current at each CPU speed, as per 'cpu.speeds' -->
+  <array name="cpu.active">
+      <value>151</value>
+      <value>169</value>
+      <value>177</value>
+      <value>195</value>
+      <value>259</value>
+      <value>307</value>
+      <value>353</value>
+  </array>
+ <!-- Current when CPU is idle -->
   <item name="cpu.idle">1.6</item>
   <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
   <item name="battery.capacity">2000</item>
