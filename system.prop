@@ -84,7 +84,7 @@ ro.qualcomm.cabl=2
 # System props for telephony
 # System prop to turn on CdmaLTEPhone always
 telephony.lteOnCdmaDevice=1
-persist.omh.enabled=true
+persist.omh.enabled=false
 
 #
 # System props for bluetooh
