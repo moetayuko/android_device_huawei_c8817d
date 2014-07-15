@@ -1,11 +1,7 @@
 DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_32/overlay
 
 TARGET_USES_QCOM_BSP := true
-ifeq ($(TARGET_PRODUCT),msm8916_32_512)
-TARGET_USES_QCA_NFC := false
-else
 TARGET_USES_QCA_NFC := true
-endif
 ifeq ($(TARGET_USES_QCOM_BSP), true)
 # Add QC Video Enhancements flag
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
