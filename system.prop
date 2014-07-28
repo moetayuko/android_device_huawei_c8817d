@@ -46,7 +46,7 @@ persist.cne.feature=4
 #
 # system props for the dpm module
 #
-persist.dpm.feature=0
+persist.dpm.feature=3
 
 #system props for the MM modules
 media.stagefright.enable-player=true
