@@ -93,9 +93,9 @@ service qseecomd /system/bin/qseecomd
    user root
    group root
 
-#service mpdecision /system/bin/mpdecision --avg_comp
-#   user root
-#   disabled
+service mpdecision /system/bin/mpdecision --avg_comp
+   user root
+   disabled
 
 service perfd /system/bin/perfd
    user root
