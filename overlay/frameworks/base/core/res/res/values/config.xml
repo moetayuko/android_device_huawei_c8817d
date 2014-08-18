@@ -45,4 +45,8 @@
          Otherwise, the device may fail to wake out of suspend reliably.
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+
+    <!-- platform logo font size -->
+    <dimen name="plat_logo_alphabet_size">238sp</dimen>
+
 </resources>
