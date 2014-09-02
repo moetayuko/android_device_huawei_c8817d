@@ -120,13 +120,15 @@ service audiod /system/bin/audiod
    user system
    group system
 
-on charger
+on charger-fs
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    chown root system /sys/class/power_supply/bms/current_now
    chown root system /sys/class/power_supply/bms/voltage_ocv
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+
+on charger
    start vm_bms
 
 on boot
