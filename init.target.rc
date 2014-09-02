@@ -130,6 +130,7 @@ on charger-fs
 
 on charger
    start vm_bms
+   start qcom-post-boot
 
 on boot
     insmod /system/lib/modules/adsprpc.ko
