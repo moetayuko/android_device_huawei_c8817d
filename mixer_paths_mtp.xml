@@ -679,6 +679,20 @@
         <path name="speaker-dmic-endfire" />
     </path>
 
+    <path name="speaker-dmic-broadside">
+        <path name="adc3" />
+        <ctl name="DEC2 MUX" value="ADC1" />
+        <ctl name="MI2S_TX Channels" value="Two" />
+    </path>
+
+    <path name="dmic-broadside">
+        <path name="speaker-dmic-broadside" />
+    </path>
+
+    <path name="voice-speaker-dmic-broadside">
+        <path name="dmic-broadside"/>
+    </path>
+
     <!-- TTY devices -->
 
     <path name="tty-headphones">
