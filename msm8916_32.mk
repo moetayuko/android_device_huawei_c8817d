@@ -58,6 +58,7 @@ ifeq ($(NFC_D), true)
         org.simalliance.openmobileapi.xml \
         com.android.qcom.nfc_extras \
         com.gsma.services.nfc \
+        com.gsma.services.utils\
         GsmaNfcService \
         libassd
 else
