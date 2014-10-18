@@ -1,20 +1,18 @@
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_32/overlay
+DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
 
 TARGET_USES_QCOM_BSP := true
 TARGET_USES_QCA_NFC := true
-ifeq ($(TARGET_USES_QCOM_BSP), true)
 # Add QC Video Enhancements flag
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-endif #TARGET_USES_QCOM_BSP
 
 
 
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_32/overlay
+DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
 
 # media_profiles and media_codecs xmls for 8916
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8916_32/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8916_32/media/media_codecs_8916.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/huawei/c8817d/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+                      device/huawei/c8817d/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -23,6 +21,9 @@ $(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8916_32
 PRODUCT_DEVICE := msm8916_32
+PRODUCT_BRAND := Huawei
+PRODUCT_MANUFACTURER := HUAWEI
+PRODUCT_MODEL := C8817D
 
 # font rendering engine feature switch
 -include $(QCPATH)/common/config/rendering-engine.mk
@@ -32,13 +33,13 @@ endif
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
-    device/qcom/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/msm8916_32/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-    device/qcom/msm8916_32/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
-    device/qcom/msm8916_32/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
-    device/qcom/msm8916_32/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
-    device/qcom/msm8916_32/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/huawei/c8817d/audio_policy.conf:system/etc/audio_policy.conf \
+    device/huawei/c8817d/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/huawei/c8817d/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    device/huawei/c8817d/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+    device/huawei/c8817d/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+    device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
+    device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # NFC packages
 ifeq ($(TARGET_USES_QCA_NFC),true)
@@ -95,7 +96,7 @@ endif # TARGET_USES_QCA_NFC
 PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/huawei/c8817d/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # Feature definition files for msm8916
 PRODUCT_COPY_FILES += \
@@ -126,8 +127,8 @@ PRODUCT_PACKAGES += wcnss_service
 
 #wlan driver
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8916_32/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
+    device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/huawei/c8817d/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
