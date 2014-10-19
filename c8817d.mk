@@ -120,7 +120,8 @@ PRODUCT_PACKAGES += \
 
 # Recovery
 PRODUCT_PACKAGES += \
-    recoverylog.sh
+    recoverylog.sh \
+    minivold
 
 # Ramdisk
 PRODUCT_PACKAGES += \

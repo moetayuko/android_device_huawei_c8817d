@@ -34,13 +34,13 @@ on fs
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
-#    write /sys/class/android_usb/android0/enable 0
-#    write /sys/class/android_usb/android0/idVendor 18D1
-#    write /sys/class/android_usb/android0/idProduct D001
-#    write /sys/class/android_usb/android0/functions adb
-#    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
-#    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
-#    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18D1
+    write /sys/class/android_usb/android0/idProduct D001
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
 
 
 on boot
@@ -50,6 +50,10 @@ on boot
     domainname localdomain
 
     class_start default
+
+service vold /sbin/minivold
+    socket vold stream 0660 root mount
+    ioprio be 2
 
 on property:sys.powerctl=*
    powerctl ${sys.powerctl}
