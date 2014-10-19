@@ -115,6 +115,37 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.crda.sh \
+    init.qcom.bt.sh \
+    hsic.control.bt.sh \
+    init.ath3k.bt.sh \
+    init.qcom.coex.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.fm.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sdio.sh \
+    init.qcom.wifi.sh
+
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.rc \
+    init.qcom.factory.sh \
+    init.qcom.sh \
+    init.qcom.ssr.sh \
+    init.mdm.sh \
+    init.qcom.syspart_fixup.sh \
+    init.qcom.audio.sh \
+    qca6234-service.sh \
+    hcidump.sh \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.qcom.uicc.sh \
+    ueventd.qcom.rc
+
 #Set default profile to FUT
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.logkit.ctrlcode=1
