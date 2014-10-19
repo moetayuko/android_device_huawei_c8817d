@@ -1,3 +1,10 @@
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+$(call inherit-product-if-exists, vendor/huawei/c8817d/c8817d-vendor.mk)
+
 DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
 
 TARGET_USES_QCOM_BSP := true
@@ -6,14 +13,10 @@ TARGET_USES_QCA_NFC := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 LOCAL_PATH := device/huawei/c8817d
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-#else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
+LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_KERNEL):kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
 
 DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
 
@@ -200,3 +203,7 @@ ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
 
 rp_pppoe := pppoe
 PRODUCT_PACKAGES += $(rp_pppoe)
+
+$(call inherit-product, build/target/product/full.mk)
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
