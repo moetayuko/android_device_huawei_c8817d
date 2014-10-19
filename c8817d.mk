@@ -115,6 +115,10 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
 
+# Recovery
+PRODUCT_PACKAGES += \
+    recoverylog.sh
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.crda.sh \
@@ -145,6 +149,20 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
     ueventd.qcom.rc
+
+# Prebuilt binary
+PRODUCT_PACKAGES += \
+    chargelog.sh \
+    e2fsck_s \
+    healthd \
+    huawei_version \
+    hw_scsi_switch \
+    libqmi_oem_main \
+    rmt_oeminfo \
+    rmt_storage \
+    test_diag \
+    test_oeminfo \
+    usb_update
 
 #Set default profile to FUT
 PRODUCT_PROPERTY_OVERRIDES += \
