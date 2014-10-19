@@ -16,6 +16,14 @@
 LOCAL_PATH := $(call my-dir)
 
 #----------------------------------------------------------------------
+# Compile Linux Kernel
+#----------------------------------------------------------------------
+#include kernel/huawei/c8817d/AndroidKernel.mk
+
+#$(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
+#	$(transform-prebuilt-to-target)
+
+#----------------------------------------------------------------------
 # Copy additional target-specific files
 #----------------------------------------------------------------------
 include $(CLEAR_VARS)

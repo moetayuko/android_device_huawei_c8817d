@@ -17,40 +17,40 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_ARCH := arm
+LOCAL_PATH := device/huawei/c8817d
 
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := true
 
 -include vendor/huawei/c8817d/BoardConfigVendor.mk
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-#TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
-# to get rid of compilation error.
-TARGET_HAVE_HDMI_OUT := false
-TARGET_USES_OVERLAY := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RPC := true
 
+# Platform
+TARGET_ARCH := arm
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-
-TARGET_HARDWARE_3D := false
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOOTLOADER_BOARD_NAME := msm8916
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
-BOARD_KERNEL_BASE        := 0x80000000
-BOARD_KERNEL_PAGESIZE    := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
+# Graphics
+#TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
+# to get rid of compilation error.
+TARGET_HAVE_HDMI_OUT := false
+TARGET_USES_OVERLAY := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+BOARD_EGL_CFG := $(LOCAL_PATH)/egl.cfg
+TARGET_HARDWARE_3D := false
 
 # Enables Adreno RS driver
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
@@ -65,18 +65,15 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# Use signed boot and recovery image
-#TARGET_BOOTIMG_SIGNED := true
+TARGET_USES_ION := true
+TARGET_USES_NEW_ION_API :=true
+TARGET_USES_QCOM_BSP := true
 
+# Images
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
-
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci
-BOARD_KERNEL_SEPARATED_DT := true
-
-BOARD_EGL_CFG := device/huawei/c8817d/egl.cfg
-
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 838860800
@@ -85,20 +82,22 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 134217728
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
+# Kernel
+BOARD_KERNEL_CMDLINE := androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci
+BOARD_KERNEL_BASE        := 0x80000000
+BOARD_KERNEL_PAGESIZE    := 2048
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_RAMDISK_OFFSET     := 0x02000000
+BOARD_KERNEL_SEPARATED_DT := true
+TARGET_KERNEL_SOURCE := kernel/huawei/c8817d
+TARGET_KERNEL_CONFIG := c8817d_defconfig
+#TARGET_PREBUILT_KERNEL := device/huawei/c8817d/kernel
+
 # Enable suspend during charger mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Add NON-HLOS files for ota upgrade
-ADD_RADIO_FILES ?= true
-
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
-
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
-TARGET_USES_ION := true
-TARGET_USES_NEW_ION_API :=true
-TARGET_USES_QCOM_BSP := true
 
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_INIT_VENDOR_LIB := libinit_msm
@@ -108,3 +107,11 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE := true
 
 PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
+
+# Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
+TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/init.rc
+BOARD_RECOVERY_SWIPE := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+DEVICE_RESOLUTION := 720x1080

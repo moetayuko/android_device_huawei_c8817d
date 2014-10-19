@@ -5,7 +5,15 @@ TARGET_USES_QCA_NFC := true
 # Add QC Video Enhancements flag
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+LOCAL_PATH := device/huawei/c8817d
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+#else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+#endif
 
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_KERNEL):kernel
 
 DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
 
@@ -17,19 +25,12 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.heapgrowthlimit=128m
-$(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8916_32
 PRODUCT_DEVICE := msm8916_32
 PRODUCT_BRAND := Huawei
 PRODUCT_MANUFACTURER := HUAWEI
 PRODUCT_MODEL := C8817D
-
-# font rendering engine feature switch
--include $(QCPATH)/common/config/rendering-engine.mk
-ifneq (,$(strip $(wildcard $(PRODUCT_RENDERING_ENGINE_REVLOAD))))
-    MULTI_LANG_ENGINE := REVERIE
-endif
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
@@ -144,11 +145,6 @@ PRODUCT_PACKAGES += init.qti.carrier.rc
 
 # Defined the locales
 PRODUCT_LOCALES += th_TH vi_VN tl_PH hi_IN ar_EG ru_RU tr_TR pt_BR bn_IN mr_IN ta_IN te_IN zh_HK in_ID
-
-# Add the overlay path
-PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/globalization/multi-language/res-overlay \
-        $(QCPATH)/qrdplus/Extension/res-overlay \
-        $(PRODUCT_PACKAGE_OVERLAYS)
 
 # Set this device to DSDS as default.
 ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
