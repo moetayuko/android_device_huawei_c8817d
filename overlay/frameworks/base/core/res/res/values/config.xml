@@ -29,21 +29,9 @@
 -->
 
 <resources>
-    <!-- Whether cpu boost is enabled for overscroller fling. -->
-    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
-    <bool name="config_button_light_enabled">true</bool>
-    <!-- Whether camera shutter sound is forced or not  (country specific). -->
-    <bool name="config_camera_sound_forced">true</bool>
-   <!-- Whether cpu boost is enabled for horizontal scroll. -->
-   <bool name="config_enableCpuBoostForScroller">true</bool>
    <!-- Configuartion to support 7bit Ascii encoding and decoding
        for long messages. -->
    <bool name="config_ascii_7bit_support_for_long_message">true</bool>
-   <!-- Should the device show AM/PM in unlock screen -->
-   <bool name="config_show_ampm_in_unlock_screen">true</bool>
-    <!-- Make things go fast by disabling Fading Marquee for Textview -->
-    <bool name="config_ui_enableFadingMarquee">false</bool>
-   <bool name="config_button_light_enabled">true</bool>
     <!-- Indicate whether to allow the device to suspend when the screen is off
          due to the proximity sensor.  This resource should only be set to true
          if the sensor HAL correctly handles the proximity sensor as a wake-up source.
