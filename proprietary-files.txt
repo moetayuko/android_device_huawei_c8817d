@@ -832,3 +832,24 @@ vendor/lib/libSubSystemShutdown.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
+
+# Hack!Prebuilt kernel module
+lib/modules/pronto/pronto_wlan.ko
+lib/modules/ansi_cprng.ko
+lib/modules/dma_test.ko
+lib/modules/gpio_axis.ko
+lib/modules/gpio_event.ko
+lib/modules/gpio_input.ko
+lib/modules/gpio_matrix.ko
+lib/modules/gpio_output.ko
+lib/modules/ice40-hcd.ko
+lib/modules/mcDrvModule.ko
+lib/modules/mcKernelApi.ko
+lib/modules/mmc_block_test.ko
+lib/modules/mmc_test.ko
+lib/modules/msm-buspm-dev.ko
+lib/modules/oprofile.ko
+lib/modules/qcrypto.ko
+lib/modules/radio-iris-transport.ko
+lib/modules/spidev.ko
+lib/modules/test-iosched.ko
