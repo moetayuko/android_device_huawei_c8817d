@@ -25,20 +25,22 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.usb.rc
+# /* disable init.qcom.usb.rc and init.qcom.usb.sh, we use init.usb.rc */
+# import init.qcom.usb.rc
 import init.target.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
+#    mount debugfs debugfs /sys/kernel/debug
 
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage 0050 system sdcard_r
+    #change the permissions of storage for applications
+    mkdir /storage 0555 root sdcard_r
     mkdir /storage/emulated 0555 root root
-    mkdir /storage/emulated/legacy 0555 root root
+
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
@@ -47,15 +49,16 @@ on init
     mkdir /storage/uicc0 0700 root root
     mkdir /storage/usbotg 0700 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EXTERNAL_STORAGE /storage/emulated/0
     export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /storage/emulated/0 /sdcard
+    symlink /storage/emulated/0 /mnt/sdcard
+    symlink /storage/emulated/0 /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/0
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -66,6 +69,8 @@ on early-boot
     write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
     write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
     write /sys/kernel/boot_adsp/boot 1
+    # set primary sd directory
+    exec_ev /system/bin/preparesd.sh
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -126,11 +131,11 @@ on boot
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
-    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
-    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.umts    4094,87380,330624,4096,16384,330624
+    setprop net.tcp.buffersize.hspa    4094,87380,3661824,4096,16384,3661824
+    setprop net.tcp.buffersize.hsupa   4094,87380,3661824,4096,16384,3661824
+    setprop net.tcp.buffersize.hsdpa   4094,87380,3661824,4096,16384,3661824
+    setprop net.tcp.buffersize.hspap   4094,87380,3661824,4096,16384,3661824
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
@@ -173,6 +178,10 @@ on boot
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
+   
+    setprop ro.nfc.port "I2C"
+    chmod 0660 /dev/pn544
+    chown nfc nfc /dev/pn544
 
     # Set the console loglevel to < KERN_INFO
     # Set the default message loglevel to KERN_INFO
@@ -186,6 +195,7 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
+    mount sdcardfs /data/media /mnt/shell/emulated nosuid nodev derive=legacy,reserved_mb=20
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
@@ -193,7 +203,7 @@ on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/misc/dhcp 0771 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
     # Create the directories used by CnE subsystem
@@ -347,7 +357,9 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
 
 on property:persist.env.fastdorm.enabled=true
-    setprop persist.radio.data_no_toggle 1
+    /*< DTS2014082509423 zhangyaqiong/00218167 20140826 begin */
+    setprop persist.radio.data_no_toggle 0
+    /* DTS2014082509423 zhangyaqiong/00218167 20140826 end >*/
 
 service cnd /system/bin/cnd
     class late_start
@@ -362,7 +374,7 @@ service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /sbin/rmt_storage
     class core
     user root
     disabled
@@ -398,7 +410,7 @@ service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin
+    group bluetooth net_bt_admin system
     disabled
     oneshot
 
@@ -521,7 +533,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dd \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -535,7 +547,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -dd \
+    -O/data/misc/wifi/sockets \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -566,11 +578,6 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service ptt_socket_app /system/bin/ptt_socket_app -d
-    class main
-    user root
-    group root
-    oneshot
 
 service ptt_ffbm /system/bin/ptt_socket_app -f -d
     user root
@@ -747,22 +754,29 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-    class late_start
+#service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+#    class late_start
 
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
+service fuse_sdcard1rw /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+   class late_start
+   disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+   class late_start
+   disabled
 
 service fuse_uicc0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc0 /storage/uicc0
-    class late_start
+   class late_start
+   disabled
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-    class late_start
+   class late_start
+   disabled
 
 # Binding fuse mount point to /storage/emulated/legacy
-on property:init.svc.sdcard=running
-    wait /mnt/shell/emulated/0
-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
+#on property:init.svc.sdcard=running
+#    wait /mnt/shell/emulated/0
+#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
 
 service hcidump /system/bin/sh /system/etc/hcidump.sh
     user bluetooth
@@ -777,6 +791,10 @@ service ssr_diag /system/bin/ssr_diag
     class late_start
     user system
     group system
+
+# SSR setting
+on property:persist.sys.ssr.restart_level=*
+    exec /system/bin/sh /init.qcom.ssr.sh ${persist.sys.ssr.restart_level}
 
 # Define fastmmi
 service fastmmi /system/bin/mmi
@@ -852,3 +870,17 @@ service vm_bms /system/bin/vm_bms
     user root
     group root
     disabled
+
+#/*<DTS2014053003137 panruifeng wx204673 20140725 begin*/
+service server_agent /system/bin/server_agent
+  class main
+  user root
+  group root
+  disabled
+
+on property:sys.server_agent_onoff=1
+  start server_agent
+
+on property:sys.server_agent_onoff=0
+  stop server_agent
+#/*<DTS2014053003137 panruifeng wx204673 20140725 end*/

@@ -119,7 +119,7 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.hsp true
         setprop ro.qualcomm.bluetooth.pbap true
         setprop ro.qualcomm.bluetooth.ftp true
-        setprop ro.qualcomm.bluetooth.nap true
+        setprop ro.qualcomm.bluetooth.nap false
         setprop ro.bluetooth.sap true
         setprop ro.bluetooth.dun true
         case $btsoc in
