@@ -13,6 +13,7 @@ vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libqct_resampler.so
 vendor/lib/libaudioalsa.so
+-vendor/lib/libmdmdetect.so
 vendor/lib/libsrsprocessing.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
@@ -820,7 +821,6 @@ etc/wifi/WCNSS_hw_wlan_nv_y550_l03_vb.bin
 # Unknown
 vendor/lib/libGPTEE.so
 vendor/lib/libImageRemovalCloningJNI.so
-vendor/lib/libmdmdetect.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-qdcm.so
 vendor/lib/libmmwfdinterface.so
