@@ -155,7 +155,7 @@ PRODUCT_PACKAGES += \
 #OEM Services library
 PRODUCT_PACKAGES += \
     oem-services \
-    libsubsystem_control
+    libsubsystem_control \
     libSubSystemShutdown
 
 # OMX
@@ -225,7 +225,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
-    init.target.rc
+    init.target.rc \
     ueventd.qcom.rc
 
 #spec service
