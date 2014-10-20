@@ -124,6 +124,14 @@ DEVICE_RESOLUTION := 720x1280
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"fontcn28_15x40.h\"
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    $(LOCAL_PATH)/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    mm-qcamerad.te \
+    netd.te
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
