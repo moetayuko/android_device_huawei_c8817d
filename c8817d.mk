@@ -5,35 +5,17 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/c8817d/c8817d-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
-
-TARGET_USES_QCOM_BSP := true
-TARGET_USES_QCA_NFC := true
-# Add QC Video Enhancements flag
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 LOCAL_PATH := device/huawei/c8817d
-LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-DEVICE_PACKAGE_OVERLAYS := device/huawei/c8817d/overlay
+    $(LOCAL_PATH)/kernel:kernel
 
 # media_profiles and media_codecs xmls for 8916
-ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/huawei/c8817d/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-                      device/huawei/c8817d/media/media_codecs_8916.xml:system/etc/media_codecs.xml
-endif
-
-PRODUCT_PROPERTY_OVERRIDES += \
-       dalvik.vm.heapgrowthlimit=128m
-
-PRODUCT_NAME := msm8916_32
-PRODUCT_DEVICE := msm8916_32
-PRODUCT_BRAND := Huawei
-PRODUCT_MANUFACTURER := HUAWEI
-PRODUCT_MODEL := C8817D
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+    device/huawei/c8817d/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
@@ -45,62 +27,43 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
     device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# NFC packages
-ifeq ($(TARGET_USES_QCA_NFC),true)
-NFC_D := true
-
-ifeq ($(NFC_D), true)
-    PRODUCT_PACKAGES += \
-        libnfcD-nci \
-        libnfcD_nci_jni \
-        nfc_nci.msm8916 \
-        NfcDNci \
-        Tag \
-        com.android.nfc_extras \
-        com.android.nfc.helper \
-        SmartcardService \
-        org.simalliance.openmobileapi \
-        org.simalliance.openmobileapi.xml \
-        com.android.qcom.nfc_extras \
-        com.gsma.services.nfc \
-        com.gsma.services.utils\
-        GsmaNfcService \
-        libassd
-else
-    PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
-    nfc_nci.msm8916 \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
-endif
-
-# file that declares the MIFARE NFC constant
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-# NFC access control + feature files + configuration
+# gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
-        packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
-        frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-        frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-        frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-        frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
-# Enable NFC Forum testing by temporarily changing the PRODUCT_BOOT_JARS
-# line has to be in sync with build/target/product/core_base.mk
-PRODUCT_BOOT_JARS := core:conscrypt:okhttp:core-junit:bouncycastle:ext:com.android.nfc.helper:framework:framework2:telephony-common:voip-common:mms-common:android.policy:services:apache-xml:webviewchromium:telephony-msim
+    device/huawei/c8817d/sec_config:system/etc/sec_config
 
-ifeq ($(NFC_D), true)
-PRODUCT_BOOT_JARS += org.simalliance.openmobileapi:com.android.qcom.nfc_extras:com.gsma.services.nfc
-# SmartcardService, SIM1,SIM2,eSE1 not including eSE2,SD1 as default
-ADDITIONAL_BUILD_PROPERTIES += persist.nfc.smartcard.config=SIM1,SIM2,eSE1
-endif
-
-endif # TARGET_USES_QCA_NFC
-
-PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 # Listen configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/listen_platform_info.xml:system/etc/listen_platform_info.xml
+
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/whitelist_appops.xml:system/etc/whitelist_appops.xml
+
+PRODUCT_COPY_FILES := \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+
+# Bluetooth configuration files
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/audio.conf:system/etc/bluetooth/audio.conf \
+    system/bluetooth/data/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
+    system/bluetooth/data/blacklist.conf:system/etc/bluetooth/blacklist.conf \
+    system/bluetooth/data/input.conf:system/etc/bluetooth/input.conf \
+    system/bluetooth/data/network.conf:system/etc/bluetooth/network.conf \
 
 # Feature definition files for msm8916
 PRODUCT_COPY_FILES += \
@@ -111,12 +74,122 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
 
+# Screen density
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# ANT+ stack
+PRODUCT_PACKAGES += \
+    AntHalService \
+    libantradio \
+    antradio_app
+
+# Audio
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    audio.primary.msm8916 \
+    audio_policy.conf \
+    audio_policy.msm8916 \
+    libaudio-resampler
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8916 \
+    gralloc.msm8916 \
+    libmemalloc \
+    memtrack.msm8916 \
+    hwcomposer.msm8916 \
+    liboverlay \
+    libgenlock \
+    libqdutils \
+    libqdMetaData
+
+# Ebtables
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    fibmap.f2fs \
+    fsck.f2fs \
+    make_ext4fs \
+    mkfs.f2fs \
+    resize2fs \
+    setup_fs
+
+# Flatland
+PRODUCT_PACKAGES += \
+    flatland
+
+# FM
+PRODUCT_PACKAGES += \
+    FM2 \
+    FMRecord \
+    libqcomfm_jni \
+    qcom.fmradio
+
 #fstab.qcom
-PRODUCT_PACKAGES += fstab.qcom
+PRODUCT_PACKAGES += \
+    fstab.qcom
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
+
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.qcom
+
+#OEM Services library
+PRODUCT_PACKAGES += \
+    oem-services \
+    libsubsystem_control
+    libSubSystemShutdown
+
+# OMX
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
+
+# Prebuilt binary
+PRODUCT_PACKAGES += \
+    chargelog.sh \
+    e2fsck_s \
+    healthd \
+    huawei_version \
+    hw_scsi_switch \
+    libqmi_oem_main \
+    rmt_oeminfo \
+    rmt_storage \
+    test_diag \
+    test_oeminfo \
+    usb_update
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -152,58 +225,67 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
+    init.target.rc
     ueventd.qcom.rc
 
-# Prebuilt binary
+#spec service
 PRODUCT_PACKAGES += \
-    chargelog.sh \
-    e2fsck_s \
-    healthd \
-    huawei_version \
-    hw_scsi_switch \
-    libqmi_oem_main \
-    rmt_oeminfo \
-    rmt_storage \
-    test_diag \
-    test_oeminfo \
-    usb_update
+    init.qti.carrier.rc
+
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Wifi
+PRODUCT_PACKAGES += \
+    libcurl \
+    wcnss_service
+
+PRODUCT_PACKAGES += \
+    hostapd.accept \
+    hostapd.deny \
+    hostapd_default.conf
+
+PRODUCT_PACKAGES += \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf
+
+# Set this device to DSDS as default.
+ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
+
+PRODUCT_PROPERTY_OVERRIDES += \
+       dalvik.vm.heapgrowthlimit=128m
 
 #Set default profile to FUT
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.logkit.ctrlcode=1
 
-#OEM Services library
-PRODUCT_PACKAGES += oem-services
-PRODUCT_PACKAGES += libsubsystem_control
-PRODUCT_PACKAGES += libSubSystemShutdown
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
-PRODUCT_PACKAGES += wcnss_service
+# appops configuration
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.strict_op_enable=false
 
-#wlan driver
-PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/huawei/c8817d/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.whitelist=/system/etc/whitelist_appops.xml
 
-PRODUCT_PACKAGES += \
-    wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf
-#ANT+ stack
-PRODUCT_PACKAGES += \
-AntHalService \
-libantradio \
-antradio_app
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
+    persist.radio.apm_sim_not_pwdn=1
 
-#spec service
-PRODUCT_PACKAGES += init.qti.carrier.rc
-
-# Defined the locales
-PRODUCT_LOCALES += th_TH vi_VN tl_PH hi_IN ar_EG ru_RU tr_TR pt_BR bn_IN mr_IN ta_IN te_IN zh_HK in_ID
-
-# Set this device to DSDS as default.
-ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
-
-rp_pppoe := pppoe
-PRODUCT_PACKAGES += $(rp_pppoe)
+PRODUCT_NAME := msm8916_32
+PRODUCT_DEVICE := msm8916_32
+PRODUCT_BRAND := Huawei
+PRODUCT_MANUFACTURER := HUAWEI
+PRODUCT_MODEL := C8817D
 
 $(call inherit-product, build/target/product/full.mk)
 
