@@ -17,7 +17,7 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from falcon device
+# Inherit from c8817d device
 $(call inherit-product, device/huawei/c8817d/c8817d.mk)
 
 # Device identifier. This must come after all inclusions
