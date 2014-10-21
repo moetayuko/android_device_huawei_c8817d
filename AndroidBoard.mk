@@ -15,13 +15,7 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-#----------------------------------------------------------------------
-# Compile Linux Kernel
-#----------------------------------------------------------------------
-#include kernel/huawei/c8817d/AndroidKernel.mk
-
-#$(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
-#	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
 
 #----------------------------------------------------------------------
 # Copy additional target-specific files
@@ -130,5 +124,3 @@ $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/prima; \
         ln -sf /system/etc/wifi/WCNSS_cfg.dat \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_cfg.dat)
 endif
-
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
