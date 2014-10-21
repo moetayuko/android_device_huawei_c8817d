@@ -73,7 +73,8 @@ PRODUCT_PACKAGES += \\
     qcnvitems \\
     qcrilhook \\
     libHevcSwDecoder \\
-    libtime_genoff
+    libtime_genoff \\
+    libmdmdetect
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF

@@ -668,6 +668,7 @@ vendor/lib/libmmosal.so
 vendor/lib/libmmparser.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libomx_amrenc_sharedlibrary.so
+vendor/lib/libomx_amrdec_sharedlibrary.so
 vendor/lib/libomx_sharedlibrary.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxEvrcDec.so
@@ -832,6 +833,7 @@ vendor/lib/libSubSystemShutdown.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
+vendor/lib/libwfdhdcpcp.so
 
 # Hack!Prebuilt kernel module
 lib/modules/pronto/pronto_wlan.ko
