@@ -75,7 +75,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 BOARD_KERNEL_CMDLINE := androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_TAGS_OFFSET := 0x80000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_SOURCE := kernel/huawei/c8817d
