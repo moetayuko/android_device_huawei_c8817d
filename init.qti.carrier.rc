@@ -34,9 +34,11 @@ service carrier_switcher /system/bin/sh /system/vendor/speccfg/switch_spec.sh
     disabled
     oneshot
 
-on post-fs-data
-    start carrier_switcher
-    wait /data/switch_spec
+# /* < DTS2014070201631 zhaiqi 20140702 begin */
+#on post-fs-data
+#    start carrier_switcher
+#    wait /data/switch_spec
+# /* DTS2014070201631 zhaiqi 20140702 end > */
 
 ################################ CMCC APP ##################################
 # backupAppData

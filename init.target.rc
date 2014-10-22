@@ -33,6 +33,7 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
+    mkdir /log 0770 system log
 
 # import cne init file
 on post-fs
@@ -45,11 +46,7 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
 
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
 
     wait /dev/block/bootdevice/by-name/modem
     mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
@@ -117,6 +114,12 @@ service audiod /system/bin/audiod
    user system
    group system
 
+on charger-fs
+   mount ext4 /dev/block/bootdevice/by-name/userdata /data rw
+   mkdir /dev/usb-ffs 0770 shell shell
+   mkdir /dev/usb-ffs/adb 0770 shell shell
+   mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+   write /sys/class/android_usb/android0/f_ffs/aliases adb
 on charger
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
@@ -125,9 +128,10 @@ on charger
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
    start vm_bms
-
 on boot
     insmod /system/lib/modules/adsprpc.ko
+
+start test_diag
 
 service ppd /system/bin/mm-pp-daemon
     class late_start

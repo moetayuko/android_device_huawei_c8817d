@@ -210,7 +210,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
     init.target.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.device.rc
 
 #spec service
 PRODUCT_PACKAGES += \
