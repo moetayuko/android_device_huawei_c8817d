@@ -717,9 +717,6 @@ vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
 
-# Power
-vendor/lib/hw/power.qcom.so
-
 # Qualcomm framework
 bin/irsc_util
 vendor/lib/libdiag.so
