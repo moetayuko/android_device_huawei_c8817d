@@ -647,9 +647,6 @@ vendor/lib/libmmrtpencoder.so
 # LD_PRELOAD
 vendor/lib/libNimsWrap.so
 
-# Liblight
-lib/hw/lights.msm8916.so
-
 # Listen service
 vendor/lib/liblistenhardware.so
 vendor/lib/liblistenjni.so

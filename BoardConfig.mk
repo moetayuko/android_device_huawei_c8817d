@@ -83,9 +83,6 @@ TARGET_KERNEL_SOURCE := kernel/huawei/c8817d
 TARGET_KERNEL_CONFIG := c8817d_defconfig
 TARGET_PREBUILT_KERNEL := device/huawei/c8817d/kernel
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_QCOM_MEDIA_VARIANT := caf-new

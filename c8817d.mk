@@ -132,6 +132,10 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8916
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.qcom
