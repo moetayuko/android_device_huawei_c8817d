@@ -117,10 +117,13 @@ include $(BUILD_PREBUILT)
 
 #Create symbolic links
 $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/prima; \
+        mkdir -p $(TARGET_OUT)/lib/modules; \
         ln -sf /system/etc/wifi/WCNSS_hw_wlan_nv.bin \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_hw_wlan_nv.bin; \
         ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
         ln -sf /system/etc/wifi/WCNSS_cfg.dat \
-        $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_cfg.dat)
+        $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_cfg.dat; \
+        ln -sf /system/lib/modules/pronto/pronto_wlan.ko \
+        $(TARGET_OUT)/lib/modules/wlan.ko)
 endif
