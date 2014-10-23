@@ -85,7 +85,6 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     audio.primary.msm8916 \
-    audio_policy.conf \
     audio_policy.msm8916 \
     libaudio-resampler
 
