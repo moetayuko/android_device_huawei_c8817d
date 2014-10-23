@@ -15,7 +15,6 @@ PRODUCT_COPY_FILES += \
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/audio_policy.conf:system/etc/audio_policy.conf \
-    device/huawei/c8817d/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/huawei/c8817d/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
     device/huawei/c8817d/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
     device/huawei/c8817d/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
