@@ -37,6 +37,31 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
     device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
+# Offmode charge
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/rootdir/charger:root/charger \
+    device/huawei/c8817d/rootdir/res/images/720x1280/batt_level_scale.png:root/res/images/720x1280/batt_level_scale.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/batt_level_top.png:root/res/images/720x1280/batt_level_top.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/bg.png:root/res/images/720x1280/bg.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/empty_charge.png:root/res/images/720x1280/empty_charge.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/err_charge.png:root/res/images/720x1280/err_charge.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/full_charge.png:root/res/images/720x1280/full_charge.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_0.png:root/res/images/720x1280/number_0.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_1.png:root/res/images/720x1280/number_1.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_2.png:root/res/images/720x1280/number_2.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_3.png:root/res/images/720x1280/number_3.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_4.png:root/res/images/720x1280/number_4.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_5.png:root/res/images/720x1280/number_5.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_6.png:root/res/images/720x1280/number_6.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_7.png:root/res/images/720x1280/number_7.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_8.png:root/res/images/720x1280/number_8.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/number_9.png:root/res/images/720x1280/number_9.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/percent_10.png:root/res/images/720x1280/percent_10.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/percent_5.png:root/res/images/720x1280/percent_5.png \
+    device/huawei/c8817d/rootdir/res/images/720x1280/percent_sign.png:root/res/images/720x1280/percent_sign.png \
+    device/huawei/c8817d/rootdir/res/images/mmi/fail.png:root/res/images/mmi/fail.png \
+    device/huawei/c8817d/rootdir/res/images/mmi/pass.png:root/res/images/mmi/pass.png
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
