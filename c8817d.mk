@@ -146,7 +146,7 @@ PRODUCT_PACKAGES += \
 
 # Keystore
 PRODUCT_PACKAGES += \
-    keystore.qcom
+    keystore.msm8916
 
 #OEM Services library
 PRODUCT_PACKAGES += \
