@@ -140,6 +140,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8916
 
+# Keylayout
+PRODUCT_PACKAGES += \
+    gpio-keys.kl \
+    synaptics_rmi4_i2c.kl
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.qcom
