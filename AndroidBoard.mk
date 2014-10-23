@@ -122,8 +122,6 @@ $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/prima; \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_hw_wlan_nv.bin; \
         ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
-        ln -sf /system/etc/wifi/WCNSS_cfg.dat \
-        $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_cfg.dat; \
         ln -sf /system/lib/modules/pronto/pronto_wlan.ko \
         $(TARGET_OUT)/lib/modules/wlan.ko)
 endif
