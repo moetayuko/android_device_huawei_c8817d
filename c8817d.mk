@@ -21,6 +21,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
     device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# GPS config
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/gps.conf:system/etc/gps.conf
+
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/sec_config:system/etc/sec_config
@@ -158,6 +162,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8916 \
+    libgps.utils \
+    libloc_eng \
+    libloc_api_v02 \
+    libloc_adapter
 
 # Lights
 PRODUCT_PACKAGES += \
