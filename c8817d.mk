@@ -34,6 +34,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
 PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
+    device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+
+PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
