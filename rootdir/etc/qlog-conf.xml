@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/*
+** Copyright (c) 2012-2014 Qualcomm Technologies, Inc.
+** All Rights Reserved.
+** Qualcomm Technologies Proprietary and Confidential.
+**
+*/
+-->
+<default version="2.2.3">
+	<global enable="0" logtype="1" loglevel="0" time="0" size="10000000" log_path="/storage/sdcard1/logs"/>
+	<AdbMain logname="AdbMain" enable="0" logtype="194" log_provider="/dev/log/main;/dev/log/system" log_filepath="adb/adb-main-system.log" size="100000000"/>
+	<AdbRadio logname="AdbRadio" enable="0" logtype="2" log_provider="/dev/log/radio" log_filepath="adb/adb-radio.log"/>
+	<AdbEvents logname="AdbEvents" enable="0" logtype="2" log_provider="/dev/log/events" log_filepath="adb/adb-events.log"/>
+	<Dmesg logname="Dmesg" enable="0" logtype="1" log_provider="/proc/kmsg" log_filepath="dmesg/dmesg.log"/>
+	<RPM logname="RPM" enable="0" logtype="1" log_provider="/sys/kernel/debug/rpm_log" log_filepath="rpm/rpm.log"/>
+	<SSR  logname="SSR" enable="0" logtype="32" />
+	<QDSS logname="QDSS" enable="0" logtype="17" log_provider="/dev/coresight-tmc-etr-stream" log_filepath="qdss/byte-cntr.bin" size="10000000" />
+	<QXDM logname="QXDM" enable="0" logtype="64" log_provider="diag_mdlog -ce -s 100 -n 20 -o #path -f #mask" log_filepath="qxdm"/>
+	<Crash logname="Crash" enable="1"/>
+	<DumpParser logname="DumpParser" enable="1" logtype="32"/>
+	<DynamicDebug logname="DynamicDebug" enable="0"/>
+	<WlanTcp logname="WlanTcp" enable="0" logtype="128" log_provider="tcpdump -i wlan0 -nnXSs 96 -w -" log_filepath="tcp/wifi.log"/>
+	<DataTcp logname="DataTcp" enable="0" logtype="128" log_provider="tcpdump -i rmnet0 -nnXSs 96 -w -" log_filepath="tcp/dataservice.log"/>
+	<Bluetooth logname="Bluetooth" enable="0" />
+	<GPU logname="GPU" enable="1" logtype="32" log_filepath="autotrigger/gpu"/>
+</default>

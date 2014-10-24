@@ -38,6 +38,18 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/rootdir/etc/capability.xml:system/etc/capability.xml \
+    device/huawei/c8817d/rootdir/etc/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
+    device/huawei/c8817d/rootdir/etc/device_state_monitor.conf:system/etc/device_state_monitor.conf \
+    device/huawei/c8817d/rootdir/etc/globalAutoAdapt-conf.xml:system/etc/globalAutoAdapt-conf.xml \
+    device/huawei/c8817d/rootdir/etc/globalMatchs-conf.xml:system/etc/globalMatchs-conf.xml \
+    device/huawei/c8817d/rootdir/etc/qlog-conf.xml:system/etc/qlog-conf.xml \
+    device/huawei/c8817d/rootdir/etc/renice-loggers.sh:system/etc/renice-loggers.sh \
+    device/huawei/c8817d/rootdir/etc/virtualNets-conf.xml:system/etc/virtualNets-conf.xml \
+    device/huawei/c8817d/rootdir/etc/wfdconfig.xml:system/etc/wfdconfig.xml \
+    device/huawei/c8817d/rootdir/etc/wfdconfigsink.xml:system/etc/wfdconfigsink.xml
+
+PRODUCT_COPY_FILES += \
     device/huawei/c8817d/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
 PRODUCT_COPY_FILES += \
