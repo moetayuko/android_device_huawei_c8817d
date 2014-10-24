@@ -380,7 +380,10 @@ PRODUCT_PACKAGES += \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
     init.qcom.sdio.sh \
-    init.qcom.wifi.sh
+    init.qcom.wifi.sh \
+    init.qcom.modem_links.sh \
+    init.qcom.rootagent.sh \
+    init.qcom.uicc.sh
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
