@@ -28,8 +28,15 @@ bin/dun-server
 bin/ftmdaemon
 bin/hci_qcomm_init
 bin/sapd
+lib/libbluedroid.so
+lib/libbtaddr.so
+lib/libbtinfo.so
+lib/libbtpower.so
 vendor/lib/libbtnv.so
 vendor/lib/liboi_sbc_decoder.so
+
+# Bson
+lib/libbson.so
 
 # Cal
 vendor/etc/calmodule.cfg
@@ -40,11 +47,13 @@ bin/mm-qcamera-app
 bin/mm-qcamera-daemon
 lib/hw/camera.msm8916.so
 lib/libchromatix_imx135_liveshot.so
+lib/libhdr.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
 lib/liboeminfo.so
 lib/libqomx_core.so
+lib/libOmxVdecHevc.so
 vendor/lib/libactuator_a3907.so
 vendor/lib/libactuator_a3907_camcorder.so
 vendor/lib/libactuator_a3907_camera.so
@@ -515,6 +524,7 @@ etc/cne/andsfCne.xml
 etc/cne/NsrmConfiguration.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
+lib/libcnefeatureconfig.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -595,6 +605,7 @@ etc/sap.conf
 etc/xtwifi.conf
 etc/xtra_root_cert.pem
 -framework/com.qualcomm.location.vzw_library.jar
+lib/libloc_core.so
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
 lib/libloc_xtra.so
@@ -700,20 +711,52 @@ vendor/lib/libSHIMDivxDrm.so
 
 # Misc
 bin/bootanimationex
+bin/brctl
+bin/bridgemgrd
+bin/callife
+bin/crda
+bin/device_monitor
+bin/diag_callback_client
+bin/diag_dci_sample
+bin/diag_socket_log
+bin/diag_uart_log
+bin/dsdnsutil
 bin/do_ddrtest
 bin/dpmd
 bin/ds_fmc_appd
 bin/hwnff
 bin/hwnffserver
+bin/diag_klog
+bin/iperf
+bin/isdbtmmtest
+bin/iw
+bin/iwconfig
+bin/iwlist
+bin/iwpriv
 bin/mc-manager
+bin/mcDriverDaemon
+bin/modempre
 bin/nl_listener
+bin/n_smux
+bin/nvext
 bin/oeminfo_server
 bin/oem_sar_main
+bin/port-bridge
+bin/preparesd.sh
 bin/qrngd
 bin/qrngp
-bin/rebootmgr
+bin/qseecom_sample_client
+bin/diag_qshrink4_daemon
+bin/regdbdump
+bin/rmnetcli
 bin/send_data_srv
 bin/server_agent
+bin/StoreKeybox
+bin/subsystem_ramdump
+bin/tinycap
+bin/tinymix
+bin/tinypcminfo
+bin/tinyplay
 bin/usb_uicc_client
 bin/wdsdaemon
 xbin/qlogd
@@ -761,6 +804,8 @@ vendor/lib/libqc-opt.so
 
 # Postprocessing
 bin/mm-pp-daemon
+lib/libtinyxml2.so
+lib/libtinyxml.so
 vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
@@ -768,6 +813,9 @@ vendor/lib/libmm-abl-oem.so
 # Qualcomm framework
 bin/irsc_util
 bin/qcom-system-daemon
+lib/libqmi_nv_api.so
+lib/libqmi_oem_api.so
+lib/libqmi_oem_svc.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
@@ -888,6 +936,11 @@ wifi/wifi_mt_finish_2.4.sh
 wifi/wifi_mt_finish_2.5.sh
 wifi/wifi_mt_finish_5g_2.5.sh
 
+# Wnn
+lib/libwnndict.so
+lib/libWnnEngDic.so
+lib/libWnnJpnDic.so
+
 # Unknown
 vendor/lib/libGPTEE.so
 vendor/lib/libImageRemovalCloningJNI.so
@@ -904,6 +957,14 @@ vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
 vendor/lib/libwfdhdcpcp.so
 lib/liballjoyn.so
+lib/libdexanalysis.so
+lib/libextendedremotedisplay.so
+lib/libhwnv.so
+lib/libixml.so
+lib/libkpencore.so
+lib/libminui.so
+lib/libmtxxmohuanbi.so
+lib/librmnetctl.so
 
 # Hack!Prebuilt kernel module
 lib/modules/pronto/pronto_wlan.ko
