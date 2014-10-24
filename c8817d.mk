@@ -25,6 +25,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/rootdir/etc/DiagCfg/Diag.cfg:system/etc/DiagCfg/Diag.cfg
 
+# DPM
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/rootdir/etc/dpm/fdMgr/fd.conf:system/etc/dpm/fdMgr/fd.conf
+
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/sec_config:system/etc/sec_config
@@ -41,6 +45,12 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/huawei/c8817d/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
     device/huawei/c8817d/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
+# Logmask
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/rootdir/etc/logmask/default_diag_mask.cfg:system/etc/logmask/default_diag_mask.cfg \
+    device/huawei/c8817d/rootdir/etc/logmask/dynamic_debug_mask.cfg:system/etc/logmask/dynamic_debug_mask.cfg \
+    device/huawei/c8817d/rootdir/etc/logmask/qdss.cfg:system/etc/logmask/qdss.cfg
 
 # Offmode charge
 PRODUCT_COPY_FILES += \
