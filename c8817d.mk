@@ -21,6 +21,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
     device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# Diag cfg
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/rootdir/etc/DiagCfg/Diag.cfg:system/etc/DiagCfg/Diag.cfg
+
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/sec_config:system/etc/sec_config
