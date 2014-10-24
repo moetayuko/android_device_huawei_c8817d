@@ -877,6 +877,14 @@ etc/wifi/WCNSS_hw_wlan_nv_y550_l02.bin
 etc/wifi/WCNSS_hw_wlan_nv_y550_l02_vb.bin
 etc/wifi/WCNSS_hw_wlan_nv_y550_l03.bin
 etc/wifi/WCNSS_hw_wlan_nv_y550_l03_vb.bin
+wifi/wifi_mt_2.3.sh
+wifi/wifi_mt_2.4.sh
+wifi/wifi_mt_2.5.sh
+wifi/wifi_mt_5g_2.5.sh
+wifi/wifi_mt_finish_2.3.sh
+wifi/wifi_mt_finish_2.4.sh
+wifi/wifi_mt_finish_2.5.sh
+wifi/wifi_mt_finish_5g_2.5.sh
 
 # Unknown
 vendor/lib/libGPTEE.so
