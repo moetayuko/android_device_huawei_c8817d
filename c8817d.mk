@@ -302,7 +302,6 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8916 \
     libgps.utils \
     libloc_eng \
     libloc_api_v02 \
