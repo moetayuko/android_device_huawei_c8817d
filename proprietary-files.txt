@@ -508,6 +508,7 @@ vendor/lib/libcneqmiutils.so
 vendor/lib/libcneutils.so
 
 # DRM
+bin/qseecomd
 lib/libdrmdecrypt.so
 lib/libWVphoneAPI.so
 lib/drm/libdrmhwomavoneplugin.so
@@ -519,7 +520,6 @@ vendor/lib/libdrmtime.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
-vendor/lib/libSHIMDivxDrm.so
 vendor/lib/libssd.so
 vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
@@ -562,18 +562,27 @@ bin/fm_qsoc_patches
 
 # GPS
 -priv-app/com.qualcomm.location.apk
+bin/garden_app
+bin/gpsone_daemon
 bin/location-mq
+bin/lowi-server
 bin/xtwifi-client
 bin/xtwifi-inet-agent
 etc/permissions/com.qualcomm.location.xml
+etc/permissions/com.qualcomm.location.vzw_library.xml
+etc/cacert_location.pem
+etc/flp.conf
 etc/gps.conf
 etc/izat.conf
+etc/lowi.conf
 etc/quipc.conf
 etc/sap.conf
 etc/xtwifi.conf
 etc/xtra_root_cert.pem
+-framework/com.qualcomm.location.vzw_library.jar
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
+lib/libloc_xtra.so
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
@@ -619,6 +628,9 @@ etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
+
+# Huawei stuff
+bin/bootanimationex
 
 # IMS - currently unused but have dependencies to qmi
 bin/imsdatadaemon
@@ -671,6 +683,7 @@ vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxMux.so
+vendor/lib/libSHIMDivxDrm.so
 
 # Mmi Test
 vendor/lib/mmi_audio.so
@@ -699,6 +712,7 @@ vendor/lib/mmi_volume.so
 vendor/lib/mmi_wifi.so
 
 # Nfc
+bin/nfc_detect
 lib/hw/nfc_nci_pn547.default.so
 etc/libnfc-brcm.conf
 etc/libnfc-nxp.conf
@@ -795,6 +809,8 @@ vendor/lib/libwfduibcsrcinterface.so
 
 # WiFi
 bin/ptt_socket_app
+bin/wcnss_filter
+bin/wlan_detect
 etc/wifi/WCNSS_hw_wlan_nv.bin
 etc/wifi/WCNSS_hw_wlan_nv_c8817d_VC.bin
 etc/wifi/WCNSS_hw_wlan_nv_c8817e_VC.bin
@@ -831,6 +847,8 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
 vendor/lib/libwfdhdcpcp.so
+lib/liballjoyn.so
+bin/ATFWD-daemon
 
 # Hack!Prebuilt kernel module
 lib/modules/pronto/pronto_wlan.ko
