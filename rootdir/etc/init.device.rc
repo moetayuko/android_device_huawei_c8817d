@@ -9,21 +9,6 @@ on init
 
     chown system system /sys/module/mdss_dsi/parameters/dsi_status_disable
 
-    mkdir /data/misc/wifi/load 0775 system system
-
-    # DTS2013112400485 tiandazhang/00107790 20131125 begin
-    mkdir /data/drm/rights 0770 drm drm
-    # DTS2013112400485 tiandazhang/00107790 20131125 end
-    #/* <DTS2012080201243 tiandazhang 20120802 begin */
-    mkdir /data/drm/widevine 0770 drm drm
-    #/* DTS2012080201243 tiandazhang 20120802 end> */
-
-    # DTS2014081000069 wangyong/00205756 20140811 begin sync DTS2013082803931
-    mkdir /data/midi
-    chmod 0770 /data/midi
-    chown media audio /data/midi
-    # DTS2014081000069 wangyong/00205756 20140811 end
-
 #/* < DTS2014061400183 jingbing 20140614 start */
     sys_wp_init_action
 #/* DTS2014061400183 jingbing 20140614 end > */
