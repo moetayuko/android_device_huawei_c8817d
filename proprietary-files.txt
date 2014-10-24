@@ -801,7 +801,9 @@ etc/permissions/qcrilhook.xml
 -framework/qcrilhook.jar
 lib/liboeminfo_oem_api.so
 lib/libqsap_sdk.so
+lib/libreference-ril.so
 lib/libril.so
+lib/librilutils.so
 lib/libxml2.so
 vendor/lib/libCommandSvc.so
 vendor/lib/libconfigdb.so
