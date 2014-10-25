@@ -187,13 +187,6 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle
 
-# GPS
-PRODUCT_PACKAGES += \
-    libgps.utils \
-    libloc_eng \
-    libloc_api_v02 \
-    libloc_adapter
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8916
