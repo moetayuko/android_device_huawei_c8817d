@@ -40,6 +40,7 @@ on boot
     chown system system /sys/class/power_supply/battery/input_current_max
 
     chown system system /sys/class/leds/torch-light/brightness
+    chmod 666 /sys/class/leds/torch-light/brightness
 
     chown system system /sys/devices/8789.huawei_hall_sensor/enable_hall_sensor
     chown root system /sys/devices/soc0/huawei_product
