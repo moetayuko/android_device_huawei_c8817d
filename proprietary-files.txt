@@ -558,9 +558,6 @@ vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
 vendor/lib/libcneutils.so
 
-# Core
-lib/libcutils.so
-
 # DRM
 bin/qseecomd
 lib/libdrmdecrypt.so
