@@ -203,12 +203,6 @@ service send_data_srv /system/bin/send_data_srv
 on property:ro.runmode=factory
     start send_data_srv
 
-service enable_swap /system/bin/enable_swap
-    class main
-    user root
-    group root
-    oneshot
-
 service chargelog  /sbin/chargelog.sh 2 51200
     class main
     root charger
