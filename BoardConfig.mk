@@ -86,6 +86,9 @@ USE_OPENGL_RENDERER := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_c8817d.c
 
+# Liblight
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x80000000
