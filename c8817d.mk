@@ -345,6 +345,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
     persist.radio.apm_sim_not_pwdn=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=320
+
 $(call inherit-product, build/target/product/full.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
