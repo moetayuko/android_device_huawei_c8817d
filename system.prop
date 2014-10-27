@@ -17,7 +17,7 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 # Start in cdma mode
-ro.telephony.default_network=5
+ro.telephony.default_network=8
 
 debug.sf.hw=1
 debug.egl.hw=1
@@ -34,19 +34,21 @@ debug.sf.gpu_comp_tiling=1
 #ro.hdmi.enable=true
 #tunnel.decode=true
 #tunnel.audiovideo.decode=true
-#lpa.decode=false
+lpa.decode=true
 #lpa.use-stagefright=true
 #persist.speaker.prot.enable=false
 
 #
 # system props for the cne module
 #
-persist.cne.feature=4
+persist.cne.feature=0
 
 #
 # system props for the dpm module
 #
-persist.dpm.feature=3
+persist.dpm.feature=0
+
+persist.sys.wfd.sound=false
 
 #system props for the MM modules
 media.stagefright.enable-player=true
@@ -78,7 +80,7 @@ persist.timed.enable=true
 ro.opengles.version=196608
 
 # System property for cabl
-ro.qualcomm.cabl=2
+ro.qualcomm.cabl=0
 
 #
 # System props for telephony
@@ -90,6 +92,11 @@ persist.omh.enabled=false
 # System props for bluetooh
 # System prop to turn on hfp client
 bluetooth.hfp.client=1
+
+#
+# dirty ratio  value when enable UMS
+#
+ro.sys.umsdirtyratio=20
 
 #Simulate sdcard on /data/media
 #
@@ -114,6 +121,8 @@ af.resampler.quality=4
 av.offload.enable=false
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
+audio.offload.pcm.enable=false
+audio.offload.disable=1
 #
 #System property for FM transmitter
 #
@@ -122,15 +131,16 @@ ro.fm.transmitter=false
 audio.offload.gapless.enabled=true
 
 #Audio voice concurrency related flags
-voice.playback.conc.disabled=true
-voice.record.conc.disabled=true
-voice.voip.conc.disabled=true
+voice.playback.conc.disabled=false
+voice.record.conc.disabled=false
+voice.voip.conc.disabled=false
 
+# remove System prop for USB configuration
 #Set composition for USB
-persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
+persist.sys.usb.config=mass_storage,adb
 
 #Set read only default composition for USB
-ro.sys.usb.default.config=diag,serial_smd,rmnet_bam,adb
+#ro.sys.usb.default.config=diag,serial_smd,rmnet_bam,adb
 
 # set max background services
 ro.config.max_starting_bg=8
