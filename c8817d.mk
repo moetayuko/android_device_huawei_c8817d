@@ -61,6 +61,14 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/rootdir/etc/logmask/dynamic_debug_mask.cfg:system/etc/logmask/dynamic_debug_mask.cfg \
     device/huawei/c8817d/rootdir/etc/logmask/qdss.cfg:system/etc/logmask/qdss.cfg
 
+# Nfc
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/hardfault.cfg:system/etc/nfc/hardfault.cfg \
+    device/huawei/c8817d/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/huawei/c8817d/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    device/huawei/c8817d/nfc-nci.conf:system/etc/nfc-nci.conf \
+    device/huawei/c8817d/nfcee_access.xml:system/etc/nfcee_access.xml
+
 # Offmode charge
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/rootdir/charger:root/charger \
@@ -196,6 +204,12 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8916
+
+# NFC packages
+PRODUCT_PACKAGES += \
+    NfcNci \
+    Tag \
+    com.android.nfc_extras
 
 #OEM Services library
 PRODUCT_PACKAGES += \

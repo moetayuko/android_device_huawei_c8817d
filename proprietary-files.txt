@@ -817,6 +817,9 @@ vendor/lib/mmi_wifi.so
 # Nfc
 bin/nfc_detect
 lib/hw/nfc_nci_pn547.default.so
+lib/libnfc_nci_jni_nxp.so
+lib/libnfc_ndef.so
+lib/libnfc-nci-nxp.so
 etc/libnfc-brcm.conf
 etc/libnfc-nxp.conf
 vendor/firmware/libpn547_fw.so
