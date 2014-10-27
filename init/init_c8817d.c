@@ -39,16 +39,9 @@
 
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
-    char platform[PROP_VALUE_MAX];
-    int rc;
-
     UNUSED(msm_id);
     UNUSED(msm_ver);
     UNUSED(board_type);
-
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
-        return;
 
     property_set("ro.build.description", "C8817D-user 4.4.4 GRJ90 C92B242 release-keys");
     property_set("ro.build.fingerprint", "Huawei/C8817D/hwC8817D:4.4.4/HuaweiC8817D/C92B242:user/release-keys");
