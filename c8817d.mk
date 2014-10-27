@@ -332,7 +332,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.logkit.ctrlcode=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mass_storage,mtp
 
 # appops configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
