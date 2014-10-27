@@ -303,6 +303,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# Vold
+PRODUCT_PACKAGES += \
+    vold.fstab
+
 # Wifi
 PRODUCT_PACKAGES += \
     libcurl \
