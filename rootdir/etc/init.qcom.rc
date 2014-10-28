@@ -27,7 +27,6 @@
 
 import init.qcom.usb.rc
 import init.target.rc
-import init.device.rc
 
 on early-init
 #    mount debugfs debugfs /sys/kernel/debug
@@ -60,6 +59,16 @@ on init
     symlink /storage/emulated/0 /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/0
 
+# Create cgroup mount point for freezer
+    mkdir /dev/frz
+    mount cgroup none /dev/frz freezer
+
+    chown system system /sys/module/mdss_dsi/parameters/dsi_status_disable
+
+#/* < DTS2014061400183 jingbing 20140614 start */
+    sys_wp_init_action
+#/* DTS2014061400183 jingbing 20140614 end > */
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -73,6 +82,51 @@ on early-boot
     exec_ev /system/bin/preparesd.sh
 
 on boot
+
+    write /proc/sys/vm/page-cluster 0
+
+    chown system system /sys/devices/12c.hw-dev-detect/dev_flag
+    chown system system /sys/touch_screen/touch_mmi_test
+    chown system system /sys/touch_screen/touch_calibration
+    chown system system /sys/touch_screen/synaptics_mmi_test_result
+    chown system system /sys/touch_screen/synaptics_mmi_test
+    chown system system /sys/touch_screen/holster_touch_window
+    chown system system /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
+    chown system system /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold 
+    chown system system /sys/touch_screen/glove_func/signal_disparity
+    chown system system /sys/touch_screen/glove_func/holster_sensitivity
+    chown system system /sys/touch_screen/glove_func/finger_threshold 
+    chown system system /sys/touch_screen/easy_wakeup_gesture
+    chown system system /sys/touch_screen/easy_wakeup_supported_gestures
+    chown system system /sys/touch_screen/easy_wakeup_position
+    chown system system /sys/touch_screen/openshort
+
+    chown root system /sys/class/power_supply/battery/charging_enabled
+    chown root system /sys/module/qpnp_linear_charger/parameters/charge_no_limit
+    chmod 0664 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/factory_diag
+    chown system system /sys/class/power_supply/battery/hot_current_limit
+    chown system system /sys/class/power_supply/battery/input_current_max
+
+    chown system system /sys/class/leds/torch-light/brightness
+    chmod 666 /sys/class/leds/torch-light/brightness
+
+    chown system system /sys/devices/8789.huawei_hall_sensor/enable_hall_sensor
+    chown root system /sys/devices/soc0/huawei_product
+
+    chown system system /sys/class/graphics/fb0/mipi_crc
+
+    chown system system /sys/module/apds993x_ls/parameters/apds993x_debug
+    chmod 0664 /sys/module/apds993x_ls/parameters/apds993x_debug
+    chown system system /sys/module/kionix_accel/parameters/kx023_debug
+    chmod 0664 /sys/module/kionix_accel/parameters/kx023_debug
+    chown system system /sys/module/lis3dh_acc/parameters/lis3dh_debug
+    chmod 0664 /sys/module/lis3dh_acc/parameters/lis3dh_debug
+
+# Set these so we can remotely update SELinux policy
+    chown system system /sys/fs/selinux/load
+    chown system system /sys/fs/selinux/enforce
+
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -288,6 +342,29 @@ on post-fs-data
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
+
+on charger
+    write /sys/module/lpm_levels/enable_low_power/l2 4
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled 1
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
@@ -899,3 +976,155 @@ on property:sys.server_agent_onoff=1
 on property:sys.server_agent_onoff=0
   stop server_agent
 #/*<DTS2014053003137 panruifeng wx204673 20140725 end*/
+
+on property:selinux.reload_policy=1
+    restart ueventd
+    restart installd
+
+#/* < DTS2014070713706  liulong 20140710 begin */
+service callife /system/bin/callife
+    class core
+    user system
+    group system
+#/*  DTS2014070713706  liulong 20140710 end >*/
+
+# DTS2014052901268 g00174749 add for cgroup begin
+service mc-manager /system/bin/mc-manager
+    class main
+    user root
+    oneshot
+# DTS2014052901268 g00174749 delete for cgroup end
+
+service ddrtest /system/bin/do_ddrtest
+    user root
+    disabled
+    oneshot
+
+service stop_ddrtest /system/bin/do_ddrtest
+    user root
+    disabled
+    oneshot
+
+on property:debug.rt.ddr.test=1
+    stop ddrtest
+    start ddrtest
+on property:debug.rt.ddr.test=2
+    start ddrtest
+on property:debug.rt.ddr.test=3
+    start ddrtest
+on property:debug.rt.ddr.test=4
+    start stop_ddrtest
+
+service gps_check /system/bin/gps_check
+    class main
+    user root
+    group root
+    oneshot
+
+#/*<DTS2014041105767 yedapeng 20140401 begin */
+service oeminfo_server /system/bin/oeminfo_server
+    class core
+    user root
+
+service rmt_oeminfo /sbin/rmt_oeminfo
+    class core
+    user root
+service usb_update /sbin/usb_update
+    class core
+    user root
+#/*DTS2014041105767 yedapeng 20140401 end>*/
+
+service libqmi_oem_main /sbin/libqmi_oem_main
+    class main
+
+service rebootmgr /system/bin/rebootmgr
+    class core
+    oneshot
+service test_diag /sbin/test_diag
+    user root
+    disabled
+
+service wifi_aging /system/xbin/wifi_aging
+    user root
+    disabled
+    oneshot
+
+service wifi_power_off /system/xbin/wifi_power_off
+    user root
+    disabled
+    oneshot
+
+service wlan_detect /system/bin/wlan_detect
+    class main
+    user root
+    group root
+    oneshot
+
+service BtWiRfServer /system/xbin/RfTest
+    user root
+    group bluetooth net_bt_admin system
+    disabled
+    oneshot
+
+service bt_aging /system/xbin/bt_aging
+    user root
+    group bluetooth net_bt_admin system
+    disabled
+    oneshot
+
+service bt_power_off /system/xbin/bt_power_off
+    user root
+    group bluetooth net_bt_admin system
+    disabled
+    oneshot
+
+service huawei_version /sbin/huawei_version
+    class core
+    user root
+    oneshot
+
+service oem_sar_main /system/bin/oem_sar_main
+    class core
+    user root
+
+service send_data_srv /system/bin/send_data_srv
+    class core
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:ro.runmode=factory
+    start send_data_srv
+
+service chargelog  /sbin/chargelog.sh 2 51200
+    class main
+    root charger
+
+service nfc_detect /system/bin/nfc_detect
+    class main
+    user root
+    group root
+    oneshot
+
+# for hwnff
+service hwnffserver /system/bin/hwnffserver
+    class core
+    oneshot
+
+service hwpged /system/bin/hwpged
+    class main
+    socket MsgHubSock stream 0660 root system
+    user root
+            
+on property:hw.accel.calib="true"
+    chmod 0664 /dev/input/event0
+    chmod 0664 /dev/input/event1
+    chmod 0664 /dev/input/event2
+    chmod 0664 /dev/input/event3
+    chmod 0664 /dev/input/event4
+    chmod 0664 /dev/input/event5
+    chmod 0664 /dev/input/event6
+    chmod 0664 /dev/input/event7
+    chmod 0664 /dev/input/event8
+    chmod 0664 /dev/input/event9
