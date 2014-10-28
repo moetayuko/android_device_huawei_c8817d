@@ -390,3 +390,5 @@ $(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/c8817d/c8817d-vendor.mk)
+
+$(call inherit-product-if-exists, vendor/dianlujitao/blobs.mk)
