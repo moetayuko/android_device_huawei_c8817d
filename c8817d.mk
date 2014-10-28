@@ -385,6 +385,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.dsds_mode=cdma_gsm \
     persist.dsds.enabled=true
 
+# Recovery
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.forbid_format=/fsg,/firmware,/persist,/boot
+
 $(call inherit-product, build/target/product/full.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
