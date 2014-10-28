@@ -25,6 +25,8 @@ USE_CAMERA_STUB := true
 
 -include vendor/huawei/c8817d/BoardConfigVendor.mk
 
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
