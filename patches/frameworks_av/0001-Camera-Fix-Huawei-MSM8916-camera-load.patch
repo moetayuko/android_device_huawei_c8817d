@@ -1,0 +1,74 @@
+From f787e2020af5a11a83bb9d5ea22d2116afcb4ee2 Mon Sep 17 00:00:00 2001
+From: dianlujitao <dianlujitao@gmail.com>
+Date: Wed, 5 Nov 2014 13:38:31 +0800
+Subject: [PATCH] Camera: Fix Huawei MSM8916 camera load
+
+Change-Id: Ic78803c581ec43d0dacf656f9bdf3253afdaf711
+---
+ camera/CameraParameters.cpp                        |    5 +++++
+ include/camera/CameraParameters.h                  |    5 +++++
+ services/camera/libcameraservice/CameraService.cpp |   18 ++++++++++++++++++
+ 3 files changed, 28 insertions(+)
+
+diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
+index 8379f18..7aeccc1 100644
+--- a/camera/CameraParameters.cpp
++++ b/camera/CameraParameters.cpp
+@@ -392,6 +392,11 @@ const char CameraParameters::SCENE_DETECT_OFF[] = "off";
+ const char CameraParameters::SCENE_DETECT_ON[] = "on";
+ #endif
+ 
++#ifdef HUAWEI_MSM8916_CAMERA
++const char CameraParameters::SCENE_MODE_HWAUTO[] = "hwauto";
++const char CameraParameters::KEY_MULTIFOCUS_SHOT_MODE[] = "key-multifocus-shot-mode";
++const char CameraParameters::KEY_QUCIK_SNAPSHOT_MODE[] = "key-qucik-snapshot-mode";
++#endif
+ 
+ // Formats for setPreviewFormat and setPictureFormat.
+ const char CameraParameters::PIXEL_FORMAT_YUV422SP[] = "yuv422sp";
+diff --git a/include/camera/CameraParameters.h b/include/camera/CameraParameters.h
+index 737f2db..565327f 100644
+--- a/include/camera/CameraParameters.h
++++ b/include/camera/CameraParameters.h
+@@ -899,6 +899,11 @@ public:
+     static const char SCENE_DETECT_OFF[];
+     static const char SCENE_DETECT_ON[];
+ #endif
++#ifdef HUAWEI_MSM8916_CAMERA
++    static const char SCENE_MODE_HWAUTO[];
++    static const char KEY_MULTIFOCUS_SHOT_MODE[];
++    static const char KEY_QUCIK_SNAPSHOT_MODE[];
++#endif
+     static const char PIXEL_FORMAT_YUV422SP[];
+     static const char PIXEL_FORMAT_YUV420SP[]; // NV21
+ #ifdef QCOM_HARDWARE
+diff --git a/services/camera/libcameraservice/CameraService.cpp b/services/camera/libcameraservice/CameraService.cpp
+index 89bd359..2d4a23a 100644
+--- a/services/camera/libcameraservice/CameraService.cpp
++++ b/services/camera/libcameraservice/CameraService.cpp
+@@ -1394,4 +1394,22 @@ ICameraServiceListener::Status CameraService::getStatus(int cameraId) const {
+     return mStatusList[cameraId];
+ }
+ 
++#ifdef HUAWEI_MSM8916_CAMERA
++extern "C" void _ZN7android15CameraLogBufferC1Ev()
++{
++}
++extern "C" void _ZN7android15CameraLogBuffer8writeLogEPKcz()
++{
++}
++extern "C" void _ZN7android15CameraLogBuffer8instanceE()
++{
++}
++extern "C" void _ZN7android15CameraLogBufferD1Ev()
++{
++}
++extern "C" void isLogEnabled()
++{
++}
++#endif
++
+ }; // namespace android
+-- 
+1.7.9.5
+
