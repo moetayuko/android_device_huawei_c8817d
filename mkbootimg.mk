@@ -1,6 +1,11 @@
-LOCAL_PATH := $(call my-dir)
+# Use prebuilt dt.img
+INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
 
-INSTALLED_DTIMAGE_TARGET := $(LOCAL_PATH)/dt.img
+$(INSTALLED_DTIMAGE_TARGET):
+	@echo -e ${CL_CYN}"Start DT image: $@"${CL_RST}
+	$(call append-dtb)
+	$(call pretty,"Target dt image: $(INSTALLED_DTIMAGE_TARGET)")
+	@echo -e ${CL_CYN}"Made DT image: $@"${CL_RST}
 
 ## Overload bootimg generation: Same as the original, + --dt arg
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(INSTALLED_DTIMAGE_TARGET)
@@ -17,3 +22,4 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INSTALLED_DTIMAGE_TARGET) \
 	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --dt $(INSTALLED_DTIMAGE_TARGET) --output $@
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
 	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
+	
