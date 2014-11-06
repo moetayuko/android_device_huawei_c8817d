@@ -222,10 +222,10 @@ PRODUCT_PACKAGES += \
     keystore.msm8916
 
 # NFC packages
-PRODUCT_PACKAGES += \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
+#PRODUCT_PACKAGES += \
+#    NfcNci \
+#    Tag \
+#    com.android.nfc_extras
 
 #OEM Services library
 PRODUCT_PACKAGES += \
