@@ -78,6 +78,13 @@ lib/libmm-qcamera.so
 lib/liboeminfo.so
 lib/libqomx_core.so
 lib/libOmxVdecHevc.so
+lib/libmrc_cg_mfdenoise.so
+lib/libmrc_cg_postprocess.so
+lib/libtrack.so
+lib/libFaceDetection.so
+lib/libRefocusContrastPosition.so
+lib/libBestShot.so
+lib/libSmartAE.so
 vendor/lib/libactuator_a3907.so
 vendor/lib/libactuator_a3907_camcorder.so
 vendor/lib/libactuator_a3907_camera.so
