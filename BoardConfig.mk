@@ -68,10 +68,6 @@ PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
 # Enable suspend during charger mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# GPS
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
-TARGET_NO_RPC := true
-
 # Graphics
 TARGET_QCOM_DISPLAY_VARIANT := caf-new
 TARGET_USES_ION := true
