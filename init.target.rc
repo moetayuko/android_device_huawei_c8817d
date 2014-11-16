@@ -122,14 +122,17 @@ on charger-fs
    mkdir /dev/usb-ffs/adb 0770 shell shell
    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
    write /sys/class/android_usb/android0/f_ffs/aliases adb
-on charger
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    chown root system /sys/class/power_supply/bms/current_now
    chown root system /sys/class/power_supply/bms/voltage_ocv
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+
+on charger
    start vm_bms
+   start qcom-post-boot
+
 on boot
     insmod /system/lib/modules/adsprpc.ko
 
