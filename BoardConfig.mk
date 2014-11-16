@@ -32,6 +32,9 @@ TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RPC := true
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := c8817d,C8817D,hwc8817d,hwC8817D
+
 # Platform
 TARGET_ARCH := arm
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
