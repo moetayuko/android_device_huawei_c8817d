@@ -1,4 +1,4 @@
-From f787e2020af5a11a83bb9d5ea22d2116afcb4ee2 Mon Sep 17 00:00:00 2001
+From fa0378fbf4791849fc1d2e567079d14d024ae682 Mon Sep 17 00:00:00 2001
 From: dianlujitao <dianlujitao@gmail.com>
 Date: Wed, 5 Nov 2014 13:38:31 +0800
 Subject: [PATCH] Camera: Fix Huawei MSM8916 camera load
@@ -7,8 +7,8 @@ Change-Id: Ic78803c581ec43d0dacf656f9bdf3253afdaf711
 ---
  camera/CameraParameters.cpp                        |    5 +++++
  include/camera/CameraParameters.h                  |    5 +++++
- services/camera/libcameraservice/CameraService.cpp |   18 ++++++++++++++++++
- 3 files changed, 28 insertions(+)
+ services/camera/libcameraservice/CameraService.cpp |   15 +++++++++++++++
+ 3 files changed, 25 insertions(+)
 
 diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
 index 8379f18..7aeccc1 100644
@@ -43,10 +43,10 @@ index 737f2db..565327f 100644
      static const char PIXEL_FORMAT_YUV420SP[]; // NV21
  #ifdef QCOM_HARDWARE
 diff --git a/services/camera/libcameraservice/CameraService.cpp b/services/camera/libcameraservice/CameraService.cpp
-index 89bd359..2d4a23a 100644
+index 89bd359..b1c9a0d 100644
 --- a/services/camera/libcameraservice/CameraService.cpp
 +++ b/services/camera/libcameraservice/CameraService.cpp
-@@ -1394,4 +1394,22 @@ ICameraServiceListener::Status CameraService::getStatus(int cameraId) const {
+@@ -1394,4 +1394,19 @@ ICameraServiceListener::Status CameraService::getStatus(int cameraId) const {
      return mStatusList[cameraId];
  }
  
@@ -61,9 +61,6 @@ index 89bd359..2d4a23a 100644
 +{
 +}
 +extern "C" void _ZN7android15CameraLogBufferD1Ev()
-+{
-+}
-+extern "C" void isLogEnabled()
 +{
 +}
 +#endif
