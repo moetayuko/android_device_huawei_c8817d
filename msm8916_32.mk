@@ -18,8 +18,8 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.heapgrowthlimit=128m \
-       dalvik.vm.heapminfree=4m \
-       dalvik.vm.heapstartsize=12m
+       dalvik.vm.heapminfree=6m \
+       dalvik.vm.heapstartsize=14m
 $(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8916_32
