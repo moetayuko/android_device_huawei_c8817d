@@ -1025,9 +1025,6 @@ lib/libminui.so
 lib/libmtxxmohuanbi.so
 lib/librmnetctl.so
 
-#HACK!
-lib/libcutils.so
-
 # Hack!Prebuilt kernel module
 lib/modules/pronto/pronto_wlan.ko
 lib/modules/ansi_cprng.ko
