@@ -16,8 +16,6 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
-# Start in cdma mode
-ro.telephony.default_network=8
 
 debug.sf.hw=1
 debug.egl.hw=1
@@ -84,8 +82,6 @@ ro.qualcomm.cabl=0
 
 #
 # System props for telephony
-# System prop to turn on CdmaLTEPhone always
-telephony.lteOnCdmaDevice=1
 persist.omh.enabled=false
 
 #

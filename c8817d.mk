@@ -379,10 +379,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.is_cdma_phone=true \
-    ro.cdma.home.operator.numeric=46003 \
-    ro.config.cdma.globalMode=true \
-    ro.config.dsds_mode=cdma_gsm \
     persist.dsds.enabled=true
 
 # Recovery
