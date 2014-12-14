@@ -134,7 +134,7 @@ voice.voip.conc.disabled=false
 
 # remove System prop for USB configuration
 #Set composition for USB
-persist.sys.usb.config=mass_storage,adb
+persist.sys.usb.config=mtp,adb
 
 #Set read only default composition for USB
 #ro.sys.usb.default.config=diag,serial_smd,rmnet_bam,adb
