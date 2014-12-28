@@ -69,8 +69,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.config.cdma.globalMode", "true");
         property_set("ro.config.dsds_mode", "cdma_gsm");
         property_set("ro.com.android.dataroaming","true");
-        property_set("ro.build.description", "C8817D-user 4.4.4 GRJ90 C92B245 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/C8817D/hwC8817D:4.4.4/HuaweiC8817D/C92B245:user/release-keys");
+        property_set("ro.build.description", "C8817D-user 4.4.4 GRJ90 C92B246 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/C8817D/hwC8817D:4.4.4/HuaweiC8817D/C92B246:user/release-keys");
     }
     /* G621-TL00 */
     else if (strstr(model, "G621-TL00") != NULL) {
@@ -78,8 +78,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.name", "G621-TL00");
         property_set("ro.telephony.default_network", "17");
         property_set("ro.config.dsds_mode", "umts_gsm");
-        property_set("ro.build.description", "G621-TL00-user 4.4.4 GRJ90 C01B245SP01 release-keys");
-        property_set("ro.build.fingerprint", "Honor/G621-TL00/hwG621-TL00:4.4.4/HonorG621-TL00/C01B245SP01:user/release-keys");
+        property_set("ro.build.description", "G621-TL00-user 4.4.4 GRJ90 C01B246SP01 release-keys");
+        property_set("ro.build.fingerprint", "Honor/G621-TL00/hwG621-TL00:4.4.4/HonorG621-TL00/C01B246SP01:user/release-keys");
     }
     /* G620S-UL00 */
     else if (strstr(model, "G620S-UL") != NULL) {
@@ -87,7 +87,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.name", "G620S-UL00");
         property_set("ro.telephony.default_network", "9");
         property_set("ro.config.dsds_mode", "umts_gsm");
-        property_set("ro.build.description", "G620S-UL00-user 4.4.4 GRJ90 C17B245 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/G620S-UL00/hwG620S-UL00:4.4.4/HuaweiG620S-UL00/C17B245:user/release-keys");
+        property_set("ro.build.description", "G620S-UL00-user 4.4.4 GRJ90 C17B246 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/G620S-UL00/hwG620S-UL00:4.4.4/HuaweiG620S-UL00/C17B246:user/release-keys");
     }
 }
