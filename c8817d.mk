@@ -360,9 +360,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
     p2p_supplicant_overlay.conf
 
-# Set this device to DSDS as default.
-ADDITIONAL_BUILD_PROPERTIES += persist.radio.multisim.config=dsds
-
 PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.heapgrowthlimit=128m
 
@@ -386,9 +383,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dsds.enabled=true
 
 # Recovery
 PRODUCT_PROPERTY_OVERRIDES += \

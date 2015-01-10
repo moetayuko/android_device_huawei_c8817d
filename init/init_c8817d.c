@@ -62,6 +62,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (strstr(model, "C8817D") != NULL) {
         property_set("ro.product.model", "C8817D");
         property_set("ro.product.name", "C8817D");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.dsds.enabled", "true");
         property_set("ro.telephony.default_network", "8");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.config.is_cdma_phone", "true");
@@ -76,6 +78,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     else if (strstr(model, "G621-TL00") != NULL) {
         property_set("ro.product.model", "G621-TL00");
         property_set("ro.product.name", "G621-TL00");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.dsds.enabled", "true");
         property_set("ro.telephony.default_network", "17");
         property_set("ro.config.dsds_mode", "umts_gsm");
         property_set("ro.build.description", "G621-TL00-user 4.4.4 GRJ90 C01B246SP01 release-keys");
@@ -85,9 +89,19 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     else if (strstr(model, "G620S-UL") != NULL) {
         property_set("ro.product.model", "G620S-UL00");
         property_set("ro.product.name", "G620S-UL00");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.dsds.enabled", "true");
         property_set("ro.telephony.default_network", "9");
         property_set("ro.config.dsds_mode", "umts_gsm");
         property_set("ro.build.description", "G620S-UL00-user 4.4.4 GRJ90 C17B246 release-keys");
         property_set("ro.build.fingerprint", "Huawei/G620S-UL00/hwG620S-UL00:4.4.4/HuaweiG620S-UL00/C17B246:user/release-keys");
+    }
+    /* G620S-L01 */
+    else if (strstr(model, "G620S-L01") != NULL) {
+        property_set("ro.product.model", "G620S-L01");
+        property_set("ro.product.name", "G620S-L01");
+        property_set("ro.telephony.default_network", "9");
+        property_set("ro.build.description", "G620S-L01-user 4.4.4 GRJ90 C00B246 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/G620S-L01/hwG620S-L01:4.4.4/HuaweiG620S-L01/C00B246:user/release-keys");
     }
 }
