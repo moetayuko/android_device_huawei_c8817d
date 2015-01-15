@@ -49,4 +49,9 @@
     <!-- platform logo font size -->
     <dimen name="plat_logo_alphabet_size">238sp</dimen>
 
+   <!-- Activity scroll boost params -->
+   <integer name="ascrollboost_timeout">50</integer>
+   <integer name="ascrollboost_schedboost">0x1E01</integer>
+   <integer name="ascrollboost_cpuboost">0x20F</integer>
+   <integer name="ascrollboost_pcdisbl">0x101</integer>
 </resources>
