@@ -1,0 +1,26 @@
+From 6b3e6e7622a135b8aace06e862deebe9afd44d1e Mon Sep 17 00:00:00 2001
+From: dianlujitao <dianlujitao@gmail.com>
+Date: Sun, 11 Jan 2015 12:53:05 +0800
+Subject: [PATCH] libstagefright: c8817d required new media
+
+Change-Id: I90385fff1eb504da050f71b17f43eac95e305b9f
+---
+ media/libstagefright/Android.mk |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/media/libstagefright/Android.mk b/media/libstagefright/Android.mk
+index cc2e436..6f236ac 100644
+--- a/media/libstagefright/Android.mk
++++ b/media/libstagefright/Android.mk
+@@ -125,7 +125,7 @@ endif
+ 
+ LOCAL_C_INCLUDES += \
+     $(call project-path-for,qcom-media)/mm-core/inc
+-ifneq ($(TARGET_QCOM_MEDIA_VARIANT),caf-new)
++ifeq ($(filter caf-new caf-c8817d,$(TARGET_QCOM_MEDIA_VARIANT)),)
+     LOCAL_CFLAGS += -DLEGACY_MEDIA
+ endif
+ 
+-- 
+1.7.9.5
+
