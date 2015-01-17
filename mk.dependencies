@@ -8,12 +8,12 @@
    "target_path": "hardware/qcom/fm"
   },
   {
-    "repository": "android_hardware_qcom_display-caf-new",
-    "target_path": "hardware/qcom/display-caf-new"
+    "repository": "android_hardware_qcom_display-caf-c8817d",
+    "target_path": "hardware/qcom/display-caf-c8817d"
   },
   {
-    "repository": "android_hardware_qcom_media-caf-old",
-    "target_path": "hardware/qcom/media-caf-old"
+    "repository": "android_hardware_qcom_media-caf-c8817d",
+    "target_path": "hardware/qcom/media-caf-c8817d"
   },
   {
     "repository": "android_vendor_huawei_c8817d",
