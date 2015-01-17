@@ -111,6 +111,7 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/rootdir/res/images/mmi/pass.png:root/res/images/mmi/pass.png
 
 PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -149,7 +150,8 @@ TARGET_SCREEN_WIDTH := 720
 PRODUCT_PACKAGES += \
     AntHalService \
     libantradio \
-    antradio_app
+    antradio_app \
+    com.dsi.ant.antradio_library
 
 # Audio
 PRODUCT_PACKAGES += \
