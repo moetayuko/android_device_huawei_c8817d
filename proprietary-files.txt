@@ -866,32 +866,6 @@ vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libxml.so
 
-# Sound param
-etc/sound_param/c8817d/Bluetooth_cal.acdb
-etc/sound_param/c8817d/General_cal.acdb
-etc/sound_param/c8817d/Global_cal.acdb
-etc/sound_param/c8817d/Handset_cal.acdb
-etc/sound_param/c8817d/Hdmi_cal.acdb
-etc/sound_param/c8817d/Headset_cal.acdb
-etc/sound_param/c8817d/Speaker_cal.acdb
-etc/sound_param/c8817d/mixer_paths.xml
-etc/sound_param/cherry/Bluetooth_cal.acdb
-etc/sound_param/cherry/General_cal.acdb
-etc/sound_param/cherry/Global_cal.acdb
-etc/sound_param/cherry/Handset_cal.acdb
-etc/sound_param/cherry/Hdmi_cal.acdb
-etc/sound_param/cherry/Headset_cal.acdb
-etc/sound_param/cherry/Speaker_cal.acdb
-etc/sound_param/cherry/mixer_paths.xml
-etc/sound_param/default/Bluetooth_cal.acdb
-etc/sound_param/default/General_cal.acdb
-etc/sound_param/default/Global_cal.acdb
-etc/sound_param/default/Handset_cal.acdb
-etc/sound_param/default/Hdmi_cal.acdb
-etc/sound_param/default/Headset_cal.acdb
-etc/sound_param/default/Speaker_cal.acdb
-etc/sound_param/default/mixer_paths.xml
-
 # Thermal
 bin/thermal-engine
 vendor/lib/libthermalclient.so

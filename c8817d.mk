@@ -34,6 +34,16 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
     device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# Audio calibration
+PRODUCT_COPY_FILES += \
+    device/huawei/c8817d/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
+    device/huawei/c8817d/audio/General_cal.acdb:system/etc/General_cal.acdb \
+    device/huawei/c8817d/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
+    device/huawei/c8817d/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
+    device/huawei/c8817d/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
+    device/huawei/c8817d/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
+    device/huawei/c8817d/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
+
 # Diag cfg
 PRODUCT_COPY_FILES += \
     device/huawei/c8817d/rootdir/etc/DiagCfg/Diag.cfg:system/etc/DiagCfg/Diag.cfg
