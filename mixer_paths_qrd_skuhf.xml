@@ -58,9 +58,9 @@
     <ctl name="IIR1 INP2 Volume" value="84" />
     <ctl name="IIR1 INP3 Volume" value="84" />
     <ctl name="IIR1 INP4 Volume" value="84" />
-    <ctl name="ADC1 Volume" value="6" />
-    <ctl name="ADC2 Volume" value="6" />
-    <ctl name="ADC3 Volume" value="6" />
+    <ctl name="ADC1 Volume" value="13" />
+    <ctl name="ADC2 Volume" value="13" />
+    <ctl name="ADC3 Volume" value="13" />
     <ctl name="DEC1 Volume" value="84" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC2 MUX" value="ZERO" />
@@ -541,25 +541,36 @@
     </path>
 
     <path name="speaker">
+        <ctl name="Speaker Boost" value="ENABLE" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="SPK DAC Switch" value="1" />
+        <ctl name="RX3 Digital Volume" value="84" />
+    </path>
+
+    <path name="speaker-fm">
+        <path name="speaker" />
     </path>
 
     <path name="speaker-mic">
         <path name="adc1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="DEC1 Volume" value="84" />
     </path>
 
     <path name="handset">
+        <ctl name="EAR PA Boost" value="ENABLE" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
         <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="EAR_S" value="Switch" />
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
     </path>
 
     <path name="handset-mic">
         <path name="adc1" />
-        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="DEC1 Volume" value="84" />
     </path>
 
     <path name="headphones">
@@ -569,12 +580,20 @@
         <ctl name="RDAC2 MUX" value="RX2" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+    </path>
+
+    <path name="headphone-fm">
+        <path name="headphones" />
     </path>
 
     <path name="headset-mic">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="ADC2 Volume" value="6" />
+        <ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="sidetone-iir">
@@ -599,29 +618,40 @@
     </path>
 
     <path name="voice-handset">
-        <path name="sidetone-handset" />
         <path name="handset" />
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
+        <ctl name="RX1 Digital Volume" value="84" />
     </path>
 
     <path name="voice-speaker">
         <path name="speaker" />
+        <ctl name="RX3 Digital Volume" value="84" />
     </path>
 
     <path name="voice-speaker-mic">
         <path name="speaker-mic" />
+        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="DEC1 Volume" value="84" />
     </path>
 
     <path name="voice-headphones">
         <path name="headphones" />
+	<ctl name="RX1 Digital Volume" value="84" />
+	<ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="voice-headset-mic">
         <path name="headset-mic" />
+        <ctl name="ADC2 Volume" value="6" />
+        <ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="speaker-and-headphones">
         <path name="headphones" />
         <path name="speaker" />
+	<ctl name="RX1 Digital Volume" value="84" />
+	<ctl name="RX2 Digital Volume" value="84" />
+	<ctl name="RX3 Digital Volume" value="84" />
     </path>
 
     <path name="usb-headphones">
@@ -649,13 +679,25 @@
     <path name="bt-sco-headset">
     </path>
 
+    <path name="bt-sco-headset-no-nrec">
+    </path>
+
     <path name="bt-sco-mic">
+    </path>
+
+    <path name="bt-sco-mic-no-nrec">
     </path>
 
     <path name="bt-sco-headset-wb">
     </path>
 
+    <path name="bt-sco-headset-wb-no-nrec">
+    </path>
+
     <path name="bt-sco-mic-wb">
+    </path>
+
+    <path name="bt-sco-mic-wb-no-nrec">
     </path>
 
     <path name="usb-headset-mic">
@@ -670,10 +712,18 @@
         <ctl name="DEC2 MUX" value="ADC2" />
         <ctl name="MI2S_TX Channels" value="Two" />
         <ctl name="ADC2 MUX" value="INP3" />
+	<ctl name="ADC1 Volume" value="6" />
+	<ctl name="ADC2 Volume" value="6" />
+	<ctl name="DEC1 Volume" value="84" />
+	<ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="dmic-endfire">
         <path name="speaker-dmic-endfire" />
+        <ctl name="ADC1 Volume" value="6" />
+	<ctl name="ADC2 Volume" value="6" />
+	<ctl name="DEC1 Volume" value="84" />
+	<ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="voice-dmic-ef-tmus">
@@ -682,6 +732,10 @@
 
     <path name="voice-dmic-ef">
         <path name="dmic-endfire" />
+        <ctl name="ADC1 Volume" value="6" />
+	<ctl name="ADC2 Volume" value="6" />
+	<ctl name="DEC1 Volume" value="84" />
+	<ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="voice-speaker-dmic-ef">
@@ -704,39 +758,101 @@
         <path name="speaker-dmic-endfire" />
     </path>
 
+    <path name="2ndMIC">
+        <path name="adc2" />
+        <ctl name="ADC2 MUX" value="INP3" />
+        <ctl name="ADC2 Volume" value="6" />
+        <ctl name="DEC2 Volume" value="84" />
+    </path>
+
+    <path name="autommi_secondmic">
+        <path name="adc2" />
+        <ctl name="ADC2 MUX" value="INP3" />
+        <ctl name="ADC2 Volume" value="6" />
+        <ctl name="DEC2 Volume" value="84" />
+    </path>
+
+    <path name="autommi_speaker">
+        <path name="speaker" />
+        <ctl name="RX3 Digital Volume" value="81" />
+    </path>
+
+    <path name="autommi_receiver">
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RDAC2 MUX" value="RX1" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="EAR_S" value="Switch" />
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
+    </path>
+
+    <path name="autommi_headsetmic">
+        <path name="adc2" />
+        <ctl name="ADC2 MUX" value="INP2" />
+        <ctl name="ADC2 Volume" value="5" />
+        <ctl name="DEC2 Volume" value="70" />
+    </path>
+
+    <path name="autommi_headset">
+        <ctl name="MI2S_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="RDAC2 MUX" value="RX2" />
+        <ctl name="HPHL" value="Switch" />
+        <ctl name="HPHR" value="Switch" />
+	<ctl name="RX1 Digital Volume" value="84" />
+	<ctl name="RX2 Digital Volume" value="84" />
+    </path>
+
+    <path name="autommi_mastermic">
+        <path name="adc1" />
+	<ctl name="ADC1 Volume" value="6" />
+	<ctl name="DEC1 Volume" value="84" />
+    </path>
+
     <!-- TTY devices -->
 
     <path name="tty-headphones">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="HPHL" value="Switch" />
+	<ctl name="RX1 Digital Volume" value="84" />
     </path>
 
     <path name="voice-tty-full-headphones">
         <ctl name="TTY Mode" value="FULL" />
         <path name="tty-headphones" />
+	<ctl name="RX1 Digital Volume" value="84" />
     </path>
 
     <path name="voice-tty-vco-headphones">
         <ctl name="TTY Mode" value="VCO" />
         <path name="tty-headphones" />
+	<ctl name="RX1 Digital Volume" value="84" />
     </path>
 
     <path name="voice-tty-hco-handset">
         <ctl name="TTY Mode" value="HCO" />
         <path name="handset" />
+	<ctl name="RX1 Digital Volume" value="84" />
+	<ctl name="EAR PA Gain" value="POS_6_DB" />
     </path>
 
     <path name="voice-tty-full-headset-mic">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
+	<ctl name="ADC2 Volume" value="6" />
+	<ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="voice-tty-hco-headset-mic">
         <path name="voice-tty-full-headset-mic" />
+	<ctl name="ADC2 Volume" value="6" />
+	<ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="voice-tty-vco-handset-mic">
         <path name="adc1" />
+	<ctl name="ADC1 Volume" value="6" />
+	<ctl name="DEC1 Volume" value="84" />
     </path>
 
     <path name="listen-handset-mic">
