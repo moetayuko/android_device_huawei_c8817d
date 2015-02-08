@@ -559,6 +559,7 @@ vendor/lib/libdpmframework.so
 etc/firmware/cherry_gis_fw.img
 etc/firmware/cherry_ofilm_fw.img
 etc/firmware/cherry_yassy_fw.img
+etc/firmware/fused_nvm_y635_cl00.bin
 etc/firmware/g620S_junda_fw.img
 etc/firmware/g620S_ofilm_fw.img
 etc/firmware/g620S_truly_fw.img
@@ -569,7 +570,8 @@ etc/firmware/g760-HB3748B8EBC_LS_LS.fw
 etc/firmware/g760-HB3748B8EBC_XWD_SDI.fw
 etc/firmware/g760L_lensone_fw.img
 etc/firmware/g760L_ofilm_fw.img
-etc/firmware/goodix_fw_g620S.bin
+etc/firmware/goodix_new_ofilm_fw.bin
+etc/firmware/goodix_ofilm_fw.bin
 etc/firmware/ice40.bin
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
@@ -752,7 +754,6 @@ bin/diag_qshrink4_daemon
 bin/regdbdump
 bin/rmnetcli
 bin/send_data_srv
-bin/server_agent
 bin/StoreKeybox
 bin/subsystem_ramdump
 bin/tinycap
@@ -980,7 +981,6 @@ vendor/lib/libmmwfdsrcinterface.so
 vendor/lib/libsd_sdk_display.so
 vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
-vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
 vendor/lib/libwfdhdcpcp.so
@@ -989,9 +989,7 @@ lib/libdexanalysis.so
 lib/libextendedremotedisplay.so
 lib/libhwnv.so
 lib/libixml.so
-lib/libkpencore.so
 lib/libminui.so
-lib/libmtxxmohuanbi.so
 lib/librmnetctl.so
 
 # Hack!Prebuilt kernel module
