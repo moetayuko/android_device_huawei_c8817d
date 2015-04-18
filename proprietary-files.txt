@@ -761,33 +761,6 @@ bin/usb_uicc_client
 bin/wdsdaemon
 xbin/qlogd
 
-# Mmi
-bin/mmi
-vendor/lib/mmi_audio.so
-vendor/lib/mmi_battery.so
-vendor/lib/mmi_bt.so
-vendor/lib/mmi_camera.so
-vendor/lib/mmi_flashlight.so
-vendor/lib/mmi_fm.so
-vendor/lib/mmi_gps_garden.so
-vendor/lib/mmi_gsensor.so
-vendor/lib/mmi_gyroscope.so
-vendor/lib/mmi_key.so
-vendor/lib/mmi_keypadbacklight.so
-vendor/lib/mmi_lcd.so
-vendor/lib/mmi_led.so
-vendor/lib/mmi_lsensor.so
-vendor/lib/mmi_msensor.so
-vendor/lib/mmi_psensor.so
-vendor/lib/mmi_sdcard.so
-vendor/lib/mmi_sim.so
-vendor/lib/mmi_sysinfo.so
-vendor/lib/mmi_touch.so
-vendor/lib/mmi_touchpanel.so
-vendor/lib/mmi_vibrator.so
-vendor/lib/mmi_volume.so
-vendor/lib/mmi_wifi.so
-
 # Nfc
 bin/nfc_detect
 lib/hw/nfc_nci_pn547.default.so
