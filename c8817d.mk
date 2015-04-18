@@ -278,23 +278,8 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     power.msm8916
 
-# Prebuilt binary
-PRODUCT_PACKAGES += \
-    chargelog.sh \
-    e2fsck_s \
-    healthd \
-    huawei_version \
-    hw_scsi_switch \
-    libqmi_oem_main \
-    rmt_oeminfo \
-    rmt_storage \
-    test_diag \
-    test_oeminfo \
-    usb_update
-
 # Recovery
 PRODUCT_PACKAGES += \
-    recoverylog.sh \
     minivold
 
 # Ramdisk
