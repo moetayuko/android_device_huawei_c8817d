@@ -635,6 +635,7 @@ int QCamera2HardwareInterface::take_picture(struct camera_device *device)
             hw->waitAPIResult(QCAMERA_SM_EVT_PREPARE_SNAPSHOT, &apiResult);
             ret = apiResult.status;
         }
+        hw->mPrepSnapRun = true;
     }
 
     /* Regardless what the result value for prepare_snapshot,
@@ -1001,13 +1002,15 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(int cameraId)
       mFlashNeeded(false),
       mCaptureRotation(0),
       mIs3ALocked(false),
+      mPrepSnapRun(false),
       mZoomLevel(0),
       m_bIntEvtPending(false),
       mSnapshotJob(-1),
       mPostviewJob(-1),
       mMetadataJob(-1),
       mReprocJob(-1),
-      mRawdataJob(-1)
+      mRawdataJob(-1),
+      mPreviewFrameSkipValid(0)
 {
     getLogLevel();
     mCameraDevice.common.tag = HARDWARE_DEVICE_TAG;
@@ -1039,6 +1042,9 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(int cameraId)
 #endif
 
     memset(mDeffOngoingJobs, 0, sizeof(mDeffOngoingJobs));
+
+    //reset preview frame skip
+    memset(&mPreviewFrameSkipIdxRange, 0, sizeof(cam_frame_idx_range_t));
 
     mDefferedWorkThread.launch(defferedWorkRoutine, this);
     mDefferedWorkThread.sendCmd(CAMERA_CMD_TYPE_START_DATA_PROC, FALSE, FALSE);
@@ -1224,11 +1230,6 @@ int QCamera2HardwareInterface::openCamera()
     }
 
     mParameters.init(gCamCapability[mCameraId], mCameraHandle, this, this);
-
-    rc = m_thermalAdapter.init(this);
-    if (rc != 0) {
-        ALOGE("Init thermal adapter failed");
-    }
 
     mCameraOpened = true;
 
@@ -2036,6 +2037,10 @@ int QCamera2HardwareInterface::stopPreview()
     stopChannel(QCAMERA_CH_TYPE_ZSL);
     stopChannel(QCAMERA_CH_TYPE_PREVIEW);
 
+    //reset preview frame skip
+    mPreviewFrameSkipValid = 0;
+    memset(&mPreviewFrameSkipIdxRange, 0, sizeof(cam_frame_idx_range_t));
+
     // delete all channels from preparePreview
     unpreparePreview();
     CDBG_HIGH("%s: X", __func__);
@@ -2586,7 +2591,7 @@ int QCamera2HardwareInterface::takePicture()
                     return rc;
                 }
             }
-            if ( mLongshotEnabled ) {
+            if (mLongshotEnabled && mPrepSnapRun) {
                 mCameraHandle->ops->start_zsl_snapshot(
                         mCameraHandle->camera_handle,
                         pZSLChannel->getMyHandle());
@@ -3257,6 +3262,7 @@ int QCamera2HardwareInterface::sendCommand(int32_t command,
                 }
             }
             rc = mParameters.setLongshotEnable(mLongshotEnabled);
+            mPrepSnapRun = false;
         } else {
             rc = NO_INIT;
         }
@@ -3266,13 +3272,14 @@ int QCamera2HardwareInterface::sendCommand(int32_t command,
             cancelPicture();
             processEvt(QCAMERA_SM_EVT_SNAPSHOT_DONE, NULL);
             QCameraChannel *pZSLChannel = m_channels[QCAMERA_CH_TYPE_ZSL];
-            if (isZSLMode() && (NULL != pZSLChannel)) {
+            if (isZSLMode() && (NULL != pZSLChannel) && mPrepSnapRun) {
                 mCameraHandle->ops->stop_zsl_snapshot(
                         mCameraHandle->camera_handle,
                         pZSLChannel->getMyHandle());
             }
         }
         CDBG_HIGH("%s: Longshot Disabled", __func__);
+        mPrepSnapRun = false;
         mLongshotEnabled = false;
         rc = mParameters.setLongshotEnable(mLongshotEnabled);
         break;
@@ -6553,7 +6560,7 @@ bool QCamera2HardwareInterface::isRegularCapture()
     if (numOfSnapshotsExpected() == 1 &&
         !isLongshotEnabled() &&
         !mParameters.getRecordingHintValue() &&
-        !isZSLMode()) {
+        !isZSLMode() && !mParameters.isHDREnabled()) {
             ret = true;
     }
     return ret;

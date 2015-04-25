@@ -45,6 +45,7 @@ lib/libhdr.so
 lib/liboeminfo.so
 lib/libOmxVdecHevc.so
 lib/libmmcamera_interface.so
+lib/libmm-qcamera.so
 lib/libmrc_cg_mfdenoise.so
 lib/libmrc_cg_postprocess.so
 lib/libtrack.so

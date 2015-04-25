@@ -178,7 +178,6 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app \
     camera.msm8916 \
     libmmjpeg_interface \
-    libmm-qcamera \
     libqomx_core
 
 # Display
