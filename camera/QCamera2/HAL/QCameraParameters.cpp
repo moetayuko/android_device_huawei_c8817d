@@ -5329,7 +5329,7 @@ int32_t QCameraParameters::getFlashValue()
 {
   const char *flash_str = get(QCameraParameters::KEY_FLASH_MODE);
   int flash_index = lookupAttr(FLASH_MODES_MAP,
-        sizeof(ISO_MODES_MAP)/sizeof(FLASH_MODES_MAP[0]), flash_str);
+        sizeof(FLASH_MODES_MAP)/sizeof(FLASH_MODES_MAP[0]), flash_str);
 
   return flash_index;
 }

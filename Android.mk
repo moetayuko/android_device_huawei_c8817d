@@ -30,6 +30,5 @@
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),c8817d)
-include device/huawei/c8817d/kernel/AndroidKernel.mk
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif
