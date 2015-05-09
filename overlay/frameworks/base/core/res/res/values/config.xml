@@ -32,14 +32,6 @@
    <!-- Configuartion to support 7bit Ascii encoding and decoding
        for long messages. -->
    <bool name="config_ascii_7bit_support_for_long_message">true</bool>
-   <!-- Whether cpu boost is enabled for overscroller fling. -->
-   <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
-   <!-- Whether cpu boost is enabled for horizontal scroll. -->
-   <bool name="config_enableCpuBoostForScroller">true</bool>
-   <!-- Should the device show AM/PM in unlock screen -->
-   <bool name="config_show_ampm_in_unlock_screen">true</bool>
-    <!-- Make things go fast by disabling Fading Marquee for Textview -->
-    <bool name="config_ui_enableFadingMarquee">false</bool>
     <!-- Indicate whether to allow the device to suspend when the screen is off
          due to the proximity sensor.  This resource should only be set to true
          if the sensor HAL correctly handles the proximity sensor as a wake-up source.
@@ -292,10 +284,4 @@
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
     <integer name="config_screenBrightnessSettingMinimum">5</integer>
-
-   <!-- Activity scroll boost params -->
-   <integer name="ascrollboost_timeout">50</integer>
-   <integer name="ascrollboost_schedboost">0x1E01</integer>
-   <integer name="ascrollboost_cpuboost">0x20F</integer>
-   <integer name="ascrollboost_pcdisbl">0x101</integer>
 </resources>
