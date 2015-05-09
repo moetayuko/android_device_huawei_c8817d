@@ -878,37 +878,8 @@ vendor/lib/libwfduibcsrcinterface.so
 # WiFi
 bin/ptt_socket_app
 bin/wcnss_filter
-bin/wlan_detect
 xbin/wifi_aging
 xbin/wifi_power_off
-etc/wifi/WCNSS_hw_wlan_nv.bin
-etc/wifi/WCNSS_hw_wlan_nv_c8817d_VC.bin
-etc/wifi/WCNSS_hw_wlan_nv_c8817e_VC.bin
-etc/wifi/WCNSS_hw_wlan_nv_Che1-CL10.bin
-etc/wifi/WCNSS_hw_wlan_nv_Che1-CL20.bin
-etc/wifi/WCNSS_hw_wlan_nv_g620s_l01_vb.bin
-etc/wifi/WCNSS_hw_wlan_nv_g620s_l02_vb.bin
-etc/wifi/WCNSS_hw_wlan_nv_g620s_l03_vb.bin
-etc/wifi/WCNSS_hw_wlan_nv_g620s_ul_VC.bin
-etc/wifi/WCNSS_hw_wlan_nv_g621_tl_VC.bin
-etc/wifi/WCNSS_hw_wlan_nv_g760_l01.bin
-etc/wifi/WCNSS_hw_wlan_nv_g760_l03.bin
-etc/wifi/WCNSS_hw_wlan_nv_g760_tl.bin
-etc/wifi/WCNSS_hw_wlan_nv_g760_ul.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l01.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l01_vb.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l02.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l02_vb.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l03.bin
-etc/wifi/WCNSS_hw_wlan_nv_y550_l03_vb.bin
-wifi/wifi_mt_2.3.sh
-wifi/wifi_mt_2.4.sh
-wifi/wifi_mt_2.5.sh
-wifi/wifi_mt_5g_2.5.sh
-wifi/wifi_mt_finish_2.3.sh
-wifi/wifi_mt_finish_2.4.sh
-wifi/wifi_mt_finish_2.5.sh
-wifi/wifi_mt_finish_5g_2.5.sh
 
 # Wnn
 lib/libwnndict.so
@@ -935,24 +906,3 @@ lib/libextendedremotedisplay.so
 lib/libhwnv.so
 lib/libixml.so
 lib/librmnetctl.so
-
-# Hack!Prebuilt kernel module
-lib/modules/pronto/pronto_wlan.ko
-lib/modules/ansi_cprng.ko
-lib/modules/dma_test.ko
-lib/modules/gpio_axis.ko
-lib/modules/gpio_event.ko
-lib/modules/gpio_input.ko
-lib/modules/gpio_matrix.ko
-lib/modules/gpio_output.ko
-lib/modules/ice40-hcd.ko
-lib/modules/mcDrvModule.ko
-lib/modules/mcKernelApi.ko
-lib/modules/mmc_block_test.ko
-lib/modules/mmc_test.ko
-lib/modules/msm-buspm-dev.ko
-lib/modules/oprofile.ko
-lib/modules/qcrypto.ko
-lib/modules/radio-iris-transport.ko
-lib/modules/spidev.ko
-lib/modules/test-iosched.ko

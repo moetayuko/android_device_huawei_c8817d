@@ -1059,12 +1059,6 @@ service wifi_power_off /system/xbin/wifi_power_off
     disabled
     oneshot
 
-service wlan_detect /system/bin/wlan_detect
-    class main
-    user root
-    group root
-    oneshot
-
 service BtWiRfServer /system/xbin/RfTest
     user root
     group bluetooth net_bt_admin system
