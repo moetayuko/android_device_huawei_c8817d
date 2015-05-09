@@ -79,7 +79,7 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8817d/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    kernel/huawei/msm8916/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/huawei/c8817d/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
     device/huawei/c8817d/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
