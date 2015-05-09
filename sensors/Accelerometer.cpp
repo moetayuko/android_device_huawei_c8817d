@@ -101,25 +101,6 @@ AccelSensor::~AccelSensor() {
 	}
 }
 
-int AccelSensor::setInitialState() {
-	struct input_absinfo absinfo_x;
-	struct input_absinfo absinfo_y;
-	struct input_absinfo absinfo_z;
-	float value;
-	if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_X), &absinfo_x) &&
-		!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_Y), &absinfo_y) &&
-		!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_ACCEL_Z), &absinfo_z)) {
-		value = absinfo_x.value;
-		mPendingEvent.data[0] = value * CONVERT_ACCEL_X;
-		value = absinfo_y.value;
-		mPendingEvent.data[1] = value * CONVERT_ACCEL_Y;
-		value = absinfo_z.value;
-		mPendingEvent.data[2] = value * CONVERT_ACCEL_Z;
-		mHasPendingEvent = true;
-	}
-	return 0;
-}
-
 int AccelSensor::enable(int32_t, int en) {
 	int flags = en ? 1 : 0;
 	if (flags != mEnabled) {
@@ -140,7 +121,6 @@ int AccelSensor::enable(int32_t, int en) {
 			err = write(fd, buf, sizeof(buf));
 			close(fd);
 			mEnabled = flags;
-			setInitialState();
 			return 0;
 		}
 		ALOGE("AccelSensor: failed to open %s", input_sysfs_path);
