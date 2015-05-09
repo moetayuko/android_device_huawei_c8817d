@@ -371,7 +371,9 @@ PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       dalvik.vm.heapgrowthlimit=128m
+    dalvik.vm.heapgrowthlimit=128m \
+    dalvik.vm.heapminfree=6m \
+    dalvik.vm.heapstartsize=14m
 
 #Set default profile to FUT
 PRODUCT_PROPERTY_OVERRIDES += \
