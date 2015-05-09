@@ -27,13 +27,10 @@
 #
 #
 
-import init.qti.carrier.rc
-
 on early-init
     mkdir /firmware 0771 system system
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
-    mkdir /log 0770 system log
 
 # import cne init file
 on post-fs
@@ -41,14 +38,16 @@ on post-fs
 
 on fs
     mount_all fstab.qcom
-    # zRAM
-    swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
+    wait /dev/block/bootdevice/by-name/cache
+    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
 
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
 
     wait /dev/block/bootdevice/by-name/modem
     mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
@@ -63,12 +62,13 @@ on post-fs-data
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
 
-on init
-   write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+#enable zram
+on property:ro.config.zram=true
+    swapon_all fstab.qcom
 
 # Allow usb charging to be disabled peristently
 on property:persist.usb.chgdisabled=1
@@ -97,7 +97,16 @@ service qseecomd /system/bin/qseecomd
    user root
    group root
 
+#service aostlmd /system/bin/aostlmd
+#   class late_start
+#   user system
+#   group system net_raw
+
 service mpdecision /system/bin/mpdecision --avg_comp
+   user root
+   disabled
+
+service perfd /system/bin/perfd
    user root
    disabled
 
@@ -117,11 +126,6 @@ service audiod /system/bin/audiod
    group system
 
 on charger-fs
-   mount ext4 /dev/block/bootdevice/by-name/userdata /data rw
-   mkdir /dev/usb-ffs 0770 shell shell
-   mkdir /dev/usb-ffs/adb 0770 shell shell
-   mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-   write /sys/class/android_usb/android0/f_ffs/aliases adb
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    chown root system /sys/class/power_supply/bms/current_now
@@ -152,7 +156,7 @@ on property:init.svc.surfaceflinger=running
     start ppd
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
     group system wifi radio
     oneshot
