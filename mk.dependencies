@@ -12,8 +12,8 @@
     "target_path": "hardware/qcom/display-caf-new"
   },
   {
-    "repository": "android_hardware_qcom_media-caf-old",
-    "target_path": "hardware/qcom/media-caf-old"
+    "repository": "android_hardware_qcom_media-caf-new",
+    "target_path": "hardware/qcom/media-caf-new"
   },
   {
     "repository": "android_vendor_huawei_c8817d",
