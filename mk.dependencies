@@ -16,6 +16,10 @@
     "target_path": "hardware/qcom/media-caf-new"
   },
   {
+    "repository": "android_kernel_huawei_msm8916",
+    "target_path": "kernel/huawei/msm8916"
+  },
+  {
     "repository": "android_vendor_huawei_c8817d",
     "target_path": "vendor/huawei/c8817d"
   }
