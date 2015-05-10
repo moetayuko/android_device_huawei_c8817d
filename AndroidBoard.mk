@@ -119,7 +119,7 @@ include $(BUILD_PREBUILT)
 #Create symbolic links
 $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/prima; \
         rm $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin; \
-        ln -sf /system/etc/WCNSS_qcom_wlan_nv.bin \
+        ln -sf /system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
         $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin; \
         rm $(TARGET_OUT_ETC)/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
         ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
