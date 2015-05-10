@@ -749,8 +749,6 @@ bin/oeminfo_server
 bin/oem_sar_main
 bin/port-bridge
 bin/preparesd.sh
-bin/qrngd
-bin/qrngp
 bin/qseecom_sample_client
 bin/diag_qshrink4_daemon
 bin/regdbdump

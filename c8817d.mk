@@ -293,6 +293,11 @@ PRODUCT_PACKAGES += \
     test_oeminfo \
     usb_update
 
+# QRNGD
+PRODUCT_PACKAGES += \
+    qrngd \
+    qrngp
+
 # Recovery
 PRODUCT_PACKAGES += \
     recoverylog.sh \
