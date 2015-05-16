@@ -174,7 +174,15 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.primary.msm8916 \
     audio_policy.msm8916 \
-    libaudio-resampler
+    libaudio-resampler \
+    tinymix
+
+# Audio OMX
+PRODUCT_PACKAGES += \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -228,7 +236,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
-    libqcompostprocbundle
+    libqcompostprocbundle \
+    libqcomvoiceprocessing
 
 # Lights
 PRODUCT_PACKAGES += \
