@@ -92,7 +92,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
 
 # Hardware
-#BOARD_HARDWARE_CLASS := device/huawei/c8817d/cmhw
+BOARD_HARDWARE_CLASS := device/huawei/c8817d/cmhw
 
 # Init
 TARGET_UNIFIED_DEVICE := true
