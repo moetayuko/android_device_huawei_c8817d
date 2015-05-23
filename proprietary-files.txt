@@ -35,9 +35,6 @@ lib/libbtpower.so
 vendor/lib/libbtnv.so
 vendor/lib/liboi_sbc_decoder.so
 
-# Bson
-lib/libbson.so
-
 # Camera
 bin/mm-qcamera-daemon
 lib/libchromatix_imx135_liveshot.so
@@ -720,7 +717,6 @@ bin/bootanimationex
 bin/brctl
 bin/bridgemgrd
 bin/callife
-bin/crda
 bin/device_monitor
 bin/diag_callback_client
 bin/diag_dci_sample
@@ -751,7 +747,6 @@ bin/port-bridge
 bin/preparesd.sh
 bin/qseecom_sample_client
 bin/diag_qshrink4_daemon
-bin/regdbdump
 bin/rmnetcli
 bin/send_data_srv
 bin/StoreKeybox
@@ -780,7 +775,6 @@ vendor/lib/libqc-opt.so
 # Postprocessing
 bin/mm-pp-daemon
 lib/libtinyxml2.so
-lib/libtinyxml.so
 vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
@@ -816,18 +810,12 @@ bin/netmgrd
 bin/qmuxd
 bin/radish
 bin/rfs_access
-bin/rild
 bin/qmiproxy
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
 lib/liboeminfo_oem_api.so
-lib/libqsap_sdk.so
-lib/libreference-ril.so
-lib/libril.so
-lib/librilutils.so
-lib/libxml2.so
 vendor/lib/libCommandSvc.so
 vendor/lib/libconfigdb.so
 vendor/lib/libnetmgr.so

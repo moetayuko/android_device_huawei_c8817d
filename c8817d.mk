@@ -184,12 +184,23 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc
 
+# Bson
+PRODUCT_PACKAGES += \
+    libbson
+
 # Camera
 PRODUCT_PACKAGES += \
     mm-qcamera-app \
     camera.msm8916 \
     libmmjpeg_interface \
     libqomx_core
+
+# CRDA
+PRODUCT_PACKAGES += \
+    crda \
+    linville.key.pub.pem \
+    regdbdump \
+    regulatory.bin
 
 # Display
 PRODUCT_PACKAGES += \
@@ -201,7 +212,8 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libgenlock \
     libqdutils \
-    libqdMetaData
+    libqdMetaData \
+    libtinyxml
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -357,6 +369,15 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     libcalmodule_akm \
     calmodule.cfg
+
+# SoftAP
+PRODUCT_PACKAGES += \
+    libQWiFiSoftApCfg \
+    libqsap_sdk
+
+# Lib_xml2
+PRODUCT_PACKAGES += \
+    libxml2
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
