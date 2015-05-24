@@ -338,7 +338,9 @@ PRODUCT_PACKAGES += \
     init.qcom.sdio.sh \
     init.qcom.wifi.sh \
     init.qcom.modem_links.sh \
-    init.qcom.uicc.sh
+    init.qcom.uicc.sh \
+    init.qcom.zram.sh \
+    init.qti.video.sh
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
@@ -357,8 +359,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
     init.target.rc \
-    ueventd.qcom.rc \
-    init.device.rc
+    ueventd.qcom.rc
 
 #spec service
 PRODUCT_PACKAGES += \
