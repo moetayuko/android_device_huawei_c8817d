@@ -29,17 +29,16 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on early-init
-#    mount debugfs debugfs /sys/kernel/debug
+    mount debugfs debugfs /sys/kernel/debug
 
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
-    #change the permissions of storage for applications
-    mkdir /storage 0555 root sdcard_r
+    mkdir /storage 0050 system sdcard_r
     mkdir /storage/emulated 0555 root root
-
+    mkdir /storage/emulated/legacy 0555 root root
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
@@ -49,26 +48,15 @@ on init
     mkdir /storage/uicc1 0700 root root
     mkdir /storage/usbotg 0700 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/0
+    export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
     # Support legacy paths
-    symlink /storage/emulated/0 /sdcard
-    symlink /storage/emulated/0 /mnt/sdcard
-    symlink /storage/emulated/0 /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/0
-
-# Create cgroup mount point for freezer
-    mkdir /dev/frz
-    mount cgroup none /dev/frz freezer
-
-    chown system system /sys/module/mdss_dsi/parameters/dsi_status_disable
-
-#/* < DTS2014061400183 jingbing 20140614 start */
-    sys_wp_init_action
-#/* DTS2014061400183 jingbing 20140614 end > */
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -79,66 +67,8 @@ on early-boot
     write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
     write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
     write /sys/kernel/boot_adsp/boot 1
-    # set primary sd directory
-    exec_ev /system/bin/preparesd.sh
 
 on boot
-
-    write /proc/sys/vm/page-cluster 0
-
-    chown system system /sys/devices/12c.hw-dev-detect/dev_flag
-    chown system system /sys/touch_screen/touch_mmi_test
-    chown system system /sys/touch_screen/touch_calibration
-    chown system system /sys/touch_screen/synaptics_mmi_test_result
-    chown system system /sys/touch_screen/synaptics_mmi_test
-    chown system system /sys/touch_screen/holster_touch_window
-    chown system system /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
-    chown system system /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold 
-    chown system system /sys/touch_screen/glove_func/signal_disparity
-    chown system system /sys/touch_screen/glove_func/holster_sensitivity
-    chown system system /sys/touch_screen/glove_func/finger_threshold 
-    chown system system /sys/touch_screen/easy_wakeup_gesture
-    chown system system /sys/touch_screen/easy_wakeup_supported_gestures
-    chown system system /sys/touch_screen/easy_wakeup_position
-    chown system system /sys/touch_screen/openshort
-
-    chown root system /sys/class/power_supply/battery/charging_enabled
-    chown root system /sys/module/qpnp_linear_charger/parameters/charge_no_limit
-    chmod 0664 /sys/class/power_supply/battery/charging_enabled
-    chown system system /sys/class/power_supply/battery/factory_diag
-    chown system system /sys/class/power_supply/battery/hot_current_limit
-    chown system system /sys/class/power_supply/battery/input_current_max
-
-    chown system system /sys/class/leds/torch-light/brightness
-    chmod 666 /sys/class/leds/torch-light/brightness
-
-    chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
-    chmod 0644 /sys/devices/virtual/timed_output/vibrator/vtg_level
-
-    # Display Color Calibration
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-
-    chown system system /sys/devices/8789.huawei_hall_sensor/enable_hall_sensor
-    chown root system /sys/devices/soc0/huawei_product
-
-    chown system system /sys/class/graphics/fb0/mipi_crc
-
-    chown system system /sys/module/apds993x_ls/parameters/apds993x_debug
-    chmod 0664 /sys/module/apds993x_ls/parameters/apds993x_debug
-    chown system system /sys/module/kionix_accel/parameters/kx023_debug
-    chmod 0664 /sys/module/kionix_accel/parameters/kx023_debug
-    chown system system /sys/module/lis3dh_acc/parameters/lis3dh_debug
-    chmod 0664 /sys/module/lis3dh_acc/parameters/lis3dh_debug
-
-# Set these so we can remotely update SELinux policy
-    chown system system /sys/fs/selinux/load
-    chown system system /sys/fs/selinux/enforce
-
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -193,18 +123,29 @@ on boot
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
+    # For setting tcp delayed ack
+    chown system system /sys/kernel/ipv4/tcp_delack_seg
+    chown system system /sys/kernel/ipv4/tcp_use_userconfig
+
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
-    setprop net.tcp.buffersize.umts    4094,87380,330624,4096,16384,330624
-    setprop net.tcp.buffersize.hspa    4094,87380,3661824,4096,16384,3661824
-    setprop net.tcp.buffersize.hsupa   4094,87380,3661824,4096,16384,3661824
-    setprop net.tcp.buffersize.hsdpa   4094,87380,3661824,4096,16384,3661824
-    setprop net.tcp.buffersize.hspap   4094,87380,3661824,4096,16384,3661824
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
+
+# Define TCP delayed ack settings for WiFi & LTE
+    setprop net.tcp.delack.default     1
+    setprop net.tcp.delack.lte         8
+    setprop net.tcp.usercfg.default    0
+    setprop net.tcp.usercfg.wifi       1
+    setprop net.tcp.usercfg.lte        1
 
 #   Assign TCP buffer thresholds to be ceiling value of technology maximums
 #   Increased technology maximums should be reflected here.
@@ -241,28 +182,9 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-    mkdir /data/misc/wifi/load 0775 system system
-
-    # DTS2013112400485 tiandazhang/00107790 20131125 begin
-    mkdir /data/drm/rights 0770 drm drm
-    # DTS2013112400485 tiandazhang/00107790 20131125 end
-    #/* <DTS2012080201243 tiandazhang 20120802 begin */
-    mkdir /data/drm/widevine 0770 drm drm
-    #/* DTS2012080201243 tiandazhang 20120802 end> */
-
-    # DTS2014081000069 wangyong/00205756 20140811 begin sync DTS2013082803931
-    mkdir /data/midi
-    chmod 0770 /data/midi
-    chown media audio /data/midi
-    # DTS2014081000069 wangyong/00205756 20140811 end
-
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
-   
-    setprop ro.nfc.port "I2C"
-    chmod 0660 /dev/pn544
-    chown nfc nfc /dev/pn544
 
     # Set the console loglevel to < KERN_INFO
     # Set the default message loglevel to KERN_INFO
@@ -276,7 +198,6 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
-    mount sdcardfs /data/media /mnt/shell/emulated nosuid nodev derive=legacy,reserved_mb=20
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
@@ -284,7 +205,7 @@ on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0771 dhcp dhcp
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
     # Create the directories used by CnE subsystem
@@ -355,29 +276,6 @@ on post-fs-data
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
-on charger
-    write /sys/module/lpm_levels/enable_low_power/l2 4
-    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu1/power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu2/power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled 1
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
    class late_start
@@ -387,6 +285,26 @@ service usbhub_init /system/bin/usbhub_init
 
 service qcomsysd /system/bin/qcom-system-daemon
     class main
+
+service ssr_setup /system/bin/ssr_setup
+    oneshot
+    disabled
+
+service ssr_dump /system/bin/subsystem_ramdump
+    class main
+    user system
+    group system
+    disabled
+
+on property:persist.sys.ssr.restart_level=*
+    start ssr_setup
+
+on property:persist.sys.ssr.enable_ramdumps=1
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
+    start ssr_dump
+
+on property:persist.sys.ssr.enable_ramdumps=0
+    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
@@ -461,9 +379,7 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
 
 on property:persist.env.fastdorm.enabled=true
-    /*< DTS2014082509423 zhangyaqiong/00218167 20140826 begin */
-    setprop persist.radio.data_no_toggle 0
-    /* DTS2014082509423 zhangyaqiong/00218167 20140826 end >*/
+    setprop persist.radio.data_no_toggle 1
 
 service cnd /system/bin/cnd
     class late_start
@@ -478,7 +394,7 @@ service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /sbin/rmt_storage
+service rmt_storage /system/bin/rmt_storage
     class core
     user root
     disabled
@@ -514,7 +430,7 @@ service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin system
+    group bluetooth net_bt_admin
     disabled
     oneshot
 
@@ -637,7 +553,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dd \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -651,7 +567,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
+    -O/data/misc/wifi/sockets -dd \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -682,6 +598,11 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service ptt_socket_app /system/bin/ptt_socket_app -d
+    class main
+    user root
+    group root
+    oneshot
 
 service ptt_ffbm /system/bin/ptt_socket_app -f -d
     user root
@@ -776,9 +697,22 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    disabled
    oneshot
 
+service config-zram /system/bin/sh /system/etc/init.qcom.zram.sh
+   class late_start
+   user root
+   disabled
+   oneshot
+
+service config-video /system/bin/sh /system/etc/init.qti.video.sh
+   class late_start
+   user root
+   disabled
+   oneshot
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    start config-zram
+    start config-video
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -858,33 +792,29 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-#service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-#    class late_start
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+    class late_start
 
-service fuse_sdcard1rw /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-   class late_start
-   disabled
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-   class late_start
-   disabled
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
 
 service fuse_uicc0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc0 /storage/uicc0
-   class late_start
-   disabled
+    class late_start
+    disabled
 
 service fuse_uicc1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc1 /storage/uicc1
     class late_start
     disabled
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-   class late_start
-   disabled
+    class late_start
+    disabled
 
 # Binding fuse mount point to /storage/emulated/legacy
-#on property:init.svc.sdcard=running
-#    wait /mnt/shell/emulated/0
-#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
+on property:init.svc.sdcard=running
+    wait /mnt/shell/emulated/0
+    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
 
 service hcidump /system/bin/sh /system/etc/hcidump.sh
     user bluetooth
@@ -899,10 +829,6 @@ service ssr_diag /system/bin/ssr_diag
     class late_start
     user system
     group system
-
-# SSR setting
-on property:persist.sys.ssr.restart_level=*
-    exec /system/bin/sh /init.qcom.ssr.sh ${persist.sys.ssr.restart_level}
 
 # Define fastmmi
 service fastmmi /system/bin/mmi
@@ -979,162 +905,8 @@ service vm_bms /system/bin/vm_bms
     group root
     disabled
 
-#/*<DTS2014053003137 panruifeng wx204673 20140725 begin*/
-service server_agent /system/bin/server_agent
-  class main
-  user root
-  group root
-  disabled
-
-on property:sys.server_agent_onoff=1
-  start server_agent
-
-on property:sys.server_agent_onoff=0
-  stop server_agent
-#/*<DTS2014053003137 panruifeng wx204673 20140725 end*/
-
-on property:selinux.reload_policy=1
-    restart ueventd
-    restart installd
-
-#/* < DTS2014070713706  liulong 20140710 begin */
-service callife /system/bin/callife
+service msm_irqbalance /system/bin/msm_irqbalance -p 0,0,0,0,1,1,1,1
     class core
-    user system
-    group system
-#/*  DTS2014070713706  liulong 20140710 end >*/
-
-# DTS2014052901268 g00174749 add for cgroup begin
-service mc-manager /system/bin/mc-manager
-    class main
-    user root
-    oneshot
-# DTS2014052901268 g00174749 delete for cgroup end
-
-service ddrtest /system/bin/do_ddrtest
-    user root
-    disabled
-    oneshot
-
-service stop_ddrtest /system/bin/do_ddrtest
-    user root
-    disabled
-    oneshot
-
-on property:debug.rt.ddr.test=1
-    stop ddrtest
-    start ddrtest
-on property:debug.rt.ddr.test=2
-    start ddrtest
-on property:debug.rt.ddr.test=3
-    start ddrtest
-on property:debug.rt.ddr.test=4
-    start stop_ddrtest
-
-service gps_check /system/bin/gps_check
-    class main
     user root
     group root
-    oneshot
-
-#/*<DTS2014041105767 yedapeng 20140401 begin */
-service oeminfo_server /system/bin/oeminfo_server
-    class core
-    user root
-
-service rmt_oeminfo /sbin/rmt_oeminfo
-    class core
-    user root
-service usb_update /sbin/usb_update
-    class core
-    user root
-#/*DTS2014041105767 yedapeng 20140401 end>*/
-
-service libqmi_oem_main /sbin/libqmi_oem_main
-    class main
-
-service rebootmgr /system/bin/rebootmgr
-    class core
-    oneshot
-service test_diag /sbin/test_diag
-    user root
     disabled
-
-service wifi_aging /system/xbin/wifi_aging
-    user root
-    disabled
-    oneshot
-
-service wifi_power_off /system/xbin/wifi_power_off
-    user root
-    disabled
-    oneshot
-
-service BtWiRfServer /system/xbin/RfTest
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service bt_aging /system/xbin/bt_aging
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service bt_power_off /system/xbin/bt_power_off
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service huawei_version /sbin/huawei_version
-    class core
-    user root
-    oneshot
-
-service oem_sar_main /system/bin/oem_sar_main
-    class core
-    user root
-
-service send_data_srv /system/bin/send_data_srv
-    class core
-    user system
-    group system
-    disabled
-    oneshot
-
-on property:ro.runmode=factory
-    start send_data_srv
-
-service chargelog  /sbin/chargelog.sh 2 51200
-    class main
-    root charger
-
-service nfc_detect /system/bin/nfc_detect
-    class main
-    user root
-    group root
-    oneshot
-
-# for hwnff
-service hwnffserver /system/bin/hwnffserver
-    class core
-    oneshot
-
-service hwpged /system/bin/hwpged
-    class main
-    socket MsgHubSock stream 0660 root system
-    user root
-            
-on property:hw.accel.calib="true"
-    chmod 0664 /dev/input/event0
-    chmod 0664 /dev/input/event1
-    chmod 0664 /dev/input/event2
-    chmod 0664 /dev/input/event3
-    chmod 0664 /dev/input/event4
-    chmod 0664 /dev/input/event5
-    chmod 0664 /dev/input/event6
-    chmod 0664 /dev/input/event7
-    chmod 0664 /dev/input/event8
-    chmod 0664 /dev/input/event9

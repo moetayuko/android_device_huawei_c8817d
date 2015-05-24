@@ -29,10 +29,30 @@
 target=`getprop ro.board.platform`
 action=`getprop usb_uicc.enabled`
 
+if [ -f /sys/devices/soc0/soc_id ]; then
+    soc_hwid=`cat /sys/devices/soc0/soc_id`
+else
+    soc_hwid=`cat /sys/devices/system/soc/soc0/id`
+fi
+
+# No path is set up at this point so we have to do it here.
+PATH=/sbin:/system/sbin:/system/bin:/system/xbin
+export PATH
+
 uicc_insert()
 {
     case $target in
-    "msm8610"|"msm8916")
+    "msm8916")
+        if [ $soc_hwid == "239" ]; then
+            echo Y > /sys/module/ehci_msm_uicc/parameters/uicc_card_present
+            echo 79c0000.qcom,ehci-host  > /sys/bus/platform/drivers/msm_ehci_uicc/bind
+        elif [ $soc_hwid == "206" ]; then
+            insmod /system/lib/modules/ice40-hcd.ko
+        else
+            echo "The TARGET ID is $target hw $soc_hwid"
+        fi
+        ;;
+    "msm8610")
         insmod /system/lib/modules/ice40-hcd.ko
         ;;
     "msm8226")
@@ -50,7 +70,17 @@ uicc_insert()
 uicc_remove()
 {
     case $target in
-    "msm8610"|"msm8916")
+    "msm8916")
+        if [ $soc_hwid == "239" ]; then
+            echo 79c0000.qcom,ehci-host  > /sys/bus/platform/drivers/msm_ehci_uicc/unbind
+            echo N > /sys/module/ehci_msm_uicc/parameters/uicc_card_present
+        elif [ $soc_hwid == "206" ]; then
+            rmmod /system/lib/modules/ice40-hcd.ko
+        else
+            echo "The TARGET ID is $target hw $soc_hwid"
+        fi
+        ;;
+    "msm8610")
         rmmod /system/lib/modules/ice40-hcd.ko
         ;;
     "msm8226")
