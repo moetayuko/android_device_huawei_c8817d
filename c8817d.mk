@@ -303,17 +303,10 @@ PRODUCT_PACKAGES += \
 
 # Prebuilt binary
 PRODUCT_PACKAGES += \
-    chargelog.sh \
-    e2fsck_s \
     healthd \
-    huawei_version \
-    hw_scsi_switch \
-    libqmi_oem_main \
     rmt_oeminfo \
     rmt_storage \
-    test_diag \
-    test_oeminfo \
-    usb_update
+    test_diag
 
 # QRNGD
 PRODUCT_PACKAGES += \
