@@ -315,7 +315,6 @@ PRODUCT_PACKAGES += \
 
 # Recovery
 PRODUCT_PACKAGES += \
-    recoverylog.sh \
     minivold
 
 # Ramdisk
