@@ -1,0 +1,3 @@
+#Define vm_bms devices
+type vm_bms_device, dev_type;
+type battery_data_device, dev_type;

@@ -1,0 +1,10 @@
+###################################
+# Dev nodes
+#
+/dev/vm_bms                                     u:object_r:vm_bms_device:s0
+/dev/battery_data                               u:object_r:battery_data_device:s0
+
+###################################
+# System files
+#
+/sbin/vm_bms                                    u:object_r:vm_bms_exec:s0

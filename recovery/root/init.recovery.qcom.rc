@@ -1,0 +1,14 @@
+on init
+    mkdir /cust
+
+    # vm_bms
+    chown root system /sys/class/power_supply/bms/current_now
+    chown root system /sys/class/power_supply/bms/voltage_ocv
+    chmod 0664 /sys/class/power_supply/bms/current_now
+    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+    start vm_bms
+
+service vm_bms /sbin/vm_bms
+    user root
+    group root
+    disabled
