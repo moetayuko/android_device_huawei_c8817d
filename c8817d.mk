@@ -99,31 +99,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc-nci.conf:system/etc/nfc-nci.conf \
     $(LOCAL_PATH)/nfcee_access.xml:system/etc/nfcee_access.xml
 
-# Offmode charge
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/charger:root/charger \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/batt_level_scale.png:root/res/images/720x1280/batt_level_scale.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/batt_level_top.png:root/res/images/720x1280/batt_level_top.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/bg.png:root/res/images/720x1280/bg.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/empty_charge.png:root/res/images/720x1280/empty_charge.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/err_charge.png:root/res/images/720x1280/err_charge.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/full_charge.png:root/res/images/720x1280/full_charge.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_0.png:root/res/images/720x1280/number_0.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_1.png:root/res/images/720x1280/number_1.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_2.png:root/res/images/720x1280/number_2.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_3.png:root/res/images/720x1280/number_3.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_4.png:root/res/images/720x1280/number_4.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_5.png:root/res/images/720x1280/number_5.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_6.png:root/res/images/720x1280/number_6.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_7.png:root/res/images/720x1280/number_7.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_8.png:root/res/images/720x1280/number_8.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/number_9.png:root/res/images/720x1280/number_9.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/percent_10.png:root/res/images/720x1280/percent_10.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/percent_5.png:root/res/images/720x1280/percent_5.png \
-    $(LOCAL_PATH)/rootdir/res/images/720x1280/percent_sign.png:root/res/images/720x1280/percent_sign.png \
-    $(LOCAL_PATH)/rootdir/res/images/mmi/fail.png:root/res/images/mmi/fail.png \
-    $(LOCAL_PATH)/rootdir/res/images/mmi/pass.png:root/res/images/mmi/pass.png
-
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -195,6 +170,11 @@ PRODUCT_PACKAGES += \
     camera.msm8916 \
     libmmjpeg_interface \
     libqomx_core
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # CRDA
 PRODUCT_PACKAGES += \
