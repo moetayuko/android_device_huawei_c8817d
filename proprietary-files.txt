@@ -774,24 +774,6 @@ etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
-# Wfd
-vendor/lib/libmmwfdinterface.so
-vendor/lib/libmmwfdsinkinterface.so
-vendor/lib/libmmwfdsrcinterface.so
-vendor/lib/libwfdcommonutils.so
-vendor/lib/libwfdmmsink.so
-vendor/lib/libwfdmmsrc.so
-vendor/lib/libwfdmmutils.so
-vendor/lib/libwfdnative.so
-vendor/lib/libwfdrtsp.so
-vendor/lib/libwfdsm.so
-vendor/lib/libwfduibcinterface.so
-vendor/lib/libwfduibcsink.so
-vendor/lib/libwfduibcsinkinterface.so
-vendor/lib/libwfduibcsrc.so
-vendor/lib/libwfduibcsrcinterface.so
-vendor/lib/libwfdhdcpcp.so
-
 # WiFi
 bin/iperf
 bin/iw

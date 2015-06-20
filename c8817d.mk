@@ -72,8 +72,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/qlog-conf.xml:system/etc/qlog-conf.xml \
     $(LOCAL_PATH)/rootdir/system/etc/renice-loggers.sh:system/etc/renice-loggers.sh \
     $(LOCAL_PATH)/rootdir/system/etc/virtualNets-conf.xml:system/etc/virtualNets-conf.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/wfdconfig.xml:system/etc/wfdconfig.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/wfdconfigsink.xml:system/etc/wfdconfigsink.xml \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.rootagent.sh:system/etc/init.qcom.rootagent.sh
 
 PRODUCT_COPY_FILES += \
