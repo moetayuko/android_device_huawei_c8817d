@@ -966,85 +966,18 @@ service msm_irqbalance /system/bin/msm_irqbalance -p 0,0,0,0,1,1,1,1
     disabled
 
 # Huawei service
-#/* < DTS2014070713706  liulong 20140710 begin */
-service callife /system/bin/callife
-    class core
-    user system
-    group system
-#/*  DTS2014070713706  liulong 20140710 end >*/
-
-# DTS2014052901268 g00174749 add for cgroup begin
-service mc-manager /system/bin/mc-manager
-    class main
-    user root
-    oneshot
-# DTS2014052901268 g00174749 delete for cgroup end
-
-service gps_check /system/bin/gps_check
-    class main
-    user root
-    group root
-    oneshot
-
 #/*<DTS2014041105767 yedapeng 20140401 begin */
-service oeminfo_server /system/bin/oeminfo_server
-    class core
-    user root
-
 service rmt_oeminfo /sbin/rmt_oeminfo
-    class core
-    user root
-service usb_update /sbin/usb_update
     class core
     user root
 #/*DTS2014041105767 yedapeng 20140401 end>*/
 
-service libqmi_oem_main /sbin/libqmi_oem_main
-    class main
-
 service test_diag /sbin/test_diag
     user root
     disabled
-
-service BtWiRfServer /system/xbin/RfTest
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service bt_aging /system/xbin/bt_aging
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service bt_power_off /system/xbin/bt_power_off
-    user root
-    group bluetooth net_bt_admin system
-    disabled
-    oneshot
-
-service huawei_version /sbin/huawei_version
-    class core
-    user root
-    oneshot
-
-service oem_sar_main /system/bin/oem_sar_main
-    class core
-    user root
 
 #service nfc_detect /system/bin/nfc_detect
 #    class main
 #    user root
 #    group root
 #    oneshot
-
-# for hwnff
-service hwnffserver /system/bin/hwnffserver
-    class core
-    oneshot
-
-service hwpged /system/bin/hwpged
-    class main
-    socket MsgHubSock stream 0660 root system
-    user root

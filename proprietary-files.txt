@@ -521,13 +521,20 @@ etc/cne/NsrmConfiguration.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 lib/libcnefeatureconfig.so
-vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
 vendor/lib/libcneutils.so
 
 # FIX-ME! For get_app_info only, required by camera blobs
 lib/libcutils.so
+
+# Diag
+bin/diag_callback_client
+bin/diag_dci_sample
+bin/diag_klog
+bin/diag_qshrink4_daemon
+bin/diag_socket_log
+bin/diag_uart_log
 
 # DRM
 bin/qseecomd
@@ -550,6 +557,7 @@ vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
 # DPM
+bin/dpmd
 vendor/lib/libdpmctmgr.so
 vendor/lib/libdpmfdmgr.so
 vendor/lib/libdpmframework.so
@@ -588,7 +596,6 @@ bin/fm_qsoc_patches
 -priv-app/com.qualcomm.location.apk
 bin/garden_app
 bin/gpsone_daemon
-bin/gps_check
 bin/location-mq
 bin/loc_launcher
 bin/lowi-server
@@ -713,60 +720,17 @@ vendor/lib/libOmxMux.so
 vendor/lib/libSHIMDivxDrm.so
 
 # Misc
-bin/bootanimationex
-bin/brctl
-bin/bridgemgrd
-bin/callife
-bin/device_monitor
-bin/diag_callback_client
-bin/diag_dci_sample
-bin/diag_socket_log
-bin/diag_uart_log
-bin/dsdnsutil
-bin/do_ddrtest
-bin/dpmd
-bin/ds_fmc_appd
-bin/hwnff
-bin/hwnffserver
-bin/diag_klog
-bin/iperf
-bin/isdbtmmtest
-bin/iw
-bin/iwconfig
-bin/iwlist
-bin/iwpriv
-bin/mc-manager
-bin/mcDriverDaemon
-bin/modempre
 bin/nl_listener
-bin/n_smux
-bin/nvext
-bin/oeminfo_server
-bin/oem_sar_main
-bin/port-bridge
-bin/preparesd.sh
-bin/qseecom_sample_client
-bin/diag_qshrink4_daemon
-bin/rmnetcli
-bin/send_data_srv
-bin/StoreKeybox
 bin/subsystem_ramdump
 bin/usb_uicc_client
 bin/wdsdaemon
 xbin/qlogd
 
 # Nfc
-bin/nfc_detect
-lib/hw/nfc_nci_pn547.default.so
-lib/libnfc_nci_jni_nxp.so
-lib/libnfc_ndef.so
-lib/libnfc-nci-nxp.so
-etc/libnfc-brcm.conf
-etc/libnfc-nxp.conf
-vendor/firmware/libpn547_fw.so
-vendor/lib/hw/nfc_nci.msm8916.so
-vendor/lib/libnfcD_nci_jni.so
-vendor/lib/libnfcD-nci.so
+#bin/nfc_detect
+#lib/hw/nfc_nci_pn547.default.so
+#vendor/firmware/libpn547_fw.so
+#vendor/lib/hw/nfc_nci.msm8916.so
 
 # Perf
 bin/mpdecision
@@ -806,10 +770,14 @@ vendor/lib/libqmiservices.so
 # Radio
 -app/qcrilmsgtunnel.apk
 bin/ATFWD-daemon
+bin/bridgemgrd
+bin/ds_fmc_appd
 bin/netmgrd
+bin/port-bridge
 bin/qmuxd
 bin/radish
 bin/rfs_access
+bin/rmnetcli
 bin/qmiproxy
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
@@ -817,6 +785,8 @@ etc/permissions/qcrilhook.xml
 -framework/qcrilhook.jar
 lib/liboeminfo_oem_api.so
 lib/libril.so
+lib/librmnetctl.so
+vendor/lib/libcneapiclient.so
 vendor/lib/libCommandSvc.so
 vendor/lib/libconfigdb.so
 vendor/lib/libnetmgr.so
@@ -861,17 +831,16 @@ vendor/lib/libwfduibcsink.so
 vendor/lib/libwfduibcsinkinterface.so
 vendor/lib/libwfduibcsrc.so
 vendor/lib/libwfduibcsrcinterface.so
+vendor/lib/libwfdhdcpcp.so
 
 # WiFi
+bin/iperf
+bin/iw
+bin/iwconfig
+bin/iwlist
+bin/iwpriv
 bin/ptt_socket_app
 bin/wcnss_filter
-xbin/wifi_aging
-xbin/wifi_power_off
-
-# Wnn
-lib/libwnndict.so
-lib/libWnnEngDic.so
-lib/libWnnJpnDic.so
 
 # Unknown
 vendor/lib/libGPTEE.so
@@ -886,10 +855,6 @@ vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
 vendor/lib/libtzplayready.so
 vendor/lib/libvoice-svc.so
-vendor/lib/libwfdhdcpcp.so
 lib/liballjoyn.so
-lib/libdexanalysis.so
 lib/libextendedremotedisplay.so
 lib/libhwnv.so
-lib/libixml.so
-lib/librmnetctl.so
