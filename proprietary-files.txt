@@ -514,17 +514,6 @@ etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
 
-# Cne
-bin/cnd
-etc/cne/andsfCne.xml
-etc/cne/NsrmConfiguration.xml
-etc/cne/SwimConfig.xml
-etc/permissions/cneapiclient.xml
-lib/libcnefeatureconfig.so
-vendor/lib/libcneconn.so
-vendor/lib/libcneqmiutils.so
-vendor/lib/libcneutils.so
-
 # FIX-ME! For get_app_info only, required by camera blobs
 lib/libcutils.so
 
