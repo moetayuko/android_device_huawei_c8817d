@@ -24,32 +24,15 @@ bin/vm_bms
 
 # Bluetooth
 bin/btnvtool
-bin/dun-server
-bin/ftmdaemon
 bin/hci_qcomm_init
-bin/sapd
-lib/libbluedroid.so
-lib/libbtaddr.so
-lib/libbtinfo.so
-lib/libbtpower.so
 vendor/lib/libbtnv.so
-vendor/lib/liboi_sbc_decoder.so
 
 # Camera
 bin/mm-qcamera-daemon
 lib/libchromatix_imx135_liveshot.so
-lib/libhdr.so
 lib/liboeminfo.so
-lib/libOmxVdecHevc.so
 lib/libmmcamera_interface.so
 lib/libmm-qcamera.so
-lib/libmrc_cg_mfdenoise.so
-lib/libmrc_cg_postprocess.so
-lib/libtrack.so
-lib/libFaceDetection.so
-lib/libRefocusContrastPosition.so
-lib/libBestShot.so
-lib/libSmartAE.so
 vendor/lib/libactuator_a3907.so
 vendor/lib/libactuator_a3907_camcorder.so
 vendor/lib/libactuator_a3907_camera.so
@@ -407,7 +390,6 @@ vendor/lib/libchromatix_skuf_ov12830_p12v01c_preview.so
 vendor/lib/libchromatix_skuf_ov12830_p12v01c_snapshot.so
 vendor/lib/libchromatix_skuf_ov12830_p12v01c_video_hd.so
 vendor/lib/libchromatix_skuf_ov12830_p12v01c_zsl.so
-vendor/lib/libdsucsd.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
@@ -491,19 +473,9 @@ vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_truly_cm7700_eeprom.so
 vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libmmhttpstack.so
-vendor/lib/libmmi.so
-vendor/lib/libmmiipstreammmihttp.so
 vendor/lib/libmmipl.so
-vendor/lib/libmmipstreamaal.so
-vendor/lib/libmmipstreamnetwork.so
-vendor/lib/libmmipstreamsourcehttp.so
-vendor/lib/libmmipstreamutils.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmQTA.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
@@ -517,18 +489,9 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 # FIX-ME! For get_app_info only, required by camera blobs
 lib/libcutils.so
 
-# Diag
-bin/diag_callback_client
-bin/diag_dci_sample
-bin/diag_klog
-bin/diag_qshrink4_daemon
-bin/diag_socket_log
-bin/diag_uart_log
-
 # DRM
 bin/qseecomd
 lib/libdrmdecrypt.so
-lib/libWVphoneAPI.so
 lib/drm/libdrmhwomavoneplugin.so
 vendor/lib/drm/libdrmprplugin.so
 vendor/lib/drm/libdrmwvmplugin.so
@@ -539,6 +502,7 @@ vendor/lib/libprdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
+vendor/lib/libtzplayready.so
 vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L3.so
@@ -676,6 +640,7 @@ vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
+vendor/lib/libvoice-svc.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/libmmrtpencoder.so
 
@@ -690,6 +655,7 @@ vendor/lib/liblistensoundmodel2.so
 vendor/lib/liblisten.so
 
 # Media
+lib/libOmxVdecHevc.so
 vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFileMux.so
@@ -772,6 +738,7 @@ etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
+lib/libhwnv.so
 lib/liboeminfo_oem_api.so
 lib/libril.so
 lib/librmnetctl.so
@@ -808,6 +775,9 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # Wfd
+vendor/lib/libmmwfdinterface.so
+vendor/lib/libmmwfdsinkinterface.so
+vendor/lib/libmmwfdsrcinterface.so
 vendor/lib/libwfdcommonutils.so
 vendor/lib/libwfdmmsink.so
 vendor/lib/libwfdmmsrc.so
@@ -830,20 +800,3 @@ bin/iwlist
 bin/iwpriv
 bin/ptt_socket_app
 bin/wcnss_filter
-
-# Unknown
-vendor/lib/libGPTEE.so
-vendor/lib/libImageRemovalCloningJNI.so
-vendor/lib/libmm-disp-apis.so
-vendor/lib/libmm-qdcm.so
-vendor/lib/libmmwfdinterface.so
-vendor/lib/libmmwfdsinkinterface.so
-vendor/lib/libmmwfdsrcinterface.so
-vendor/lib/libsd_sdk_display.so
-vendor/lib/libsubsystem_control.so
-vendor/lib/libSubSystemShutdown.so
-vendor/lib/libtzplayready.so
-vendor/lib/libvoice-svc.so
-lib/liballjoyn.so
-lib/libextendedremotedisplay.so
-lib/libhwnv.so

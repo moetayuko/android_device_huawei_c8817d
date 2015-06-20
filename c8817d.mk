@@ -267,7 +267,6 @@ PRODUCT_PACKAGES += \
 
 # Prebuilt binary
 PRODUCT_PACKAGES += \
-    healthd \
     rmt_oeminfo \
     rmt_storage \
     test_diag
