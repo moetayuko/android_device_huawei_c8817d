@@ -60,14 +60,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:system/etc/sec_config
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/capability.xml:system/etc/capability.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/device_state_monitor.conf:system/etc/device_state_monitor.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/globalAutoAdapt-conf.xml:system/etc/globalAutoAdapt-conf.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/globalMatchs-conf.xml:system/etc/globalMatchs-conf.xml \
     $(LOCAL_PATH)/rootdir/system/etc/qlog-conf.xml:system/etc/qlog-conf.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/renice-loggers.sh:system/etc/renice-loggers.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/virtualNets-conf.xml:system/etc/virtualNets-conf.xml \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.rootagent.sh:system/etc/init.qcom.rootagent.sh
 
 PRODUCT_COPY_FILES += \
