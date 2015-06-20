@@ -647,13 +647,6 @@ vendor/lib/libmmrtpencoder.so
 # LD_PRELOAD
 vendor/lib/libNimsWrap.so
 
-# Listen service
-vendor/lib/liblistenhardware.so
-vendor/lib/liblistenjni.so
-vendor/lib/liblistensoundmodel.so
-vendor/lib/liblistensoundmodel2.so
-vendor/lib/liblisten.so
-
 # Media
 lib/libOmxVdecHevc.so
 vendor/lib/libDivxDrm.so

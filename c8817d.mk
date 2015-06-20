@@ -59,10 +59,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:system/etc/sec_config
 
-# Listen configuration file
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/listen_platform_info.xml:system/etc/listen_platform_info.xml
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/capability.xml:system/etc/capability.xml \
     $(LOCAL_PATH)/rootdir/system/etc/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
