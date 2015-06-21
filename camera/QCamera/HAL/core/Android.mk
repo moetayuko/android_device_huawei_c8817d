@@ -105,9 +105,9 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
-LOCAL_C_INCLUDES += hardware/qcom/display-caf-c8817d/libgralloc \
-        hardware/qcom/display-caf-c8817d/libgenlock \
-        hardware/qcom/media-caf-c8817d/libstagefrighthw
+LOCAL_C_INCLUDES += hardware/qcom/display-caf-new/libgralloc \
+        hardware/qcom/display-caf-new/libgenlock \
+        hardware/qcom/media-caf-new/libstagefrighthw
 
 # if debug service layer and up , use stub camera!
 LOCAL_C_INCLUDES += \

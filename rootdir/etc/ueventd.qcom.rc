@@ -195,3 +195,6 @@
 
 # ESOC devices
 /dev/subsys_esoc*         0640   system     radio
+
+# Ramdump devices
+/dev/ramdump*             0640   system     system

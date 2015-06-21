@@ -493,7 +493,7 @@ int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
 			SensorBase* const sensor(mSensors[i]);
 			if ((mPollFds[i].revents & POLLIN) || (sensor->hasPendingEvents())) {
 				int nb = sensor->readEvents(data, count);
-				if (nb < count) {
+				if (nb <= count) {
 					// no more data for this sensor
 					mPollFds[i].revents = 0;
 				}

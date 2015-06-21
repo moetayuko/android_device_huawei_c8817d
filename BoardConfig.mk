@@ -23,8 +23,6 @@ LOCAL_PATH := device/huawei/c8817d
 
 -include vendor/huawei/c8817d/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
@@ -52,6 +50,8 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 BOARD_USES_ALSA_AUDIO := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 AUDIO_FEATURE_MDM_DETECT := true
+AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+TARGET_USES_QCOM_MM_AUDIO := true
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -74,9 +74,10 @@ PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Graphics
-TARGET_QCOM_DISPLAY_VARIANT := caf-c8817d
+TARGET_QCOM_DISPLAY_VARIANT := caf-new
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
+TARGET_HAVE_NEW_GRALLOC := true
 TARGET_HAVE_HDMI_OUT := false
 TARGET_USES_OVERLAY := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -89,7 +90,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
 
 # Hardware
-#BOARD_HARDWARE_CLASS := device/huawei/c8817d/cmhw
+BOARD_HARDWARE_CLASS := device/huawei/c8817d/cmhw
 
 # Init
 TARGET_UNIFIED_DEVICE := true
@@ -100,7 +101,7 @@ TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_c8817d.c
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x80000100
@@ -109,9 +110,16 @@ BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
 TARGET_KERNEL_CONFIG := hw_msm8916_defconfig
 
+WLAN_MODULES:
+	mkdir -p $(KERNEL_MODULES_OUT)/pronto
+	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/pronto/pronto_wlan.ko
+	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
+
+TARGET_KERNEL_MODULES += WLAN_MODULES
+
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_MEDIA_VARIANT := caf-c8817d
+TARGET_QCOM_MEDIA_VARIANT := caf-new
 
 # Partitions
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
@@ -140,8 +148,7 @@ PROTOBUF_SUPPORTED := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
-TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/init.rc
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 DEVICE_RESOLUTION := 720x1280

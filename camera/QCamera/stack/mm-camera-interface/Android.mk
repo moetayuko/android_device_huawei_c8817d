@@ -42,7 +42,7 @@ LOCAL_C_INCLUDES += \
     $(TARGET_OUT_HEADERS)/mm-still/mm-omx
 # (END) Need to remove later once dependency on jpeg removed
 
-LOCAL_C_INCLUDES+= hardware/qcom/media-caf-c8817d/mm-core/inc
+LOCAL_C_INCLUDES+= hardware/qcom/media-caf-new/mm-core/inc
 LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/socket.h
 LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/un.h
 

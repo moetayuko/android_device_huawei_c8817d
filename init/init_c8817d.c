@@ -71,8 +71,16 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.config.cdma.globalMode", "true");
         property_set("ro.config.dsds_mode", "cdma_gsm");
         property_set("ro.com.android.dataroaming","true");
-        property_set("ro.build.description", "C8817D-user 4.4.4 GRJ90 C92B246 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/C8817D/hwC8817D:4.4.4/HuaweiC8817D/C92B246:user/release-keys");
+        property_set("ro.build.description", "C8817D-user 4.4.4 GRJ90 C92B381 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/C8817D/hwC8817D:4.4.4/HuaweiC8817D/C92B381:user/release-keys");
+    }
+    /* C8817E */
+    else if (strstr(model, "C8817E") != NULL) {
+        property_set("ro.product.model", "HUAWEI C8817E");
+        property_set("ro.product.name", "C8817E");
+        property_set("ro.telephony.default_network", "8");
+        property_set("ro.build.description", "C8817E-user 4.4.4 GRJ90 C92B380 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/C8817E/hwC8817E:4.4.4/HuaweiC8817E/C92B380:user/release-keys");
     }
     /* G621-TL00 */
     else if (strstr(model, "G621-TL00") != NULL) {
@@ -82,8 +90,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.dsds.enabled", "true");
         property_set("ro.telephony.default_network", "17");
         property_set("ro.config.dsds_mode", "umts_gsm");
-        property_set("ro.build.description", "G621-TL00-user 4.4.4 GRJ90 C01B246SP01 release-keys");
-        property_set("ro.build.fingerprint", "Honor/G621-TL00/hwG621-TL00:4.4.4/HonorG621-TL00/C01B246SP01:user/release-keys");
+        property_set("ro.build.description", "G621-TL00-user 4.4.4 GRJ90 C01B361SP01 release-keys");
+        property_set("ro.build.fingerprint", "Honor/G621-TL00/hwG621-TL00:4.4.4/HonorG621-TL00/C01B361SP01:user/release-keys");
     }
     /* G620S-UL00 */
     else if (strstr(model, "G620S-UL") != NULL) {
@@ -101,8 +109,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.product.model", "G620S-L01");
         property_set("ro.product.name", "G620S-L01");
         property_set("ro.telephony.default_network", "9");
-        property_set("ro.build.description", "G620S-L01-user 4.4.4 GRJ90 C00B246 release-keys");
-        property_set("ro.build.fingerprint", "Huawei/G620S-L01/hwG620S-L01:4.4.4/HuaweiG620S-L01/C00B246:user/release-keys");
+        property_set("ro.build.description", "G620S-L01-user 4.4.4 GRJ90 C00B380 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/G620S-L01/hwG620S-L01:4.4.4/HuaweiG620S-L01/C00B380:user/release-keys");
     }
     /* Che1-CL20 */
     else if (strstr(model, "Che1-CL20") != NULL) {
@@ -115,8 +123,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.cdma.home.operator.numeric", "46003");
         property_set("ro.config.cdma.globalMode", "true");
         property_set("ro.config.dsds_mode", "cdma_gsm");
-        property_set("ro.build.description", "Che1-CL20-user 4.4.4 GRJ90 C00B255 release-keys");
-        property_set("ro.build.fingerprint", "Honor/Che1-CL20/Che1:4.4.4/Che1-CL20/C00B255:user/ota-rel-keys,release-keys");
+        property_set("ro.build.description", "Che1-CL20-user 4.4.4 GRJ90 C00B275 release-keys");
+        property_set("ro.build.fingerprint", "Honor/Che1-CL20/Che1:4.4.4/Che1-CL20/C00B275:user/ota-rel-keys,release-keys");
     }
     /* Che1-CL10 */
     else if (strstr(model, "Che1-CL10") != NULL) {
@@ -130,7 +138,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.config.cdma.globalMode", "true");
         property_set("ro.config.dsds_mode", "cdma_gsm");
         property_set("ro.com.android.dataroaming","true");
-        property_set("ro.build.description", "Che1-CL10-user 4.4.4 GRJ90 C92B255 release-keys");
-        property_set("ro.build.fingerprint", "Honor/Che1-CL10/Che1:4.4.4/Che1-CL10/C92B255:user/ota-rel-keys,release-keys");
+        property_set("ro.build.description", "Che1-CL10-user 4.4.4 GRJ90 C92B275 release-keys");
+        property_set("ro.build.fingerprint", "Honor/Che1-CL10/Che1:4.4.4/Che1-CL10/C92B275:user/ota-rel-keys,release-keys");
     }
 }

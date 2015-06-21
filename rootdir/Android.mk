@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2015 The MoKee OpenSource Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -214,58 +214,17 @@ LOCAL_SRC_FILES    := etc/init.qcom.uicc.sh
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.qcom.rootagent.sh
+LOCAL_MODULE       := init.qcom.zram.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.rootagent.sh
+LOCAL_SRC_FILES    := etc/init.qcom.zram.sh
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := chargelog.sh
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := e2fsck_s
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := healthd
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := huawei_version
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := hw_scsi_switch
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := libqmi_oem_main
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
+LOCAL_MODULE       := init.qti.video.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.qti.video.sh
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -286,22 +245,6 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := test_diag
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := test_oeminfo
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin
-LOCAL_SRC_FILES := sbin/$(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := usb_update
 LOCAL_MODULE_TAGS := eng
 LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES_LOCAL
 LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)/sbin

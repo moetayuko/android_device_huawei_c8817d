@@ -337,26 +337,108 @@ esac
 
 case "$target" in
     "msm8916")
-        echo 4 > /sys/module/lpm_levels/enable_low_power/l2
-        echo 1 > /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu1/power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu2/power_collapse/idle_enabled
-        echo 1 > /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled
-        echo 1 > /sys/devices/system/cpu/cpu1/online
-        echo 1 > /sys/devices/system/cpu/cpu2/online
-        echo 1 > /sys/devices/system/cpu/cpu3/online
+       if [ -f /sys/devices/soc0/soc_id ]; then
+            soc_id=`cat /sys/devices/soc0/soc_id`
+        else
+            soc_id=`cat /sys/devices/system/soc/soc0/id`
+        fi
+        case "$soc_id" in
+            "206" | "247" | "248" | "249" | "250")
+	        echo Y > /sys/module/lpm_levels/system/cpu0/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/wfi/idle_enabled
+	        echo Y > /sys/module/lpm_levels/system/cpu0/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu0/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu0/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/l2-gdhs/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/l2-gdhs/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/l2-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/l2-pc/suspend_enabled
+		echo 1 > /sys/devices/system/cpu/cpu1/online
+	        echo 1 > /sys/devices/system/cpu/cpu2/online
+	        echo 1 > /sys/devices/system/cpu/cpu3/online
+		;;
+            "239" | "241" | "263")
+		echo Y > /sys/module/lpm_levels/system/performance/cpu0/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu1/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu2/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu3/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu4/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu5/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu6/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu7/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu0/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu1/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu2/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu3/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu4/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu5/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu6/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu7/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu0/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu1/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu2/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu3/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu4/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu5/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu6/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu7/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu0/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu1/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu2/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/cpu3/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu4/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu5/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu6/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/power/cpu7/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/power/power-l2-active/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/power-l2-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/performance-l2-active/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/performance-l2-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/power/power-l2-pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/performance/performance-l2-pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-active/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-retention/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-pc/suspend_enabled
+		echo 10 > /sys/class/net/rmnet0/queues/rx-0/rps_cpus
+		;;
+	"233" | "240" | "242")
+	        echo Y > /sys/module/lpm_levels/system/cpu0/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/wfi/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/wfi/idle_enabled
+	        echo Y > /sys/module/lpm_levels/system/cpu0/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/standalone_pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu0/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu0/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu1/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu2/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/cpu3/pc/suspend_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-active-l2-gdhs/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-retention-l2-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-pc-l2-pc/idle_enabled
+		echo Y > /sys/module/lpm_levels/system/system-cci-pc-l2-pc/suspend_enabled
+		echo 1 > /sys/devices/system/cpu/cpu1/online
+	        echo 1 > /sys/devices/system/cpu/cpu2/online
+	        echo 1 > /sys/devices/system/cpu/cpu3/online
+		;;
+	esac
     ;;
 esac
 
@@ -454,16 +536,107 @@ esac
 
 case "$target" in
     "msm8916")
-        echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-        echo "25000 1094400:50000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-        echo 90 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-        echo 25000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-        echo 998400 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-        echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-        echo "85 998400:90 1094400:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
-        echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-        echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
-        echo 800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+        if [ -f /sys/devices/soc0/soc_id ]; then
+           soc_id=`cat /sys/devices/soc0/soc_id`
+        else
+           soc_id=`cat /sys/devices/system/soc/soc0/id`
+        fi
+
+        # Apply governor settings for 8916
+        case "$soc_id" in
+            "206" | "247" | "248" | "249" | "250")
+                echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                echo "25000 1094400:50000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+                echo 90 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+                echo 25000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+                echo 998400 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+                echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+                echo "1 800000:85 998400:90 1094400:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
+                echo 800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+            ;;
+        esac
+
+	# Apply governor settings for 8936
+        case "$soc_id" in
+	    "233" | "240" | "242")
+                echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                echo "25000 1113600:50000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+                echo 90 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+                echo 25000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+                echo 960000 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+                echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+                echo "1 800000:85 1113600:90 1267200:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
+                echo 800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+            ;;
+        esac
+
+        # Apply governor settings for 8939
+        case "$soc_id" in
+            "239" | "241" | "263")
+	        # Apply HMP Task packing for 8939
+                echo 20 > /proc/sys/kernel/sched_small_task
+                echo 30 > /proc/sys/kernel/sched_mostly_idle_load
+                echo 3 > /proc/sys/kernel/sched_mostly_idle_nr_run
+
+		for devfreq_gov in /sys/class/devfreq/qcom,cpubw*/governor
+		do
+                         echo "bw_hwmon" > $devfreq_gov
+                         for cpu_io_percent in /sys/class/devfreq/qcom,cpubw*/bw_hwmon/io_percent
+                         do
+                                echo 20 > $cpu_io_percent
+                         done
+		done
+
+		for gpu_bimc_io_percent in /sys/class/devfreq/qcom,gpubw*/bw_hwmon/io_percent
+		do
+			 echo 40 > $gpu_bimc_io_percent
+		done
+
+                # enable governor for perf cluster
+                echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                echo "20000 1113600:50000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+                echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+                echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+                echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+                echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
+                echo "1 960000:85 1113600:90 1344000:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+                echo 50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
+                echo 50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
+                echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+                # enable governor for power cluster
+		# disable thermal core_control for updating little cluster scaling_min_freq
+                echo 0 > /sys/module/msm_thermal/core_control/enabled
+                echo 1 >/sys/devices/system/cpu/cpu4/online
+                echo "interactive" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+                echo "25000 800000:50000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
+                echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
+                echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
+                echo 998400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+                echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
+                echo "1 800000:90" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+                echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
+                echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/sampling_down_factor
+                echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+		echo 1 > /sys/module/msm_thermal/core_control/enabled
+
+		echo 1 > /sys/devices/system/cpu/cpu1/online
+	        echo 1 > /sys/devices/system/cpu/cpu2/online
+	        echo 1 > /sys/devices/system/cpu/cpu3/online
+	        echo 1 > /sys/devices/system/cpu/cpu4/online
+                echo 1 > /sys/devices/system/cpu/cpu5/online
+                echo 1 > /sys/devices/system/cpu/cpu6/online
+                echo 1 > /sys/devices/system/cpu/cpu7/online
+                # HMP scheduler (big.Little cluster related) settings
+                echo 75 > /proc/sys/kernel/sched_upmigrate
+                echo 60 > /proc/sys/kernel/sched_downmigrate
+		echo 5 > /proc/sys/kernel/sched_ravg_hist_size
+            ;;
+        esac
     ;;
 esac
 
@@ -628,8 +801,32 @@ esac
 
 # Post-setup services
 case "$target" in
-    "msm8660" | "msm8960" | "msm8226" | "msm8610" | "mpq8092" | "msm8916")
+    "msm8660" | "msm8960" | "msm8226" | "msm8610" | "mpq8092" )
         start mpdecision
+    ;;
+    "msm8916")
+	if [ -f /sys/devices/soc0/soc_id ]; then
+           soc_id=`cat /sys/devices/soc0/soc_id`
+        else
+           soc_id=`cat /sys/devices/system/soc/soc0/id`
+        fi
+	case "$soc_id" in
+             "239" | "241" | "263")
+            setprop ro.min_freq_0 960000
+            setprop ro.min_freq_4 800000
+            start perfd
+	;;
+	#for 8916
+	     "206" | "247" | "248" | "249" | "250")
+            setprop ro.min_freq_0 800000
+            start mpdecision
+	;;
+	#for 8936
+             "233" | "240" | "242")
+             setprop ro.min_freq_0 800000
+             start mpdecision
+	;;
+	esac
     ;;
     "msm8974")
         start mpdecision

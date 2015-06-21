@@ -22,103 +22,61 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # media_profiles and media_codecs xmls for 8916
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-    device/huawei/c8817d/media/media_codecs_8916.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/audio_policy.conf:system/etc/audio_policy.conf \
-    device/huawei/c8817d/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-    device/huawei/c8817d/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
-    device/huawei/c8817d/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
-    device/huawei/c8817d/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
-    device/huawei/c8817d/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    $(LOCAL_PATH)/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+    $(LOCAL_PATH)/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+    $(LOCAL_PATH)/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
+    $(LOCAL_PATH)/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
+    $(LOCAL_PATH)/mixer_paths_wcd9306.xml:system/etc/mixer_paths_wcd9306.xml \
+    $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Audio calibration
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
-    device/huawei/c8817d/audio/General_cal.acdb:system/etc/General_cal.acdb \
-    device/huawei/c8817d/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
-    device/huawei/c8817d/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
-    device/huawei/c8817d/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
-    device/huawei/c8817d/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
-    device/huawei/c8817d/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
+    $(LOCAL_PATH)/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/audio/General_cal.acdb:system/etc/General_cal.acdb \
+    $(LOCAL_PATH)/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
+    $(LOCAL_PATH)/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
+    $(LOCAL_PATH)/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
+    $(LOCAL_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
+    $(LOCAL_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
 
 # Diag cfg
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/rootdir/etc/DiagCfg/Diag.cfg:system/etc/DiagCfg/Diag.cfg
+    $(LOCAL_PATH)/rootdir/system/etc/DiagCfg/Diag.cfg:system/etc/DiagCfg/Diag.cfg
 
 # DPM
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/rootdir/etc/dpm/fdMgr/fd.conf:system/etc/dpm/fdMgr/fd.conf
+    $(LOCAL_PATH)/rootdir/system/etc/dpm/fdMgr/fd.conf:system/etc/dpm/fdMgr/fd.conf
 
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/sec_config:system/etc/sec_config
-
-# Listen configuration file
-PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    $(LOCAL_PATH)/sec_config:system/etc/sec_config
 
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/rootdir/etc/capability.xml:system/etc/capability.xml \
-    device/huawei/c8817d/rootdir/etc/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
-    device/huawei/c8817d/rootdir/etc/device_state_monitor.conf:system/etc/device_state_monitor.conf \
-    device/huawei/c8817d/rootdir/etc/globalAutoAdapt-conf.xml:system/etc/globalAutoAdapt-conf.xml \
-    device/huawei/c8817d/rootdir/etc/globalMatchs-conf.xml:system/etc/globalMatchs-conf.xml \
-    device/huawei/c8817d/rootdir/etc/qlog-conf.xml:system/etc/qlog-conf.xml \
-    device/huawei/c8817d/rootdir/etc/renice-loggers.sh:system/etc/renice-loggers.sh \
-    device/huawei/c8817d/rootdir/etc/virtualNets-conf.xml:system/etc/virtualNets-conf.xml \
-    device/huawei/c8817d/rootdir/etc/wfdconfig.xml:system/etc/wfdconfig.xml \
-    device/huawei/c8817d/rootdir/etc/wfdconfigsink.xml:system/etc/wfdconfigsink.xml
+    $(LOCAL_PATH)/rootdir/system/etc/qlog-conf.xml:system/etc/qlog-conf.xml \
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.rootagent.sh:system/etc/init.qcom.rootagent.sh
 
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/whitelist_appops.xml:system/etc/whitelist_appops.xml
+    $(LOCAL_PATH)/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    device/huawei/c8817d/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/huawei/c8817d/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
-    device/huawei/c8817d/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    kernel/huawei/msm8916/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
+    $(LOCAL_PATH)/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Logmask
 PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/rootdir/etc/logmask/default_diag_mask.cfg:system/etc/logmask/default_diag_mask.cfg \
-    device/huawei/c8817d/rootdir/etc/logmask/dynamic_debug_mask.cfg:system/etc/logmask/dynamic_debug_mask.cfg \
-    device/huawei/c8817d/rootdir/etc/logmask/qdss.cfg:system/etc/logmask/qdss.cfg
-
-# Nfc
-PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/hardfault.cfg:system/etc/nfc/hardfault.cfg \
-    device/huawei/c8817d/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/huawei/c8817d/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    device/huawei/c8817d/nfc-nci.conf:system/etc/nfc-nci.conf \
-    device/huawei/c8817d/nfcee_access.xml:system/etc/nfcee_access.xml
-
-# Offmode charge
-PRODUCT_COPY_FILES += \
-    device/huawei/c8817d/rootdir/charger:root/charger \
-    device/huawei/c8817d/rootdir/res/images/720x1280/batt_level_scale.png:root/res/images/720x1280/batt_level_scale.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/batt_level_top.png:root/res/images/720x1280/batt_level_top.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/bg.png:root/res/images/720x1280/bg.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/empty_charge.png:root/res/images/720x1280/empty_charge.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/err_charge.png:root/res/images/720x1280/err_charge.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/full_charge.png:root/res/images/720x1280/full_charge.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_0.png:root/res/images/720x1280/number_0.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_1.png:root/res/images/720x1280/number_1.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_2.png:root/res/images/720x1280/number_2.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_3.png:root/res/images/720x1280/number_3.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_4.png:root/res/images/720x1280/number_4.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_5.png:root/res/images/720x1280/number_5.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_6.png:root/res/images/720x1280/number_6.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_7.png:root/res/images/720x1280/number_7.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_8.png:root/res/images/720x1280/number_8.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/number_9.png:root/res/images/720x1280/number_9.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/percent_10.png:root/res/images/720x1280/percent_10.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/percent_5.png:root/res/images/720x1280/percent_5.png \
-    device/huawei/c8817d/rootdir/res/images/720x1280/percent_sign.png:root/res/images/720x1280/percent_sign.png \
-    device/huawei/c8817d/rootdir/res/images/mmi/fail.png:root/res/images/mmi/fail.png \
-    device/huawei/c8817d/rootdir/res/images/mmi/pass.png:root/res/images/mmi/pass.png
+    $(LOCAL_PATH)/rootdir/system/etc/logmask/default_diag_mask.cfg:system/etc/logmask/default_diag_mask.cfg \
+    $(LOCAL_PATH)/rootdir/system/etc/logmask/dynamic_debug_mask.cfg:system/etc/logmask/dynamic_debug_mask.cfg \
+    $(LOCAL_PATH)/rootdir/system/etc/logmask/qdss.cfg:system/etc/logmask/qdss.cfg
 
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
@@ -128,8 +86,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
@@ -171,7 +127,19 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.primary.msm8916 \
     audio_policy.msm8916 \
-    libaudio-resampler
+    libaudio-resampler \
+    tinymix
+
+# Audio OMX
+PRODUCT_PACKAGES += \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
+
+# Bson
+PRODUCT_PACKAGES += \
+    libbson
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -179,6 +147,18 @@ PRODUCT_PACKAGES += \
     camera.msm8916 \
     libmmjpeg_interface \
     libqomx_core
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
+
+# CRDA
+PRODUCT_PACKAGES += \
+    crda \
+    linville.key.pub.pem \
+    regdbdump \
+    regulatory.bin
 
 # Display
 PRODUCT_PACKAGES += \
@@ -190,7 +170,8 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libgenlock \
     libqdutils \
-    libqdMetaData
+    libqdMetaData \
+    libtinyxml
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -225,7 +206,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
-    libqcompostprocbundle
+    libqcompostprocbundle \
+    libqcomvoiceprocessing
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -239,12 +221,6 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8916
-
-# NFC packages
-#PRODUCT_PACKAGES += \
-#    NfcNci \
-#    Tag \
-#    com.android.nfc_extras
 
 #OEM Services library
 PRODUCT_PACKAGES += \
@@ -278,21 +254,17 @@ PRODUCT_PACKAGES += \
 
 # Prebuilt binary
 PRODUCT_PACKAGES += \
-    chargelog.sh \
-    e2fsck_s \
-    healthd \
-    huawei_version \
-    hw_scsi_switch \
-    libqmi_oem_main \
     rmt_oeminfo \
     rmt_storage \
-    test_diag \
-    test_oeminfo \
-    usb_update
+    test_diag
+
+# QRNGD
+PRODUCT_PACKAGES += \
+    qrngd \
+    qrngp
 
 # Recovery
 PRODUCT_PACKAGES += \
-    recoverylog.sh \
     minivold
 
 # Ramdisk
@@ -308,8 +280,9 @@ PRODUCT_PACKAGES += \
     init.qcom.sdio.sh \
     init.qcom.wifi.sh \
     init.qcom.modem_links.sh \
-    init.qcom.rootagent.sh \
-    init.qcom.uicc.sh
+    init.qcom.uicc.sh \
+    init.qcom.zram.sh \
+    init.qti.video.sh
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
@@ -328,8 +301,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qcom.uicc.sh \
     init.target.rc \
-    ueventd.qcom.rc \
-    init.device.rc
+    ueventd.qcom.rc
 
 #spec service
 PRODUCT_PACKAGES += \
@@ -340,6 +312,15 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     libcalmodule_akm \
     calmodule.cfg
+
+# SoftAP
+PRODUCT_PACKAGES += \
+    libQWiFiSoftApCfg \
+    libqsap_sdk
+
+# Lib_xml2
+PRODUCT_PACKAGES += \
+    libxml2
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -371,14 +352,13 @@ PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
-       dalvik.vm.heapgrowthlimit=128m
+    dalvik.vm.heapgrowthlimit=128m \
+    dalvik.vm.heapminfree=6m \
+    dalvik.vm.heapstartsize=14m
 
 #Set default profile to FUT
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.logkit.ctrlcode=1
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb
 
 # appops configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
