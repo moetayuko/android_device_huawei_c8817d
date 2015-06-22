@@ -19,9 +19,6 @@
 <resources>
     <!-- Zero shutter lag mode -->
     <bool name="enableZSL">true</bool>
-    <!-- Stay in continuous focus even if touch-to-focus is used
-         This option doesn't make sense if wantsFocusModes is on -->
-    <bool name="useContinuosFocusForTouch">true</bool>
 
     <!-- Allow HDR and ZSL together -->
     <bool name="enableHDRWithZSL">true</bool>
