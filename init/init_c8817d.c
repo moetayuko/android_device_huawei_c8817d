@@ -141,4 +141,17 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "Che1-CL10-user 4.4.4 GRJ90 C92B275 release-keys");
         property_set("ro.build.fingerprint", "Honor/Che1-CL10/Che1:4.4.4/Che1-CL10/C92B275:user/ota-rel-keys,release-keys");
     }
+    /* Che1-L04 */
+    else if (strstr(model, "Che1-L04") != NULL) {
+        property_set("ro.product.model", "Che1-L04");
+        property_set("ro.product.name", "Che1-L04");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.dsds.enabled", "true");
+        property_set("ro.telephony.default_network", "9");
+        property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("ro.com.android.dataroaming","true");
+        property_set("ro.build.description", "Che1-L04-user 4.4.4 GRJ90 C900B130 release-keys");
+        property_set("ro.build.fingerprint", "Honor/Che1-L04/Che1:4.4.4/Che1-L04/C900B130:user/ota-rel-keys,release-keys");
+    }
 }
