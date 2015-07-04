@@ -17,6 +17,10 @@
 
 DEVICE_PATH := device/huawei/c8817d
 
+# Camera
+BOARD_USES_LEGACY_MMAP := true
+TARGET_USE_VENDOR_CAMERA_EXT := true
+
 # Liblight
 TARGET_PROVIDES_LIBLIGHT := true
 

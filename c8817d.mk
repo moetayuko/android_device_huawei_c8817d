@@ -26,6 +26,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
     $(LOCAL_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
 
+# Camera
+PRODUCT_PACKAGES += \
+    mm-qcamera-app \
+    camera.msm8916 \
+    libmmjpeg_interface \
+    libqomx_core
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8916
