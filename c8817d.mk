@@ -16,6 +16,8 @@
 
 DEVICE_PATH := device/huawei/c8817d
 
+$(call inherit-product, vendor/huawei/c8817d/c8817d-vendor.mk)
+
 # Audio calibration
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
