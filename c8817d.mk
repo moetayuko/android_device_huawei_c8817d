@@ -26,6 +26,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
     $(LOCAL_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
 
+# Screen density
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
 # Camera
 PRODUCT_PACKAGES += \
     mm-qcamera-app \
