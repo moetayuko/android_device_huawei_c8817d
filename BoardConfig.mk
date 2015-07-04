@@ -17,3 +17,5 @@
 
 DEVICE_PATH := device/huawei/c8817d
 
+# Liblight
+TARGET_PROVIDES_LIBLIGHT := true

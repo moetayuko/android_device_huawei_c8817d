@@ -14,5 +14,9 @@
 # limitations under the License.
 #
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8916
+
 # Inherit the rest from msm8916-common
 $(call inherit-product, device/huawei/msm8916-common/msm8916_32.mk)
