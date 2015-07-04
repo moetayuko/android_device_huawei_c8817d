@@ -14,8 +14,6 @@
 # limitations under the License.
 
 -include device/huawei/msm8916-common/BoardConfig.mk
-# inherit from the proprietary version
--include vendor/huawei/c8817d/BoardConfigVendor.mk
 
 DEVICE_PATH := device/huawei/c8817d
 
