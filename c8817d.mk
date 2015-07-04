@@ -14,17 +14,17 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/huawei/c8817d
+DEVICE_PATH := device/huawei/c8817d
 
 # Audio calibration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
-    $(LOCAL_PATH)/audio/General_cal.acdb:system/etc/General_cal.acdb \
-    $(LOCAL_PATH)/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
-    $(LOCAL_PATH)/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
-    $(LOCAL_PATH)/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
-    $(LOCAL_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
-    $(LOCAL_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
+    $(DEVICE_PATH)/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
+    $(DEVICE_PATH)/audio/General_cal.acdb:system/etc/General_cal.acdb \
+    $(DEVICE_PATH)/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
+    $(DEVICE_PATH)/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
+    $(DEVICE_PATH)/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
+    $(DEVICE_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
+    $(DEVICE_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
 
 # Screen density
 PRODUCT_AAPT_PREF_CONFIG := xhdpi

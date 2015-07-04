@@ -21,6 +21,9 @@ DEVICE_PATH := device/huawei/c8817d
 BOARD_USES_LEGACY_MMAP := true
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
+# Init
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_c8817d.c
+
 # Liblight
 TARGET_PROVIDES_LIBLIGHT := true
 
