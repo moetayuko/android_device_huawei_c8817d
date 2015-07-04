@@ -37,5 +37,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8916
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.msm8916 \
+    libcalmodule_akm \
+    calmodule.cfg
+
 # Inherit the rest from msm8916-common
 $(call inherit-product, device/huawei/msm8916-common/msm8916_32.mk)
