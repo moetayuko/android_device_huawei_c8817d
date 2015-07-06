@@ -35,6 +35,10 @@ TARGET_SCREEN_WIDTH := 720
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8916
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8916
